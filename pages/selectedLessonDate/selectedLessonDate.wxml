@@ -1,0 +1,53 @@
+<!--packageB/pages/selectedLessonDate/selectedLessonDate.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="selectedLessonDate">
+  <view class="classTime bg_white paddingB1" wx:if="{{from == 'lessonDetail'}}">
+    <view class="flex padding1rem marginT1 marginB1">
+      <image class="lesson_detail marginR1" src="../../image/lesson/lesson_time_icon.png" alt=""></image>
+      <view class="fontSize12 color_9b9">选择上课时间（单选）</view>
+    </view>
+    <view class="selectDate" wx:for="{{lessonDateList}}" wx:key="index">
+      <view class="flex_row_between padding1rem">
+        <view class="fontSize16 fontBold"><text class="color_ff5">{{item.last_time}}</text>天后开课</view>
+      </view>
+      <view class="marginL1 marginR1 paddingB1 fontSize14">
+        <view class="marginB1">开课日期：<text class="color_ff5">{{item.start_date_text}}</text></view>
+        <view class="marginB1">开课时间：<text class="color_ff5">{{item.start_time}}</text>点至<text class="color_ff5">{{item.end_time}}</text>点</view>
+        <view>结束日期：<text class="color_ff5">{{item.end_date_text}}</text></view>
+      </view>
+    </view>
+    <view class="address marginL1">
+      <view class="fontSize12 color_9b9 marginB1">上课地点</view>
+      <view class="fontSize14 marginB1">{{address}}</view>
+    </view>
+  </view>
+
+  <view class="classTime bg_white paddingB1" wx:else>
+    <view class="flex padding1rem marginT1 marginB1">
+      <image class="lesson_detail marginR1" src="../../image/lesson/lesson_time_icon.png" alt=""></image>
+      <view class="fontSize12 color_9b9">选择上课时间（单选）</view>
+    </view>
+    <view class="selectDate" wx:for="{{lessonDateList}}" wx:key="index" bindtap="tabS" data-item="{{item}}">
+      <view class="flex_row_between padding1rem">
+        <view class="fontSize16 fontBold"><text class="color_ff5">{{item.last_time}}</text>天后开课</view>
+        <image wx:if="{{date_id == item.id}}" class="select_date_icon marginR1" src="../../image/lesson/select_date_active.png" alt=""></image>
+        <image wx:else class="select_date_icon marginR1" src="../../image/lesson/select_date.png" alt=""></image>
+      </view>
+      <view class="marginL1 marginR1 paddingB1 fontSize14">
+        <view class="marginB1">开课日期：<text class="color_ff5">{{item.start_date_text}}</text></view>
+        <view class="marginB1">开课时间：<text class="color_ff5">{{item.start_time}}</text>点至<text class="color_ff5">{{item.end_time}}</text>点</view>
+        <view>结束日期：<text class="color_ff5">{{item.end_date_text}}</text></view>
+      </view>
+    </view>
+
+    <view class="address marginL1">
+      <view class="fontSize12 color_9b9 marginB1">上课地点</view>
+      <view class="fontSize14 marginB1">{{address}}</view>
+    </view>
+  </view>
+  <view class="footer fontSize16 flex_row_center" wx:if="{{from != 'lessonDetail'}}">
+    <view bindtap="cancel">稍后再选</view>
+    <view class="color_white" bindtap="changeDate">确认选择</view>
+  </view>
+</view>

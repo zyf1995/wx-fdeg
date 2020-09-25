@@ -1,0 +1,60 @@
+<!--pages/teamList/teamList.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="utl_asssets bg_default">
+    <view class="t_cont">
+        <view class="t_c_user flex_row_between bg_white text_center">
+            <view class="t_c_userSum circle flex_col_center {{type == 1?'on':''}}" bindtap="typeS" data-type="1">
+                <view>直属会员</view>
+                <view>{{teamInfo.zs_dz}}人</view>
+            </view>
+            <view class="t_c_userSenior circle flex_col_center {{type == 2?'on':''}}" bindtap="typeS" data-type="2">
+                <view>总会员数</view>
+                <view>{{teamInfo.dz_total}}人</view>
+            </view>
+            <view class="t_c_userSenior circle flex_col_center {{type == 3?'on':''}}" bindtap="typeS" data-type="3">
+                <view>粉丝数</view>
+                <view>{{teamInfo.tks}}人</view>
+            </view>
+        </view>
+        <view class="flex_row_left bg_white padding1  text_center">
+            <view class="flex_grow1 flex_col_center BR1 {{type == 4?'color_red':''}}" bindtap="typeS" data-type="4">
+              <view>{{teamInfo.today_add_num}}人</view>
+              <view>今日</view>
+            </view>
+            <view class="flex_grow1 flex_col_center BR1 {{type == 5?'color_red':''}}" bindtap="typeS" data-type="5">
+              <view>{{teamInfo.yesterday_add_num}}人</view>
+              <view>昨日</view>
+            </view>
+            <view class="flex_grow1 flex_col_center BR1 {{type == 6?'color_red':''}}" bindtap="typeS"  data-type="6">
+              <view>{{teamInfo.zs_fans}}人</view>
+              <view>直属粉丝</view>
+            </view>
+            <view class="flex_grow1 flex_col_center {{type == 7?'color_red':''}}" bindtap="typeS" data-type="7">
+              <view>{{teamInfo.zs_fans_invitation}}人</view>
+              <view>直属粉丝邀请</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="t_fooder_wrapper">
+    <view class="t_footer flex_row_center bg_white ">
+        <input type="number" class='border_none' placeholder="请输入手机号搜索" bindinput="updateValue" value='{{info.keyword}}'></input>
+        <text class="iconfont icon-search" catchtap='search'></text>
+    </view>
+</view>
+<view class="utl_list">
+  <view class="utl_item margin1rem borderRadius1rem bg_white padding text_gray flex_row_left padding1 fontSize11" wx:for="{{list}}" wx:key="index">
+      <image class='marginR10 teamImg' src="{{item.avatar ? item.avatar : '../../image/avatar_default.png'}}" alt=""></image>
+      <view class="flex_col_left flex_grow1">
+          <view class="marginB5 fontSize14 color_black">{{item.nickname?item.nickname:item.mobile}} <text class="text_gray fontSize11">（{{item.mobile}}）</text></view>
+          <view class="utl_i_level marginB5 ">{{item.level}}</view>
+          <view>{{item.createtime}}</view>
+      </view>
+      <view class="BL1 flex_col_left paddingleft1rem">
+          <text class="marginB5">邀请人数 {{item.invitation_num}}</text>
+          <text class="marginB5">订单数量 {{item.order_num}}</text>
+          <text class="marginB5">本周活跃值 {{item.week_score}}</text>
+      </view>
+  </view>
+</view>

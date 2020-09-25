@@ -1,0 +1,70 @@
+/* pages/teamList/teamList.wxss */
+@import "../../iconfont.wxss";
+.paddingleft1rem {
+  padding-left: 24rpx;
+}
+.utl_asssets {
+  height: 240rpx;
+  margin-bottom: 144rpx;
+}
+.t_cont {
+    padding:20rpx;
+}
+
+.t_cont .circle {
+    width: 144rpx;
+    height: 144rpx;
+    border: 12rpx solid #ccc;
+    border-radius: 50%;
+}
+.t_cont .circle.on {
+  border: 12rpx solid #FFBF41;
+}
+.t_c_user {
+    padding: 24rpx 48rpx 36rpx;
+    border-top-right-radius: 24rpx;
+    border-top-left-radius: 24rpx;
+    margin-bottom: 4.8rpx;
+}
+
+
+.t_fooder_wrapper {
+    padding: 20rpx 20rpx 0;
+
+}
+
+.t_footer {
+    position: relative;
+    border-radius: 24rpx;
+}
+
+.t_footer input {
+  width: 100%;
+  border-radius: 48rpx;
+  height: 60rpx;
+  padding-left: 24rpx;
+}
+
+.t_footer text {
+    position: absolute;
+    right: 48rpx;
+    font-size: 48rpx;
+}
+
+.t_footer_img {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 48rpx;
+}
+.utl_item image {
+  width: 108rpx;
+  height: 108rpx;
+}
+.utl_i_level {
+  padding: 2.4rpx 12rpx;
+  background: #F2F2F2;
+  border-radius: 24rpx;
+}
+.teamImg{
+  border-radius: 50%;
+}

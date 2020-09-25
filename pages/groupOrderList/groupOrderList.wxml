@@ -1,0 +1,77 @@
+<!--pages/groupOrderList/groupOrderList.wxml-->
+<view class='nav' style='height:{{navigationBarHeight}}'>
+    <view class='title_icon flex_row_center' bindtap="myCenterPage">
+   　　<text class="iconfont icon-left-arrow color_white fontSize18"></text>
+   </view>
+   <view class='title_text'>订单列表</view>
+</view>
+<view class="gs_tabs gs_tabs_sub flex_row_left bg_white  posi_relative BB1">
+    <view class="gs_t_item flex_row_center" data-item="{{item}}" data-index="{{index}}" wx:key="index" wx:for="{{tabSubArray}}" bindtap='typeS'>
+        <text class="{{status == item.id?'color_red':''}}">{{item.title}}</text>
+    </view>
+    <view class="tabline flex_row_center" style="left:{{tableft}}px">
+        <text></text>
+    </view>
+</view>
+<view class="gs_tabs gs_tabs1 flex_row_left bg_white  posi_relative marginB10" wx:if="{{status == 'total'}}">
+    <view class="gs_t_item flex_row_center" data-item="{{item}}" data-index="{{index}}" wx:key="index" wx:for="{{tabArray1}}" bindtap='tabS1'>
+        <text class="{{dataType1 == item.dataType1?'color_f4':''}}">{{item.title}}</text>
+    </view>
+    <view class="line flex_row_center" style="left:{{left}}px">
+        <text></text>
+    </view>
+</view>
+<view class="gs_tabs gs_tabs2 flex_row_left bg_white posi_relative marginB10" wx:else>
+    <view class="gs_t_item flex_row_center" data-item="{{item}}" data-index="{{index}}" wx:key="index" wx:for="{{tabArray}}" bindtap='tabS'>
+        <text class="{{dataType == item.dataType?'color_f4':''}}">{{item.title}}</text>
+    </view>
+    <view class="subline flex_row_center" style="left:{{subleft}}px">
+        <text></text>
+    </view>
+</view>
+<view class="ol_list">
+  <view class="ol_item BB5 bg_white" wx:for="{{orderList}}" wx:key="index">
+    <view class="flex_row_between padding_custom ttt">
+      <view class="flex_row_left">
+        <text class="shop_name">{{item.shop_name}}</text>
+        <text class="iconfont icon-arrow-right fontSize16"></text>
+      </view>
+      <text class="color_default text_left" wx:if="{{status == 'total' && item.order_status == 10}}">进行中</text>
+      <text class="color_default text_left" wx:if="{{status == 'total' && item.order_status == 20}}">已完成</text>
+      <text class="color_default text_left" wx:if="{{status == 'detail' && item.order_status == 10}}">未生效</text>
+      <text class="color_default text_left" wx:if="{{status == 'detail' && item.order_status == 20}}">待发货</text>
+      <text class="color_default text_left" wx:if="{{status == 'detail' && item.order_status == 30}}">待收货</text>
+      <text class="color_default text_left" wx:if="{{status == 'detail' && item.order_status == 50}}">已完成</text>
+    </view>
+      <view class="ol_i_goodsInfo flex_row_left padding_custom BB1" bindtap="toMallGoodsInfo" data-id="{{item.goods_id}}">
+          <image class="ol_i_g_img" src="{{item.cover ?item.cover : '../../image/goods_empty.png'}}" alt=""></image>
+          <view class="flex_col_left flex_grow1">
+              <view class="ol_i_g_one flex_row_left">
+                  <view class="ol_i_g_name text-overflow_2 fontSize12">{{item.goods_name}} </view>
+                  <view class="ol_i_g_price flex_grow1 text_right" wx:if="{{status == 'total'}}">¥{{item.total_price}}</view>
+              </view>
+              <view class="ol_i_g_two flex_row_left fontSize12 color_gray flex_wrap">
+                  <view class="ol_i_g_type ">
+                      <text></text>
+                  </view>
+                  <view class="ol_i_g_num flex_grow1 text_right" wx:if="{{status == 'total'}}">X1</view>
+              </view>
+          </view>
+      </view>
+      <view class="ol_i_sum BB1 fontSize12 padding_custom text_right flex_row_right"  wx:if="{{status == 'total'}}">
+          <text>共1件商品</text>
+          <text>合计：¥{{item.total_price}}（含运费：¥{{item.express_price}}）</text>
+      </view>
+      <view class="ol_i_sum BB1 fontSize12 paddingL1 marginR1 paddingB1 marginT1 text_right flex_row_right text-overflow_2" wx:else>
+          <text>备注：{{item.remark}}</text>
+      </view>
+      <view class="ol_i_act BB5 padding_custom flex_row_left">
+        <text class='flex_grow1 fontSize13'>订单编号：{{item.order_no}}</text>
+          <view class="black_btn" bindtap="goOrderInfo" data-id="{{item.id}}">订单详情</view>
+      </view>
+  </view>
+</view>
+<view class="marginT15 flex_row_center text_gray" >
+    <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+    <text class="fontSize14">我是有底线的</text>
+</view>

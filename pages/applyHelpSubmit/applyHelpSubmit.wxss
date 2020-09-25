@@ -1,0 +1,24 @@
+/* pages/applyHelpSubmit/applyHelpSubmit.wxss */
+@import "../../iconfont.wxss";
+.common_radio {
+    border: 2rpx solid #666666;
+}
+.padding_custom {
+    padding: 24rpx 36rpx;
+}
+.input2 {
+    height:108rpx;
+    padding: 24rpx 36rpx;
+}
+
+.input2 text {
+    width: 20%;
+    min-width: 20%;
+}
+
+.input2 input {
+    max-width: 50%;
+}
+.common_submit_btn {
+    margin: 72rpx auto;
+}

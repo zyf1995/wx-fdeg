@@ -1,0 +1,31 @@
+<!--pages/addressList/addressList.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="user_address_add">
+  <view class="input2 padding1 borderBox bg_white BB1  width100 flex_row_left">
+      <text class="fontSize14">收货人</text>
+      <input class='border_none flex_grow1' type="text" placeholder="请输入姓名" bindinput="updateValue1" value='{{info.name}}'></input>
+  </view>
+  <view class="input2 padding1 borderBox bg_white BB1  width100 flex_row_left BB1">
+      <text class="fontSize14">联系电话</text>
+      <input class='border_none flex_grow1' type="number" maxlength="11" placeholder="请输入联系方式" bindinput="updateValue2" value='{{info.phone}}'></input>
+  </view>
+  <view class="section input2 padding1 borderBox bg_white  width100 flex_row_left BB1">
+    <picker class="width100" mode="region" bindchange="bindRegionChange" value="{{region}}">
+      <view class="picker flex_row_left width100">
+        选择地址
+        <view class="text_right flex_grow1">
+          {{info.region?info.region:'请选择省,市,区'}}
+          <text class="iconfont icon-arrow-right"></text>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="input2 padding1 borderBox bg_white   width100 flex_row_left BB1">
+      <text class="fontSize14">详细地址</text>
+      <input class='border_none ' type="text" placeholder="请输入详细地址" bindinput="updateValue3" value='{{info.detail}}'></input>
+  </view>
+  <button class="wxAddress text_center marginT2" bindtap="onRise">获取微信收货地址</button>
+  <view class="common_submit_btn marginCenter" wx:if="{{handle == 'edit'}}" bindtap="update">保存</view>
+  <view class="common_submit_btn marginCenter" wx:else bindtap="submit">保存</view>
+</view>

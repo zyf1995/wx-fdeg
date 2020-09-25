@@ -1,0 +1,198 @@
+<!--packageB/pages/lessonList/lessonList.wxml-->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view id="header_wrapper_48"> 
+  <view class="gs_tabs flex_row_left bg_white posi_relative">
+      <view class="gs_t_item flex_row_center" data-item="{{item}}" data-index="{{index}}" wx:key="index" wx:for="{{tabArray}}" bindtap='tabS'>
+          <text class="{{dataType == item.dataType?'color_ffb':''}}">{{item.title}}</text>
+      </view>
+      <view class="line flex_row_center" style="left:{{left}}px">
+          <text></text>
+      </view>
+  </view>
+</view>
+<view wx:if="{{dataType == 0}}">
+  <swiper
+  id="banner"
+  indicator-dots="true"
+  autoplay="true"
+  interval="2000"
+  circular="true"
+  indicator-color="#fff"
+  indicator-active-color="#666874"
+  class="bg_white paddingT5 paddingB1"
+  >
+    <swiper-item wx:key="index" wx:for="{{liveBanner}}">
+      <image class="headset" src="{{item.image}}" />
+    </swiper-item>
+  </swiper>
+  <view class="hotSell paddingL1">
+    <view class="headline marginT1 marginB1">
+      <text class="paddingL1 fontSize16 fontBold"><text class="color_ff6 marginR1">热卖</text>
+      <text class="fontSize12 color_666">销量前茅，你值得拥有</text></text>
+    </view>
+    <view class="hotSellList">
+      <scroll-view scroll-x style="width: 100%;white-space: nowrap;">
+        <view bindtap="toGoodsInfo" data-goodsId="{{item.goods_id}}" class="bg_white posi_relative marginR1" style="width:80%;display:inline-block;" wx:key="index" wx:for="{{liveHotsale}}">
+          <image class="branchShopLogo margin1rem flex" src="{{item.images}}" alt=""></image>
+          <view class="right marginR1">
+            <view class="fontSize14 marginB1 text-overflow_1">
+              <text class="hotsale marginR5">热卖</text>
+              <text class="text-overflow_1">{{item.goods_name}}</text>
+            </view>
+            <view class="marginB1">
+              <text class="fontSize18 color_ff6 marginR1">￥{{item.spec[0].goods_price}}</text>
+              <text class="fontSize12 color_a0a text_through">￥{{item.spec[0].line_price}}</text>
+            </view>
+            <view class="flex_row_left hot">
+              <image class="hot_icon marginL1 marginR5" src="../../image/live/hot_icon.png" alt=""></image>
+              <text class="fontSize10 color_white">美妆栏销量第一</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view>
+    <view class="headline marginT1 marginB1 marginL1">
+      <text class="paddingL1 fontSize16 fontBold"><text class="color_ff6 marginR1">官方直播</text>
+      <text class="fontSize12 color_666">人气主播，你值得观看</text></text>
+    </view>
+    <view class="recommendLive marginT1">
+      <view class="flex flex_wrap width100">
+        <view bindtap="gowxLive" data-item="{{item}}" class="liveItem marginB1" wx:key="index" wx:for="{{wechatLiveList}}">
+          <view class="cover posi_relative">
+            <image class="coverImg" src="{{item.share_img}}" alt=""></image>
+            <view class="flex_row_left leftStatus">
+              <view wx:if="{{item.live_status == 101}}" class="liveStatus1 flex_row_left">
+                <image class="living_icon marginR5 marginL5" src="../../image/live/living.gif" alt=""></image>
+                <text class="fontSize10 color_white">直播中</text>
+              </view>
+              <view wx:if="{{item.live_status == 102}}" class="liveStatus2">
+                <text class="fontSize10">预约</text>
+              </view>
+              <view wx:if="{{item.live_status == 103}}" class="liveStatus3 flex_row_left">
+                <image class="living_icon marginR5 marginL5" src="../../image/live/live_end_icon.png" alt=""></image>
+                <text class="fontSize10 color_white">已结束</text>
+              </view>
+            </view>
+            <view class="anchorMessage flex_row_left">
+              <image class="avatar_default marginR1" src="{{item.anchor_img?item.anchor_img:'../../image/avatar_default.png'}}" alt=""></image>
+              <text class="fontSize13 color_white fontBold">{{item.anchor_name}}</text>
+            </view>
+          </view>
+          <view class="liveList bg_white">
+            <view class="fontSize14 fontBold text-overflow_1 padding1 marginR1">{{item.name}}</view>
+            <view class="flex_row_left width100 shopMessage" wx:if="{{item.goods.length != 0}}">
+              <view class="left flex_row_center">
+                <image class="LiveProductImg marginB1" src="{{item.goods[0].cover_img}}" alt=""></image>
+              </view>
+              <view class="right marginR1">
+                <text class="fontSize12 text-overflow_2">{{item.goods[0].name}}</text>
+                <text class="fontSize12 color_ff3">￥{{item.goods[0].price / 100}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="marginT15 paddingB15 flex_row_center text_gray">
+      <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+      <text class="fontSize14">我是有底线的</text>
+  </view>
+</view>
+<view id="lessonList" wx:if="{{dataType == 1}}">
+  <view class="listBg">
+    <image class="lesson_listBg" src="{{coursePoster}}" alt=""></image>
+  </view>
+  <view class="lesson_list width100">
+    <view class="lesson_item bg_white" wx:for="{{courseList}}" wx:key="index" bindtap="goLessonDetail" data-item="{{item}}">
+      <view class="top BB1 flex_row_left margin1rem paddingT1 paddingB1">
+        <image class="shopLogo marginR1" src="{{item.cover}}" alt=""></image>
+        <view class="cont">
+          <view class="fontSize16 fontBold text-overflow_2">{{item.name}}</view>
+          <view class="flex_row_left marginT5 marginB5">
+            <view class="fontSize12 marginR5 firstJoin" wx:if="{{item.is_first == 10}}">首次</view>
+            <view class="fontSize12 marginR5 firstJoin" wx:if="{{item.is_first == 20}}">复训</view>
+            <view class="fontSize14 color_ff8 marginR5" wx:if="{{item.is_first == 10}}">￥<text class="fontSize16">{{item.first_price}}</text>/人</view>
+            <view class="fontSize14 color_ff8 marginR5" wx:if="{{item.is_first == 20}}">￥<text class="fontSize16">{{item.second_price}}</text>/人</view>
+            <text class="fontSize12 text_through color_a0a">￥{{item.origin_price}}</text>
+          </view>
+          <view class="flex_row_left">
+            <image class="addressIcon marginR5" src="../../image/lesson/lesson_list_address.png" alt=""></image>
+            <view class="fontSize12 color_a0a text-overflow_2">{{item.address}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="bottom margin1rem paddingB1 flex_row_left fontSize12">
+        <view class="color_666 text-overflow_1 width80">课程介绍: {{item.introduction}}</view>
+        <view class="flex_grow1 color_ff8 seeDetail text_right">查看详情</view>
+      </view>
+    </view>
+    <view class="marginT15 paddingB15 flex_row_center text_gray">
+        <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+        <text class="fontSize14">我是有底线的</text>
+    </view>
+    <image bindtap="goOrderList" class='buy_cart_icon' src="../../image/buy_cart_icon.png" alt=""></image>
+  </view>
+</view>
+<view wx:if="{{dataType == 2}}" class="bg_white">
+  <swiper
+  id="banner"
+  indicator-dots="true"
+  autoplay="true"
+  interval="2000"
+  circular="true"
+  indicator-color="#fff"
+  indicator-active-color="#666874"
+  class="bg_white paddingT5 paddingB1"
+  >
+    <swiper-item wx:key="index" wx:for="{{vc_slide}}">
+      <image class="headset" src="{{item.avatar}}" />
+    </swiper-item>
+  </swiper>
+  <view class="menu flex_row_left padding1">
+    <view class="menuList flex_row_left flex_wrap width100">
+      <view class="flex_col_center li" wx:for="{{vc_type}}" wx:key="index" bindtap="fnAllLessonList" data-id="{{item.id}}">
+        <view class="fontSize12">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="rankList">
+    <view class="top">
+      <view class="fontSize24">热门排行榜</view>
+    </view>
+    <view class="bottom">
+      <view class="li" bindtap="goMovie" data-id="{{item.id}}" wx:for="{{vc_hot}}" wx:key="index">
+        <image class="studyimg" src="{{item.image}}" alt=""></image>
+        <view class="cont">
+          <view class="text-overflow_1 cont1">{{item.title}}</view>
+          <view class="text-overflow_1 cont2">{{item.buy_num}}人已学</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="goodLesson">
+    <view class="top">
+      <view class="fontSize24">精选好课</view>
+    </view>
+    <view class="bottom flex_row_left">
+      <view class="goodLessonList flex_row_left flex_wrap width100">
+        <view class="li marginB1" bindtap="goMovie" data-id="{{item.id}}" wx:for="{{vc_hot}}" wx:key="index">
+          <view>
+            <image class="studyimg" src="{{item.image}}" alt=""></image>
+            <view class="text-overflow_1 cont1">{{item.title}}</view>
+            <view class="text-overflow_1 cont2">{{item.desc}}</view>
+            <view class="vip flex_row_left">
+              <!-- <image class="vipImg" src="../../image/vip.png" alt=""></image> -->
+              <view class="price1">￥{{filter.toFix(filter.toNum(item.price))}}</view>
+              <view class="price2 text_through">
+                ￥{{filter.toFix(filter.toNum(item.vip_price))}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

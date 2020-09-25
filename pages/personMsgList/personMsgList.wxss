@@ -1,0 +1,24 @@
+/* packageB/pages/personMsgList/personMsgList.wxss */
+.lesson_circle{
+  width:42rpx;
+  height:42rpx;
+}
+.color_fd9{
+  color: #FD9E00;
+}
+.color_727{
+  color: #727476;
+}
+.applyPersonList>view .right{
+  width: 16%;
+  height: 72rpx;
+  border-left: 2rpx solid #f2f2f2;
+}
+.footer{
+  width: 100%;
+  height: 92rpx;
+  background:rgba(253,158,0,1);
+  border-radius:10rpx;
+  position: fixed;
+  bottom: 0;
+}

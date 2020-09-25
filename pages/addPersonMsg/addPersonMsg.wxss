@@ -1,0 +1,10 @@
+/* packageB/pages/addPersonMsg/addPersonMsg.wxss */
+@import "../../iconfont.wxss";
+.footer{
+  width: 100%;
+  height: 86rpx;
+  background:rgba(253,158,0,1);
+  border-radius:10rpx;
+  position: fixed;
+  bottom: 0;
+}

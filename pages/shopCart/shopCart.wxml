@@ -1,0 +1,89 @@
+<!--pages/shopCart/shopCart.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<wxs src="../../utils/str.wxs" module="tools"/>
+<view id="mall_cart">
+    <view class="al_empty flex_col_center" wx:if="{{list.length == 0}}">
+        <view class="al_e_img flex_row_center bg_gray">
+            <image src="../../image/orc_empty.png" alt=""></image>
+        </view>
+        <text class="color_gray">购物车竟然是空的</text>
+    </view>
+    <view class="" wx:if="{{list.length > 0}}">
+      <view class="mallCart marginT1 bg_white">
+        <view class="flex_row_between padding1 BB1">
+          <view class="left flex_row_left">
+            <image class="cartOnlineIcon" src="../../image/cart_online_icon.png" alt=""></image>
+            <view class="fontSize16 fontBold marginL5">甄选商城</view>
+          </view>
+        </view>
+        <view class="cartList BB5 {{selected2 ? '':'on'}}" wx:for="{{list}}" wx:key="index">
+          <view class="flex_row_left cGoodsTop BB1">
+            <view class="circle flex_row_center" bindtap="shopsChoice" data-shopId="{{item.shops.id}}" data-index="{{index}}">
+              <text class="common_radio {{tools.indexOf(shopChoiceList,item.shops.id)?'on':''}}"></text>
+            </view>
+            <text class="cShopName">{{item.shops.shop_name || '暂无'}}</text>
+            <text class="flex_grow1 text_right color_ffa marginR1" bindtap="clearShop" data-item="{{item}}">清空</text>
+          </view>
+          <view class="cGoodsList">
+          <scroll-view scroll-x="{{isScroll}}">
+            <block  class="flex_row_left" wx:for="{{item.goods}}" wx:for-index="s" wx:for-item="lit" wx:key="s">
+              <view class="order_item" style="right:{{item.right}}rpx">
+                <view class="circle flex_row_center" bindtap="goodsChoice" data-goodsId="{{lit.goods_id}}" data-goodsskuid="{{lit.goods_sku_id}}" data-index="{{index}}" wx:if="{{selected2}}">
+                  <text class="common_radio {{tools.indexOf(goodsChoiceList,lit.goods_id)?'on':''}}"></text>
+                </view>
+                <view class="circle flex_row_center" wx:else>
+                  <text class="common_radio"></text>
+                </view>
+                <view class="flex_row_between paddingT1 paddingB1">
+                  <view class="cGoodsImg" bindtap="toGoodsInfo" data-id="{{lit.goods_id}}">
+                    <image src="{{lit.image}}" alt=""></image>
+                  </view>
+                  <view class="flex_col_between cGoodsMain">
+                    <view class="cGoodsName">{{lit.goods_name}}</view>
+                    <view class="cGoodsTarr">{{lit.goods_sku.goods_attr ? lit.goods_sku.goods_attr :''}}</view>
+                    <view class="flex_row_between">
+                      <text class="cTotalPrice">￥{{lit.goods_price}}</text>
+                      <view class="flex_row_between cGoodsCount marginR5">
+                        <view class="flex_row_center cut" bindtap="changeNum" data-type="minus" data-item="{{lit}}">
+                          <text class="iconfont icon-minus fontSize12"></text>
+                        </view>
+                        <input type="number" bindinput="updateValue" value="{{lit.total_num}}"></input>
+                        <view class="flex_row_center add" bindtap="changeNum" data-type="add" data-item="{{lit}}">
+                          <text class="iconfont icon-plus fontSize12"></text>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="remove" bindtap="delItem" data-type="shop" data-item="{{lit}}">删除 </view>
+              </view>
+            </block >
+          </scroll-view>
+          </view>
+        </view>
+
+      </view>
+      <view class="marginT15 marginB15 flex_row_center text_gray" >
+          <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+          <text class="fontSize14">我是有底线的</text>
+      </view>
+    </view>
+
+    <view class="order_cart_footer flex_row_between padding1 fontSize12 BT1 borderBox" wx:if="{{list.length > 0}}">
+        <view class="circle flex_row_center fontSize14">
+          <!-- <text class="common_radio comAll {{allChoice?'on':''}}"></text>
+          全选 -->
+        </view>
+        <view class="flex_row_left">
+          <view class="flex_row_left marginR10">
+            共:<text class="color_default">{{allGoodsNum}}</text>件商品
+          </view>
+          <view class="flex_row_left marginR10">
+            合计:<view class="color_default"><text class="fontSize14">￥{{allGoodsPrice}}</text></view>
+          </view>
+          <view class="common_submit_btn" bindtap="buy">结算</view>
+        </view>
+    </view>
+</view>
+

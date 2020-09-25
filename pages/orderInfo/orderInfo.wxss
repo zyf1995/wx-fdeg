@@ -1,0 +1,408 @@
+/* pages/orderInfo/orderInfo.wxss */
+page{
+  background-color: #fff !important;
+}
+.oc_address {
+    padding: 36rpx 24rpx;
+}
+
+.oc_address i {
+    min-width: 72rpx;
+    text-align: center;
+}
+
+.oc_address i.arrow-right-bold {
+    margin-left: 24rpx;
+}
+
+.oc_address i.address2 {
+    margin-right: 24rpx;
+}
+
+.oc_address i.icon-address2 {
+    font-size: 40rpx;
+}
+
+.oc_address .oc_a_info {
+    width: 80%;
+}
+
+.oc_address .oc_a_info>view {
+    width: 100%;
+}
+
+.oc_address .oc_a_username {
+    margin-bottom: 20rpx;
+}
+
+
+/* mall_order_info */
+
+.oi_statusBar {
+    height: 168rpx;
+    line-height: 168rpx;
+    padding-left: 48rpx;
+    color: #fff;
+}
+
+.oi_statusBar.unpaid {
+    background: url("../../../img/oi_unpaid_bg.png") no-repeat 0 0;
+    background-size: 100% 100%;
+}
+
+.oi_statusBar.delivery {
+    background: url("../../../img/oi_delivery_bg.png");
+    background-size: 100% 100%;
+}
+
+.oi_statusBar.done {
+    background: url("../../../img/oi_done_bg.png");
+    background-size: 100% 100%;
+}
+
+.oi_sumInfo {
+    padding: 10rpx 48rpx;
+}
+page{
+  padding-bottom: 120rpx;
+}
+/* .oi_otherInfo{
+  margin-bottom: 120rpx;
+} */
+.oi_otherInfo>view {
+    padding: 10rpx 0;
+}
+
+
+/* //收货地址 共用order-comfirm中的收货地址样式 */
+
+.oc_address {
+    padding: 36rpx 24rpx;
+}
+
+.oc_address i {
+    min-width: 72rpx;
+    text-align: center;
+}
+
+.oc_address i.arrow-right-bold {
+    margin-left: 24rpx;
+}
+
+.oc_address i.address2 {
+    margin-right: 24rpx;
+}
+
+.oc_address i.icon-address2 {
+    font-size: 40rpx;
+}
+
+.oc_address .oc_a_info {
+    width: 90%;
+}
+
+.oc_address .oc_a_info>div {
+    width: 100%;
+    font-size: 28rpx;
+}
+
+.oc_address .oc_a_username {
+    margin-bottom: 20rpx;
+}
+
+
+/* // 共用order-list中的订单信息样式 */
+
+.padding_custom {
+    padding: 20rpx 24rpx;
+}
+
+.ol_i_shopInfo {
+    padding: 20rpx 48rpx;
+}
+
+.ol_i_shopInfo>img {
+    width: 72rpx;
+    height: 72rpx;
+    margin-right: 24rpx;
+    border-radius: 20rpx;
+}
+
+.ol_i_shopInfo .ol_i_s_name {
+    max-width: 70%;
+    margin-right: 24rpx;
+}
+
+.ol_i_goodsInfo .ol_i_g_img {
+    min-width: 156rpx;
+    width: 156rpx;
+    height: 156rpx;
+    margin-right: 24rpx;
+}
+
+.ol_i_goodsInfo .ol_i_g_name {
+    width: 70%;
+}
+
+.ol_i_goodsInfo .ol_i_g_one {
+    align-items: flex-start;
+    margin-bottom: 36rpx;
+}
+
+.ol_i_goodsInfo .ol_i_g_two {
+    width: 100%;
+}
+
+.ol_i_goodsInfo .ol_i_g_type {
+    max-width: 80%;
+}
+
+.red_btn {
+    min-width: 25%;
+    height: 48rpx;
+    line-height: 48rpx;
+    text-align: center;
+    border: 2rpx solid #e74143;
+    border-radius: 10rpx;
+    color: #e74143;
+}
+
+.black_btn {
+    min-width: 25%;
+    height: 48rpx;
+    line-height: 48rpx;
+    text-align: center;
+    border: 2rpx solid #000;
+    border-radius: 10rpx;
+    margin: 0 24rpx;
+}
+
+.bottom_act {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 96rpx;
+    background: #fff;
+
+}
+
+.bottom_act .btn {
+    width: 15%;
+    color: #666666;
+}
+
+.bottom_act .buy {
+    width: 30%;
+    color: #fff;
+    height: 100%;
+}
+
+.bottom_act .buy.bg_black {
+    height: 48rpx;
+    line-height: 48rpx;
+    margin: 12rpx;
+    border-radius: 24rpx;
+    background: #fff;
+    border: 2rpx solid #000;
+    color: #000;
+}
+
+.bottom_act .buy.bg_red {
+    height:48rpx;
+    line-height: 48rpx;
+    margin: 0 12rpx;
+    border-radius: 24rpx;
+    background: #fff;
+    border: 2rpx solid red;
+    color: red;
+}
+
+
+.order_pay {
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+}
+
+.order_pay img {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.order_pay .common_submit_btn {
+    width: 90%;
+    border-radius: 48rpx;
+}
+
+.order_pay .op_close {
+    position: absolute;
+    right: 24rpx;
+    top: 14.4rpx;
+}
+
+.op_title span {
+    width: 48rpx;
+    height: 48rpx;
+    background: red;
+    border-radius: 50%;
+}
+
+.op_price {
+    border-bottom: 4rpx dashed #efefef;
+}
+
+.backdrop-enter, .backdrop-leave-to {
+    opacity: 0;
+}
+
+.backdrop-enter-active, .backdrop-leave-active {
+    transition: all 0.5s;
+}
+
+.slideUp-enter, .slideUp-leave-to {
+    transform: translateY(100%);
+}
+
+.slideUp-enter-active, .slideUp-leave-active {
+    transition: all 0.5s;
+}
+
+.order_pay input {
+  border: none;
+}
+.iconfont.icon-lock {
+  margin-right: 24rpx;
+  font-size: 36rpx;
+}
+
+
+/*订单详情中的物流信息*/
+
+.delivery_wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /*animation: fadeInDown 1s;*/
+    /*transition: all 1s;*/
+}
+
+.delivery_box {
+    width: 75%;
+}
+
+.db_top {
+    background: #2CA0F7;
+}
+
+.db_t_title {
+    margin: 24rpx 0;
+}
+
+.db_t_img {
+    width: 108rpx;
+    min-width: 108rpx;
+    height: 108rpx;
+}
+
+.db_t_name {
+    width: 85%;
+}
+
+.delivery_close {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    font-size: 50rpx;
+
+}
+
+.orderInfo-expressInfo {
+    background: #fff;
+    border-bottom: solid 2rpx #E0E0E0;
+    height: 480rpx;
+    overflow: scroll;
+    margin: 0
+}
+
+.orderInfo-expressInfo dt {
+    padding: 20rpx 20rpx 20rpx;
+    border-bottom: solid 2rpx #E0E0E0;
+}
+
+.orderInfo-expressInfo dd {
+  padding: 0 20rpx;
+  position: relative;
+  padding-left: 100rpx;
+  margin: 0;
+}
+
+.orderInfo-expressInfo dd i {
+  color: #999;
+  font-size: 24rpx;
+  width: 90rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+}
+
+.orderInfo-expressInfo dd div {
+    border-left: solid 2rpx #E0E0E0;
+    padding: 20rpx 20rpx;
+    position: relative;
+    margin-left: 20rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.orderInfo-expressInfo dd div b {
+  position: absolute;
+  top: 20rpx;
+  left: -20rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #E7E7E7;
+  border: solid 10rpx #fff;
+}
+
+.orderInfo-expressInfo dd i.oe_time {
+    top: -10rpx
+}
+
+
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active, 2.1.8 版本以下 */ {
+    opacity: 0
+}
+
+.profitBtn{
+  padding: 4.8rpx 14.4rpx;
+  border-radius: 40rpx;
+  /*border: 1px solid #cccccc;*/
+  background-color: #fff;
+}
+
+.shop_name{
+    font-weight: 700;
+    font-size: 28rpx;
+}
+.repairchajia{
+  width: 90%;
+  height: 85rpx;
+  margin: 0 5%;
+  background-image: url(../../image/order_repairchajia_bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.repairchajia p:nth-child(1){
+  width: 80%;
+}
+.repairchajia p:nth-child(2){
+  width: 20%;
+}

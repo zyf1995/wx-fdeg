@@ -1,0 +1,139 @@
+/* pages/orderRefundSubmit/orderRefundSubmit.wxss */
+@import "../../iconfont.wxss";
+page{
+  background-color: #fff;
+}
+.goodsBox{
+  padding: 1rem 1.6rem;
+}
+.goodsBox image{
+  width: 168rpx;
+  height: 168rpx;
+  margin-right: 14.4rpx;
+}
+.goodsBox .goodsMain{
+  height: 144rpx;
+}
+.goodsBox .goodsMain .norms{
+  margin-bottom: 20rpx;
+  color: #cccccc;
+}
+.goodsBox .goodsInfo{
+  display: flex;
+  justify-content: flex-start;
+}
+.refundList{
+  padding: 28rpx 38rpx;
+}
+.refundList .flex_row_right span{
+  color: #999999;
+}
+.refundList input{
+  border: 0;
+}
+.upBox{
+    padding: 28rpx 38rpx;
+}
+.upimg{
+  width: 28vw;
+  height: 24vw;
+  border-radius: 20rpx;
+  position: relative;
+  border: 2rpx solid #eeeeee;
+  margin: 24rpx 2vw 24rpx 0;
+}
+.upimg .sup{
+  position: absolute;
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  background: #f44444;
+  color: #ffffff;
+  top: -14.4rpx;
+  right: -14.4rpx;
+  font-size: 36rpx;
+}
+.upClick{
+  margin: 24rpx 0;
+  border-radius: 20rpx;
+  border: 2rpx dashed #666666;
+}
+.upClick image{
+  width: 14vw;
+  height: 14vw;
+}
+.refundSubmit{
+  position: fixed;
+  bottom: 0;
+  height: 72rpx;
+  font-size: 28rpx;
+  width: 100vw;
+  color: #ffffff;
+  background: #f44444;
+}
+
+text.cur{
+  color: #333333 !important;
+}
+.stateBox{
+  position: fixed;
+  bottom: 0;
+  min-height: 50vh;
+  z-index: 1000;
+  width: 100vw;
+}
+.stateBox .clo{
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  padding: 24rpx 0;
+}
+.stateTop{
+  padding: 24rpx 0;
+  width: 100vw;
+  font-size: 28rpx;
+}
+.stateList .li{
+  padding: 34rpx;
+  font-size: 26.4rpx;
+}
+.stateList .li .stateRo{
+  width: 34rpx;
+  height: 34rpx;
+  border: 1px solid #666666;
+  border-radius: 50%;
+}
+.stateList .li .stateRo.on{
+  border: 1px solid #F44444;
+  background: #F44444;
+}
+.modals{
+  position:fixed; 
+  z-index: 999; 
+  top:0; 
+  left: 0; 
+  right:0; 
+  bottom: 0;
+}
+.modals-cancel{
+  position:absolute; 
+  z-index:1000; 
+  top:0; 
+  left: 0; 
+  right:0; 
+  bottom: 0; 
+  background-color: rgba(0,0,0,.5);
+}
+.bottom-dialog-body{
+  position:absolute;
+  z-index:10001;
+  bottom:0;
+  left:0;
+  right:0; 
+  background-color: #fff;
+}
+/*动画前初始位置*/
+/* .bottom-pos{
+  -webkit-transform:translateY(100%);
+  transform:translateY(100%);
+} */

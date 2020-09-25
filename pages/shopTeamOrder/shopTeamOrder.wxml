@@ -1,0 +1,31 @@
+<!--pages/shopTeamOrder/shopTeamOrder.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="gs_tabs gs_tabs_sub  flex_row_left bg_white posi_relative marginB10 color_white">
+  <view class="line flex_row_center color_white" id="lineSub" style="transform:{{subScrollLeft}}">
+      <text class="bg_default"></text>
+  </view>
+  <view class="gs_t_item flex_row_center text_gray " wx:for="{{tabArraySub}}" wx:key="index" bindtap="tabS" data-index="{{index}}" data-item="{{item}}">
+      <text class="fontSize12">{{item.title}}</text>
+  </view>
+</view>
+
+<view class="uol_online_list">
+    <view class="q1 flex_row_left" wx:for="{{list}}" wx:key="index" wx:if="{{item.order && item.id}}">
+        <view class="q2 marginR10">
+            <image class="q3" src="{{item.order.goods[0].images_text[0] ? item.order.goods[0].images_text[0]:'../../image/goods_empty.png'}}" alt=""></image>
+        </view>
+        <view class="q4">
+            <view class="flex_row_left">
+                <!-- <view class="q5 fontSize14 ">111</view> -->
+            </view>
+            <view class="q6">{{item.order.goods[0].goods_name}}</view>
+            <view class="q6">订单号
+                <text>{{item.order_no}}</text>
+                <text id='copy' class="q7 f_z_btn" catchtap="copy" data-orderno="{{item.order_no}}">复制</text>
+            </view>
+            <view class="q8">消费金额:{{item.order.total_price}}<text class="q9 display">预估收入:{{item.num}}</text>
+            </view>
+        </view>
+    </view>
+</view>

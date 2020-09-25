@@ -1,0 +1,41 @@
+<!--pages/bindBank/bindBank.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="input2 padding1 borderBox bg_white BB1  width100 flex_row_left marginT15">
+    <text class="fontSize14">手机号码</text>
+    <input class='border_none flex_grow1' type="text" placeholder="请输入手机号" bindinput="updateValue" data-type="mobile" value='{{info.mobile}}'></input>
+</view>
+<view class="input2 padding1 borderBox bg_white  width100  flex_row_left BB1 ">
+    <text class="fontSize14">验证码</text>
+    <input class='border_none flex_grow1' type="text" placeholder="请输入验证码" bindinput="updateValue" data-type="code" value='{{info.code}}'></input>
+    <view class="send" wx:if='{{sendable}}' bindtap='sendMsg'>获取验证码</view>
+    <view class="send" wx:else>{{info.number}}S后重发</view>
+</view>
+<view class="input2 padding1 borderBox bg_white width100 flex_row_left posi_relative BB1 " bindtap='bankS'>
+    <text class="fontSize14">开户行</text>
+    <view class="posi_relative">
+        <input class='border_none flex_grow1' disabled type="text" value='{{info.bank_name}}' placeholder="请选择"></input>
+        <view class="bank_list width100" wx:if="{{bankListShow}}">
+            <view class="flex_col_center BB1" wx:for='{{bankNameList}}' wx:key='index' catchtap='bankNameS' data-item="{{item}}">{{item}}</view>
+        </view>
+    </view>
+    <i class="iconfont icon-down-arrow" wx:if='{{!bankListShow}}'></i>
+    <i class="iconfont icon-shangjiantou" wx:if='{{bankListShow}}'></i>
+
+</view>
+<!-- <view class="bank_list width100 {{bankListShow ? 'on':'on'}}">
+    <view class="flex_col_center" wx:for='{{bankNameList}}' wx:key='index' bindtap='bankNameS' data-item="{{item}}">{{item}}</view>
+</view> -->
+<view class="input2 padding1 borderBox bg_white   width100 flex_row_left BB1">
+    <text class="fontSize14">开户支行</text>
+    <input class='border_none ' type="text" placeholder="开户支行" bindinput="updateValue" data-type="bank_subname" value='{{info.bank_subname}}'></input>
+</view>
+<view class="input2 padding1 borderBox bg_white   width100 flex_row_left  BB1">
+    <text class="fontSize14">银行卡号</text>
+    <input class='border_none ' type="text" placeholder="银行卡号" bindinput="updateValue" data-type="bank_card" value='{{info.bank_card}}'></input>
+</view>
+<view class="input2 padding1 borderBox bg_white   width100 flex_row_left  BB1">
+    <text class="fontSize14">开户姓名</text>
+    <input class='border_none ' type="text" placeholder="银行开户姓名" bindinput="updateValue" data-type="bank_username" value='{{info.bank_username}}'></input>
+</view>
+<view class="common_submit_btn marginCenter" bindtap='bind'>立即绑定</view>

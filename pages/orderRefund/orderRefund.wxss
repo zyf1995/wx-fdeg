@@ -1,0 +1,98 @@
+/* pages/orderRefund/orderRefund.wxss */
+@import "../../iconfont.wxss";
+page{
+  background-color: #fff;
+}
+.goodsBox{
+  padding: 24rpx 38rpx;
+}
+.goodsBox image{
+  width: 168rpx;
+  height: 168rpx;
+  margin-right: 14.4rpx;
+}
+.goodsBox .goodsMain{
+  height: 144rpx;
+}
+.goodsBox .goodsMain .norms{
+  margin-bottom: 20rpx;
+  color: #999999;
+}
+.refundType .refundimgB{
+  width: 72rpx;
+  height: 72rpx;
+  margin-right: 24rpx;
+}
+.refundType .refundimgB image{
+  width: 100%;
+}
+.refundType >view{
+  width: 60vw;
+}
+.refundType >view text:nth-child(2){
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 10rpx;
+  font-style: normal;
+}
+.goodsBox .goodsInfo{
+  display: flex;
+  justify-content: flex-start;
+}
+.deliveryUl .li{
+  list-style: none;
+  height: 96rpx;
+  line-height: 96rpx;
+  padding: 7.2rpx 48rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.deliveryUl .span1{
+  margin-right: 20rpx;
+  width: 150rpx;
+}
+
+.choice{
+  background: #ffffff;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none; /*去掉下拉箭头*/
+  flex: 1;
+  border: 0;
+  outline: 0;
+}
+.deliveryUl .li .tinpi{
+  width: 70vw;
+  height: 52rpx;
+  /*border: 1px solid #999999;*/
+  padding: 0 10rpx;
+}
+.deliveryUl .li .tinpi input{
+  /*flex: 1;*/
+  outline: 0;
+  border: 0;
+  margin-right: 12rpx;
+}
+.deliveryUl .li .tinpi image{
+  width: 5vw;
+  height: 5vw;
+}
+.tipsP{
+  padding: 6vw;
+  color: #666666;
+}
+.refundSubmit{
+  position: fixed;
+  bottom: 0;
+  font-size: 28rpx;
+  width: 100vw;
+  color: #ffffff;
+  background: #f44444;
+}
+.refundSubmit view{
+  flex: 1;
+  height: 86rpx;
+}
+.returnCancel{
+  background: #FF6F36;
+}

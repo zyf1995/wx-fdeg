@@ -1,0 +1,204 @@
+/* pages/login/login.wxss */
+page{
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+}
+.bg_left{
+  width: 21%;
+  height: 31%;
+  position: fixed;
+  left: 0;
+  bottom: 37.5%;
+}
+.bg_right{
+  width: 30%;
+  height: 31%;
+  position: fixed;
+  right: 0;
+  bottom: 58%;
+}
+.bg_bottom{
+  width: 100%;
+  height: 23%;
+  position: fixed;
+  bottom: 0;
+}
+.logo{
+  height: 48%;
+}
+.hdt_logo{
+  width: 160rpx;
+  height: 160rpx;
+}
+.small_live{
+  width:224rpx;
+  height:36rpx;
+}
+.register{
+  width: 74%;
+  margin: 0 13%;
+}
+.cancel{
+  width:34vw !important;
+  height:84rpx !important;
+  background:rgba(238,238,238,1);
+  border-radius:42rpx;
+  font-size: 32rpx;
+  border: none;
+  outline: none;
+  font-weight: normal;
+}
+.login{
+  width:34vw !important;
+  height:84rpx !important;
+  background:rgba(197,68,68,1);
+  color: #fff;
+  border-radius:42rpx;
+  font-size: 32rpx;
+  border: none;
+  outline: none;
+  font-weight: normal;
+}
+.color_c54{
+  color: #C54444;
+}
+
+.btn{
+  width:80px;
+  height:35px;
+  background:#44b549;
+  line-height:35px;
+  text-align:center;
+  color:#fff;
+  font-size:15px;
+  margin:20px auto;
+  border-radius:100px;
+}
+ 
+/* 遮罩层 */
+.mask{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background:#000;
+    z-index:9000;
+    opacity:0.5;
+}
+  
+/* 弹出层 */
+.modalDlg{
+    width:70%;
+    position:fixed;
+    top:50%;
+    left:0;
+    right:0;
+    z-index:9999;
+    margin:0 auto;
+    margin-top: -225rpx;
+    background-color:#fff;
+    border-radius:5px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+ 
+/* 弹出层里面的图片 */
+.modalDlg image{
+  width:240rpx;
+  height:240rpx;
+  margin-top:60rpx;
+}
+ 
+/* 弹出层里面的按钮 */
+.ok{
+  width:160rpx;
+  height:70rpx;
+  background:#C54444;
+  text-align:center;
+  color:#fff;
+  font-size:30rpx;
+  margin:40rpx auto;
+  border-radius:200rpx;
+}
+ 
+/* 弹出层里面的文字 */
+.text{
+  text-align:justify;
+  font-size:14px;
+  color:#666;
+  width:180px;
+  margin-top:10px;
+}
+.authInviter{
+  width: 72%;
+  height: 624rpx;
+  background: #fff;
+  border-radius:18.88rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -312rpx;
+  margin-left: -36%;
+  z-index:9999;
+}
+.authInviter .header{
+  width: 100%;
+  height:94rpx;
+  line-height: 94rpx;
+  background:linear-gradient(28deg,rgba(254,215,138,1),rgba(254,215,138,1),rgba(254,202,100,1));
+  border-radius:16rpx 16rpx 0px 0px;
+}
+.authInviter .header .left{
+  width: 20%;
+  height: 94rpx;
+  text-align: center;
+}
+.authInviter .header .center{
+  width: 60%;
+  height: 94rpx;
+  text-align: center;
+}
+.authInviter .cont{
+  width: 100%;
+  height: 130rpx;
+}
+.color_aea{
+  color: #AEAEAE;
+}
+.userInfo{
+  height: 280rpx;
+}
+.userInfo .inviter_avatar{
+  width:160rpx;
+  height:160rpx;
+  border-radius: 50%;
+}
+.authInviter .footer view{
+  width:194rpx;
+  height:56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background:rgba(229,229,229,1);
+  border-radius:10rpx;
+}
+.authInviter .footer view.submit{
+  width:194rpx;
+  height:56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background:linear-gradient(28deg,rgba(254,215,138,1),rgba(254,215,138,1),rgba(254,202,100,1));
+  color: #fff;
+  border-radius:10rpx;
+}
+.authInviter .footer view.cancel1{
+  width:194rpx;
+  height:56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background: #666;
+  color: #fff;
+  border-radius:10rpx;
+}

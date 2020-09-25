@@ -1,0 +1,59 @@
+<!--pages/vip/vip.wxml-->
+<image class='v_banner' src="{{vipPoster}}" alt=""></image>
+<view class="v_rights margin1 margin1rem">
+    <view class="v_r_title flex_row_left marginB10">
+        <text class="marginR10"></text>
+        <view class="fontSize16">VIP权益</view>
+    </view>
+    <view class="padding1 bg_white borderRadius1rem">
+        <view class="v_r_tabs flex_space_between marginB15">
+            <view class="v_r_item color_white fontSize14 text_center {{currentTab == 0?'on':''}}" data-current="0" bindtap="clickTab">特权一</view>
+            <view class="v_r_item color_white fontSize14 text_center {{currentTab == 1?'on':''}}" data-current="1" bindtap="clickTab">特权二</view>
+            <view class="v_r_item color_white fontSize14 text_center {{currentTab == 2?'on':''}}" data-current="2" bindtap="clickTab">特权三</view>
+            <view class="v_r_item color_white fontSize14 text_center {{currentTab == 3?'on':''}}" data-current="3" bindtap="clickTab">特权四</view>
+        </view>
+        <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
+            <swiper-item wx:for="{{info.vip_equity_img}}" wx:key="index"><image class="right_img" src="{{item}}"></image></swiper-item>
+        </swiper>
+    </view>
+</view>
+<view class="v_info bg_default padding1 ">
+    <view class="v_i_top flex_row_left marginB10 color_white">
+        <image class='borderRadius50 marginR10' src="{{userInfo.avatar ?userInfo.avatar :'../../image/avatar_default.png'}}" alt=""></image>
+        <view class="flex_col_left ">
+            <view class="flex_row_left marginB5 fontSize14">
+                <text class="marginR5">{{userInfo.nickname}}</text>
+                <text class="v_i_level bg_white color_default borderRadius1rem btn_padding fontSize10">{{userInfo.level.name}}</text>
+            </view>
+            <view class="flex_row_left">
+                <text class="fontBold marginR5 fontSize14">邀 请 码 {{userInfo.mobile}}</text>
+                <text class="v_i_copy bg_color1 fontSize10 btn_padding" bindtap="copy">复制</text>
+            </view>
+        </view>
+    </view>
+    <view class="v_i_qrcode text_center bg_color1 fontSize14 marginB10 color_white" bindtap="shareApp">点击生成我的二维码>></view>
+    <view class="v_i_points padding1 flex_row_left bg_white borderRadius1rem" bindtap="goShopProfit">
+        <image class='marginR10' src="../../image/vip_img1.png" alt=""></image>
+        <view class="flex_col_left flex_grow1">
+            <view class="fontSize14">
+                <text class="">我的百旺金豆：</text>
+                <text class="color_red">{{userInfo.bwjd || 0}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<image class='padding1 borderBox' style="height:200rpx;" wx:if='{{info.vip_goods}}' src="{{info.vip_goods.poster}}" alt="" bindtap="toVipGoodsInfo" data-goodsid="{{info.vip_goods.goods_id}}"></image>
+
+<view class="v_best padding1">
+    <view class="v_r_title flex_row_left marginB10">
+        <text class="marginR10"></text>
+        <view class="fontSize16">礼包精选</view>
+    </view>
+    <view class="v_b_list">
+        <image bindtap="toLIBaoGoodsInfo" data-goodsid="{{item.goods_id}}" wx:for="{{info.package_goods}}" wx:key="index" class='borderBox' src="{{item.poster}}" alt=""></image>
+    </view>
+    <view class="marginT15 paddingB15 flex_row_center text_gray">
+        <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+        <text class="fontSize14">我是有底线的</text>
+    </view>
+</view>

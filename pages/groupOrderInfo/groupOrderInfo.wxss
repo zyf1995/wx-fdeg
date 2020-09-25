@@ -1,0 +1,3 @@
+/* pages/groupOrderInfo/groupOrderInfo.wxss */
+@import "../orderInfo/orderInfo.wxss";
+@import "../../iconfont.wxss";

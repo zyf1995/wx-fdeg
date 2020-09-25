@@ -1,0 +1,8 @@
+<!--pages/guideInfo/guideInfo.wxml-->
+<view class="margin1rem">
+    <view class="marginB10 fontSize14 fontBold ">{{info.name}}</view>
+    <view class="marginB10 fontSize12">{{info.createtime_text || '暂无时间'}}</view>
+    <view class="padding1  bg_white borderRadius1rem">
+      <rich-text nodes="{{info.content}}"></rich-text>
+    </view>
+</view>

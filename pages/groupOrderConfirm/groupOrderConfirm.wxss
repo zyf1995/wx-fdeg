@@ -1,0 +1,140 @@
+/* pages/groupOrderConfirm/groupOrderConfirm.wxss */
+@import "../../iconfont.wxss";
+page{
+  background-color: #fff;
+}
+.padding_custom {
+    padding: 24rpx 36rpx;
+}
+
+.oc_address {
+    padding: 36rpx 24rpx;
+}
+
+.oc_address i {
+    min-width: 72rpx;
+    text-align: center;
+}
+.oc_address i.icon-jia {
+  font-size: 80rpx;
+}
+.oc_address i.arrow-right-bold {
+    margin-left: 24rpx;
+}
+
+.oc_address i.address2 {
+    margin-right: 24rpx;
+}
+
+.oc_address i.icon-address2 {
+    font-size: 40rpx;
+}
+
+.oc_address .oc_a_info {
+    width: 80%;
+}
+
+.oc_address .oc_a_info>div {
+    width: 100%;
+}
+
+.oc_address .oc_a_username {
+    margin-bottom: 20rpx;
+}
+
+.oc_i_shopInfo image {
+    width: 72rpx;
+    height: 72rpx;
+    margin-right: 24rpx;
+    border-radius: 20rpx;
+}
+
+.oc_i_g_img {
+    min-width: 168rpx;
+    width: 168rpx;
+    height: 168rpx;
+    margin-right: 24rpx;
+}
+
+.oc_i_g_name, .oc_i_g_type {
+    margin-bottom: 20rpx;
+}
+
+.oc_i_g_type {
+    height: 48rpx;
+}
+
+.oc_i_g_price {
+    width: 100%;
+}
+
+.oc_i_message input {
+    width: 75%;
+    border: none;
+}
+
+.oc_ig_input {
+    width: 30%;
+    border: 2rpx solid #000;
+    height: 48rpx;
+    border-radius: 10rpx;
+    margin: 0 12rpx;
+    text-align: center;
+    padding: 0;
+    max-width: 30%;
+}
+
+.order_confirm_footer {
+    position: fixed;
+    width: 100%;
+    height: 96rpx;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.order_confirm_footer>div {
+    width: 33.33%;
+}
+
+.order_confirm_footer .submit {
+    width: 25%;
+    height: 55rpx;
+    border-radius: 24rpx;
+}
+
+.order_pay {
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+}
+
+.order_pay image {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.order_pay .common_submit_btn {
+    width: 90%;
+    border-radius: 48rpx;
+}
+
+.order_pay .op_close {
+    position: absolute;
+    right: 24rpx;
+    top: 14.4rpx;
+}
+
+.op_title span {
+    width: 48rpx;
+    height: 48rpx;
+    background: red;
+    border-radius: 50%;
+}
+
+.op_price {
+    border-bottom: 4rpx dashed #efefef;
+}
+
+

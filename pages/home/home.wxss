@@ -1,0 +1,268 @@
+/* pages/home/home.wxss */
+@import "../../iconfont.wxss";
+#header input{
+  width: 70vw;
+  height: 64rpx;
+  background:rgba(238,238,238,1);
+  border-radius:32rpx;
+  border: none;
+  outline: none;
+  margin: 0 3%;
+  padding-left: 68rpx;
+  background-image:url('https://testhdt.teadrf.cn/wxbackground/search_icon.png');
+  background-repeat: no-repeat;
+  background-size: 32rpx 32rpx;
+  background-position: 24rpx center;
+}
+.headerCates{
+    /*width: 94vw;
+    padding: 0 3vw;*/
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    top: 100rpx;
+    z-index: 120;
+}
+.headerUl{
+    width: 100vw;
+    float: left;
+    overflow-x: scroll;
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    position: relative;
+    z-index: 120;
+}
+.headerUl .uiline{
+    position: absolute;
+    width: 18vw;
+    bottom: 8rpx;
+    height: 4rpx;
+    left: 0;
+    transition: all .5s;
+}
+
+.headerUl .uiline span{
+    width: 6vw;
+    height: 4rpx;
+    display: block;
+    margin: 0 6vw;
+    border-radius: 10rpx;
+    background: #FF6407;
+}
+
+.headerUl view{
+    width: 18vw;
+    height: 67.2rpx;
+    line-height: 67.2rpx;
+    padding: 14.4rpx 0;
+    list-style: none;
+    font-size: 30rpx;
+    -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
+    color: #222222;
+    text-align: center;
+    position: relative;
+}
+
+.headerUl view.cur{
+    font-weight: bold;
+    color: #FF6407;
+    font-size: 34rpx;
+}
+.cateList_icon{
+  width:38rpx;
+  height:34rpx;
+}
+.search_white_icon{
+  width:32rpx;
+  height:34rpx;
+}
+#banner{
+  width: 100%;
+  /*margin: 0 3%;*/
+  height: 302rpx;
+}
+#banner image{
+  width: 94%;
+  margin: 0 3%;
+  height: 100%;
+  border-radius:20rpx;
+}
+.headline p{
+  border-left: 6rpx solid #FF6407;
+}
+
+.branchShopLogo{
+  width:198rpx;
+  height:198rpx;
+}
+.hotsale{
+  display: inline-block;
+  font-size: 17rpx;
+  width:48rpx;
+  height:24rpx;
+  line-height: 24rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background:rgba(255,100,7,1);
+  border-radius:2rpx;
+}
+.hot{
+  width:240rpx;
+  height:38rpx;
+  line-height: 38rpx;
+  background-image: url('https://testhdt.teadrf.cn/wxbackground/valume_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.hot_icon{
+  width: 42rpx;
+  height: 13rpx;
+}
+.liveItem{
+  width: 50% !important;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.cover{
+  width:48vw;
+  height:327rpx;
+  margin-left: 1vw;
+}
+.liveList{
+  width: 48vw;
+  margin-left: 1vw;
+}
+.cover .coverImg{
+  width:100%;
+  height:100%;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.leftStatus{
+  position: absolute;
+  top: 12rpx;
+  left: 12rpx;
+}
+.personNum{
+  display: inline-block;
+  background-color: rgba(0,0,0,0.6);
+  width:142rpx;
+  height:28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  margin-left: -12rpx;
+  border-radius:0 16rpx 16rpx 0;
+}
+.liveStatus1{
+  width:104rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  z-index: 100;
+  background-image: url('https://testhdt.teadrf.cn/wxbackground/livestatus_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.liveStatus2{
+  width:66rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  z-index: 100;
+  background-color: #fff;
+  color: #FF6407;
+  border-radius:16rpx;
+}
+.liveStatus3{
+  width:104rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  z-index: 100;
+  background-color: #6d7c91;
+  border-radius:16rpx;
+}
+.living_icon{
+  width: 15rpx;
+  height: 15rpx;
+}
+.attention{
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+}
+.attention .live_guanzhu{
+  width: 24rpx;
+  height: 24rpx;
+}
+.anchorMessage{
+  position: absolute;
+  left: 12rpx;
+  bottom: 24rpx;
+}
+.anchorMessage .avatar_default{
+  width:48rpx;
+  height:48rpx;
+  border-radius:50%
+}
+
+.liveList .shopMessage .left{
+  width: 38%;
+}
+.liveList .shopMessage .right{
+  width: 62%;
+}
+.LiveProductImg{
+  width:85rpx;
+  height:85rpx;
+  border-radius:10rpx;
+}
+.backIcon{
+  width:80rpx;
+  height:80rpx;
+}
+.backIcon1{
+  width:120rpx;
+  height:120rpx;
+}
+.goBack{
+  position: fixed;
+  right: 28.8rpx;
+  bottom: 96rpx;
+  z-index: 100;
+}
+page{
+  padding-bottom: 30rpx;
+}
+.hotSellList .right{
+  width: 54%;
+  position: absolute;
+  left: 246rpx;
+  top: 24rpx;
+}
+.nav {
+    height: 80rpx;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 80rpx;
+    background: #f2f2f2;
+    font-size: 32rpx;
+    white-space: nowrap;
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    top: 100rpx;
+    z-index: 120;
+}
+.nav-item {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+}
+.nav-item.active{
+    font-weight: bold;
+    color: #FF6407;
+    font-size: 34rpx;
+}
+.scoll-h{
+  height: 100%;
+}

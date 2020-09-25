@@ -1,0 +1,34 @@
+/* pages/groupOrderList/groupOrderList.wxss */
+@import "../orderList/orderList.wxss";
+.gs_tabs1 .gs_t_item {
+  min-width: 33.3%;
+}
+.gs_tabs1 .line {
+  width: 33.3%;
+}
+/* 总分订单tab */
+.gs_tabs.gs_tabs_sub .tabline{
+  height: 4rpx;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  transition: all .3s linear;
+}
+.gs_tabs.gs_tabs_sub .tabline text {
+  width: 50%;
+  height: 100%;
+  background: red;
+}
+/* 分订单的子tab */
+.gs_tabs .subline{
+  height: 4rpx;
+  width: 20%;
+  position: absolute;
+  bottom: 0;
+  transition: all .3s linear;
+}
+.gs_tabs .subline text{
+  width: 70%;
+  height: 100%;
+  background: #FFBF41;
+}

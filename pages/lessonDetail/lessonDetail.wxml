@@ -1,0 +1,121 @@
+<!--packageB/pages/lessonDetail/lessonDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view id="lessonDetail">
+  <swiper
+  id="banner"
+  indicator-dots="true"
+  autoplay="true"
+  interval="4000"
+  circular="true"
+  indicator-color="#fff"
+  indicator-active-color="#666874"
+  >
+    <swiper-item wx:key="index" wx:for="{{lesson_detail.course.images}}">
+      <image class="headset" src="{{cdnUrl + item}}" />
+    </swiper-item>
+  </swiper>
+  <view class="cont bg_white padding1">
+    <view class="flex marginB5">
+      <view class="fontSize16 fontBold text-overflow_2 width60">{{lesson_detail.course.name}}</view>
+      <view class="firstJoin" wx:if="{{lesson_detail.course.is_first == 10}}">
+        <view class="fontSize12 color_white">首次报名</view>
+      </view>
+      <view class="secondJoin" wx:if="{{lesson_detail.course.is_first == 20}}">
+        <view class="fontSize12 color_white">复训</view>
+      </view>
+    </view>
+    <view class="flex_row_left marginB5">
+      <view class="fontSize14 color_ff8 marginR5" wx:if="{{lesson_detail.course.is_first == 10}}">￥<text class="fontSize16">{{lesson_detail.course.first_price}}/</text>人</view>
+      <view class="fontSize14 color_ff8 marginR5" wx:if="{{lesson_detail.course.is_first == 20}}">￥<text class="fontSize16">{{lesson_detail.course.second_price}}/</text>人</view>
+      <view class="fontSize12 text_through color_a0a">￥{{lesson_detail.course.origin_price}}</view>
+    </view>
+    <view class="flex_row_between marginB1">
+      <view class="left flex_row_left width60">
+        <image class="lesson_map_icon marginR5" src="../../image/lesson/lesson_map_icon.png" alt=""></image>
+        <view class="fontSize12 color_666 text-overflow_1">{{lesson_detail.course.address}}</view>
+      </view>
+      <view class="right flex_row_left color_ff8" bindtap="navigation">
+        <view class="fontSize12">查看地图</view>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+    <view class="flex_row_between">
+      <view class="left flex_row_left width60">
+        <image class="lesson_map_icon marginR5" src="../../image/lesson/lesson_time_icon.png" alt=""></image>
+        <view class="fontSize12 color_666 text-overflow_1">可预约：<text class="color_ff8">{{lesson_detail.course.date_time}}</text></view>
+      </view>
+      <view class="right flex_row_left color_ff8" bindtap="goLessonDate">
+        <view class="fontSize12">查看课程时间表</view>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+  </view>
+  <view class="flex_row_left fontSize16 posi_relative tab marginT1 bg_white">
+    <view class="tab-item text_center {{navState==0?'nav-switch-style':''}}"  data-index="0" bindtap="navSwitch">课程简介</view>
+    <view class="tab-item text_center {{navState==1?'nav-switch-style':''}}"  data-index="1" bindtap="navSwitch">报名须知</view>
+  </view>
+  <view class='item {{navState==0?"active":""}}'>
+    <view class='notes-header bg_white'>
+      <template is="wxParse" data="{{wxParseData:contentInfo.nodes}}"/>
+    </view>
+  </view>
+  <view class='item {{navState==1?"active":""}}'>
+    <view class='notes-header bg_white'>
+      <template is="wxParse" data="{{wxParseData:remarkInfo.nodes}}"/>
+    </view>
+  </view>
+  <!-- <swiper bindchange="bindchange" current="{{navState}}">
+    <block>
+      <swiper-item>
+        <view class="style-roll bg_white">
+          <rich-text nodes="{{lesson_detail.course.content}}"></rich-text>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="style-roll bg_white">
+          <rich-text nodes="{{lesson_detail.course.remark}}"></rich-text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper> -->
+  <view class="footer flex_row_left bg_white">
+    <view class="flex_col_center marginL2" bindtap="shareApp">
+      <image class="lesson_share_icon marginB5" src="../../image/lesson/lesson_share_icon.png" alt=""></image>
+      <view>分享</view>
+    </view>
+    <view class="right flex_row_center flex_grow1" bindtap="apply">
+      <view class="fontSize16 color_white fontBold first" wx:if="{{lesson_detail.course.is_first == 10}}">立即报名</view>
+      <view class="fontSize16 color_white fontBold second" wx:if="{{lesson_detail.course.is_first == 20}}">参加复训（还剩{{lesson_detail.course.training_times}}次）</view>
+    </view>
+  </view>
+</view>
+<!-- 遮罩层 -->
+<!-- <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showDialog}}"></view> -->
+<!-- 弹出层 -->
+<view wx:if="{{showDialog}}" class="dialog-wrap">
+ <view class="padding1 fontSize16 fontBold">提示</view>
+ <view class="dialog width100 text_center">
+  请您先开启权限，才能下载图片
+  <view class="dialog-footer marginT1 flex_row_around">
+   <button
+    class="btn"
+    open-type="openSetting"
+    bindtap="confirm" >
+     授权
+   </button>
+   <button class="btn" bindtap="cancel">取消</button>
+  </view>
+ </view>
+</view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel}}"></view>
+<!-- 弹出层 -->
+<view wx:if="{{showModel}}" class="dialogModel flex_col_center">
+  <view class="ui_img">
+    <image src="{{poster}}"></image>
+  </view>
+  <view class='ui_btn1 flex_row_center color_white'>
+      <view class="poster flex_row_center marginB1" bindtap="share">下载图片</view>
+  </view>
+</view>

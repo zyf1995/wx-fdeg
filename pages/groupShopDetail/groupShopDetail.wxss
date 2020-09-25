@@ -1,0 +1,188 @@
+/* pages/groupShopDetail/groupShopDetail.wxss */
+@import "../../iconfont.wxss";
+page{
+  padding-bottom: 100rpx;
+}
+.swiperContainer{
+ position: relative;
+}
+.imageCount {
+  width:120rpx;
+  height:50rpx;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius:40rpx;
+  line-height:50rpx;
+  color:#fff;
+  text-align:center;
+  font-size:26rpx;
+  position:absolute;
+  right:26rpx;
+  bottom:20rpx;
+}
+
+#banner {
+    width: 100vw;
+    height: 100vw;
+}
+#banner swiper-item{
+    width: 100vw;
+    height: 100vw;
+}
+#banner image{
+    width: 100vw;
+    height: 100vw;
+}
+
+.orderRecond{
+  width:calc( 100% - 48rpx );
+  height:56rpx;
+  background-image: url(http://amacdn.weitaosong.com/order_record_bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.weekBuy{
+  padding: 7.2rpx;
+  background:rgba(255,53,53,1);
+  border-radius:2px;
+}
+
+.bottom_act {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 84rpx;
+    background: #fff;
+}
+
+.bottom_act .btn {
+    width: 15%;
+    color: #666666
+}
+
+.bottom_act .buy {
+    width: 100%;
+    color: #fff;
+    height: 100%;
+}
+
+.mask-con{
+  transition: 1s; 
+  position: fixed;
+  width: 100%;
+  height: 300rpx;
+  left: 0;
+  bottom: -300rpx;
+  text-align: center;
+  line-height: 300rpx;
+  box-shadow: 0 1px 10px #aaa;
+}
+
+.modals{
+  position:fixed; 
+  z-index: 999; 
+  top:0; 
+  left: 0; 
+  right:0; 
+  bottom: 0;
+}
+.modals-cancel{
+  position:absolute; 
+  z-index:1000; 
+  top:0; 
+  left: 0; 
+  right:0; 
+  bottom: 0; 
+  background-color: rgba(0,0,0,.5);
+}
+.bottom-dialog-body{
+  position:absolute;
+  z-index:10001;
+  bottom:0;
+  left:0;
+  right:0; 
+  padding:30rpx; 
+  background-color: #fff;
+}
+/*动画前初始位置*/
+.bottom-pos{
+  -webkit-transform:translateY(100%);
+  transform:translateY(100%);
+}
+.cart_box .cb_close {
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    right: 24rpx;
+    top: 24rpx;
+}
+
+.cart_box .cb_info {
+    padding: 36rpx;
+    line-height: 1.7;
+}
+
+.cart_box .cb_i_img {
+    width: 96rpx;
+    height: 96rpx;
+    margin-right: 24rpx;
+}
+
+.cart_box .cb_type, .cart_box .cb_num {
+    padding: 24rpx 36rpx;
+}
+
+.cart_box .c_y_title {
+    margin-bottom: 20rpx;
+}
+
+.cart_box .c_y_item {
+    min-width: 10%;
+    max-width: 30%;
+    border-radius: 10rpx;
+    margin-right: 36rpx;
+    padding: 6rpx 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.cart_box .c_y_item.on {
+    background: #e74143;
+    color: #ffffff;
+}
+
+.cart_box .c_y_item.disable {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.cart_box .cb_n_edit {
+    border-radius: 10rpx;
+}
+
+.cart_box .cb_n_edit text {
+    width: 48rpx;
+    height: 44rpx;
+    background: #e0dede;
+}
+
+.cart_box .cb_n_edit span.cb_n_minus i {
+    color: #999999;
+}
+
+.cart_box .cb_n_edit span.cb_n_plus i {
+    color: #999999;
+}
+
+.cart_box input {
+    border: none;
+    width: 60rpx;
+    padding: 0;
+    color: #333333;
+    line-height: 1;
+    height: 44rpx;
+    text-align: center;
+    background: #e0dede;
+    margin: 0 12rpx;
+}
+
+.cart_box .common_submit_btn {
+    margin: 24rpx auto;
+}

@@ -1,0 +1,17 @@
+/* pages/fightOrderRecord/fightOrderRecord.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.avatar_default{
+  width:80rpx;
+  height:80rpx;
+  border-radius:50%;
+}
+.orderItem .left{
+  max-width: 50%;
+}
+.orderItem .left .username{
+  width: 70%;
+}

@@ -1,0 +1,270 @@
+/* pages/shopCart/shopCart.wxss */
+@import "../../iconfont.wxss";
+page{
+  padding-bottom: 144rpx;
+}
+.padding_custom {
+    padding: 20rpx 48rpx;
+}
+.al_empty {
+    width: 100%;
+    height: 100%;
+}
+
+.al_empty .al_e_img {
+    width: 264rpx;
+    height: 264rpx;
+    margin-bottom: 48rpx;
+    background: #dbdbdb;
+    border-radius: 50%;
+}
+
+.al_empty .al_e_img image {
+    width: 70%;
+    height: 70%;
+}
+
+.red_btn {
+    min-width: 25%;
+    height: 48rpx;
+    line-height: 48rpx;
+    text-align: center;
+    border: 2rpx solid #e74143;
+    border-radius: 20rpx;
+    color: #e74143;
+}
+
+.orange_btn {
+    min-width: 25%;
+    height: 48rpx;
+    line-height: 48rpx;
+    text-align: center;
+    border: 2rpx solid #f06b29;
+    color: #f06b29;
+    border-radius: 20rpx;
+    margin: 0 48rpx;
+}
+
+.orc_item {
+    border-bottom: 12rpx solid #eee;
+}
+
+.orc_i_main {
+    padding: 20rpx 0;
+    overflow: scroll;
+}
+.orc_i_main::-webkit-scrollbar  {
+display: none;
+}
+.orc_i_c_img {
+    min-width: 156rpx;
+    width: 156rpx;
+    height: 156rpx;
+    margin: 0 24rpx;
+}
+
+.orc_i_m_info {
+    width: calc(100vw - 204rpx);
+    min-width: calc(100vw - 204rpx);
+    padding-right: 24rpx;
+    box-sizing: border-box;
+}
+
+.orc_i_main .delete {
+    height: 192rpx;
+    text-align: center;
+    background: red;
+    line-height: 192rpx;
+    color: #fff;
+    min-width: 96rpx;
+}
+
+.goods_left {
+    height: 144rpx;
+    position: relative;
+    align-items: center;
+    display: flex;
+    padding-right: 20rpx;
+}
+
+.common_submit_btn {
+    margin: 0;
+    width: 20vw;
+}
+
+.marginB10 {
+    margin-bottom: 20rpx;
+}
+
+.marginB10.oName {
+    margin: 14.4rpx 0;
+}
+
+.order_cart_footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #ffffff;
+    z-index: 100;
+}
+.order_cart_footer em{
+  font-style: normal;
+}
+.al_empty  {
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
+
+.mallCart{
+  width: 96%;
+  margin-left: 2%;
+  border-radius:20rpx;
+}
+.marginB6{
+  margin-bottom: 144rpx;
+}
+.circle{
+  padding: 20rpx;
+  flex: none;
+}
+.circle .comAll{
+  margin-right: 12rpx;
+}
+.cartList.on{
+  opacity: 0.3;
+}
+.cGoodsList>view{
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+.cGoodsList view .cGoodsImg{
+  width: 28vw;
+  height: 28vw;
+  margin-right: 14.4rpx;
+}
+.cGoodsList view image{
+  width: 28vw;
+  height: 28vw;
+}
+.cGoodsMain{
+  height: 28vw;
+  max-width: 55vw;
+  width: 55vw;
+}
+.cGoodsCount{
+  border: 2rpx solid #999999;
+  border-radius: 10rpx;
+  height: 58rpx;
+}
+.cGoodsCount view{
+  width: 58rpx;
+  height: 58rpx;
+  color: #999999 !important;
+}
+.cGoodsCount view.cut{
+  border-right: 2rpx solid #999999;
+}
+.cGoodsCount view.add{
+  border-left: 2rpx solid #999999;
+}
+.cGoodsCount input{
+  width: 10vw;
+  border: 0;
+  outline: 0;
+  height: 48rpx;
+  text-align: center;
+}
+.cTotalPrice{
+  color: #f44444;
+  font-size: 26.4rpx;
+}
+.cShopName{
+  margin-right: 14.4rpx;
+}
+.cGoodsName{
+  color: #666666;
+}
+.cGoodsTarr{
+  color: #999999;
+}
+
+
+
+.common_radio.on {
+    background: #f44444;
+    border: 2rpx solid #f44444;
+}
+
+.common_radio.on::before {
+    position: absolute;
+    content: "";
+    width: 10rpx;
+    height: 20rpx;
+    top: 4.8rpx;
+    left: 13.2rpx;
+    border: 4rpx solid #fff;
+    border-top: none;
+    border-left: none;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+.selectedIcon{
+  width: 38rpx;
+  height: 38rpx;
+}
+.cartOnlineIcon{
+  width: 32rpx;
+  height: 28rpx;
+}
+.cartOfflineIcon{
+  width: 32rpx;
+  height: 32rpx;
+}
+.dsOnline{
+  width: 96%;
+  margin-left: 2%;
+  border-radius:20rpx;
+}
+.color_fa4{
+  color: #FA4242;
+}
+.bottom .left image{
+  width: 132rpx;
+  height: 132rpx;
+}
+.bottom .left{
+  width: 30%;
+}
+.bottom .right{
+  width: 70%;
+}
+.submit{
+  width:168rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background:rgba(210,210,210,1);
+  border-radius:30rpx;
+}
+.order_item{
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.remove{  
+  width: 160rpx;  
+  height: 96%;  
+  background-color: red; 
+  color: white; 
+  position: absolute;  
+  top: 2%;  
+  right: -160rpx;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}  

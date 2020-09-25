@@ -1,0 +1,194 @@
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="bwz_bg">
+  <view class="padding1 text_center fontSize16 color_white">百旺赚</view>
+  <view class="flex_row_between">
+    <view class="flex_row_left paddingL1">
+      <image class="avatar_default marginR1" src="{{userInfo.avatar?userInfo.avatar:'../../image/avatar_default.png'}}"></image>
+      <view class="">
+        <view class="marginB5 flex_row_left">
+          <text class="marginR1 color_white fontSize18 fontBold text-overflow_11" style="max-width:30vw;">{{userInfo.nickname ||  userInfo.mobile}}</text>
+          <text class="fontSize10 text_center vip">V{{userInfo.v_level}}</text>
+        </view>
+        <view class="fontSize12 color_ffc">本月累计拼团{{userInfo.groupshop_count || 0}}次</view>
+      </view>
+    </view>
+    <view class="flex_row_center rankList" bindtap="goRankList">
+      <image class="rank_icon marginR5" src="../../image/fightOrder/rank_icon.png"></image>
+      <view class="fontSize12 fontBold color_white">查看业绩排行榜</view>
+    </view>
+  </view>
+  <view class="marginT15">
+    <image class="line_icon" src="../../image/fightOrder/line_icon.png"></image>
+  </view>
+  <view class="flex_row_center marginT15" bindtap="goShopProfit">
+    <image class="bwjd_icon marginR1" src="../../image/fightOrder/bwjd_icon.png"></image>
+    <view class="marginR1 fontSize14 color_white">我的百旺金豆</view>
+    <view class="fontSize18 fontBold color_white marginR2">{{userInfo.bwjd || 0}}</view>
+    <view class="fontSize16 color_ef6 marginL1 recharge" catchtap="recharge">充值</view>
+  </view>
+</view>
+<swiper
+  id="banner"
+  indicator-dots="true"
+  autoplay="true"
+  interval="2000"
+  circular="true"
+  indicator-color="#fff"
+  indicator-active-color="#666874"
+>
+  <swiper-item wx:key="index" wx:for="{{swiperImg}}">
+    <image class="" src="{{item}}" />
+  </swiper-item>
+</swiper>
+<!-- 下单提示 -->
+<view class="marquee hint_tips marginT1 paddingT1 paddingL1 paddingR1" wx:if="{{logList.length != 0}}">
+    <view class="marquee_box">
+        <view class="marquee_list paddingL1 paddingR1 {{animate?marquee_top:''}}">
+            <view wx:for="{{logList}}" wx:key="index" class="flex_row_left">
+                <image src="{{item.avatar || '../../image/avatar_default.png'}}" alt=""></image>
+                <view class="text-overflow_1">
+                  <text class="color_red">{{item.remark}}</text>
+                  <text>{{item.msg}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="marquee hint_tips marginB1 padding1" wx:if="{{logList1.length != 0}}">
+    <view class="marquee_box">
+        <view class="marquee_list paddingL1 paddingR1 {{animate?marquee_top:''}}">
+            <view wx:for="{{logList1}}" wx:key="index" class="flex_row_left">
+                <image src="{{item.avatar || '../../image/avatar_default.png'}}" alt=""></image>
+                <view class="text-overflow_1">
+                  <text class="color_red">{{item.remark}}</text>
+                  <text>{{item.msg}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 我的百旺金豆 兑换记录 -->
+  <!-- <view class="branchPlate flex_row_between">
+    <view class="flex_row_left">
+        <image class="avatar_default marginR1" src="{{userInfo.avatar?userInfo.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+        <view class="fontSize14">
+            <view class="marginB1 text-overflow_1" style="max-width: 26vw;">{{userInfo.nickname ||  userInfo.mobile}}</view>
+            <view class="color_red" wx:if="{{userInfo.v_level == 0}}">普通会员</view>
+            <view class="color_red" wx:else>VIP{{userInfo.v_level}}</view>
+        </view>
+    </view>
+    <text></text>
+    <view bindtap="goShopProfit">
+      <view class="color_red marginB5 flex_row_center">
+        <view class="marginR1">{{userInfo.bwjd || 0}}</view>
+        <view class="text_center fontSize12 saleOut" catchtap="recharge">充值</view>
+      </view>
+      <view class="">我的百旺金豆</view>
+    </view>
+  </view> -->
+  <view class="bg_white margin1rem prefecture padding1" wx:if="{{goodsList.length != 0 && isShow == 1}}">
+  <!-- <view class="bg_white margin1rem prefecture padding1" wx:if="{{goodsList.length != 0}}"> -->
+    <view class="fontBold fontSize20 marginB1 flex_row_between">
+      <view class="BL4 paddingL1">拼赚<span class="color_ff4">专区</span></view>
+      <view class="fontSize12 flex_row_left">
+        <view class="body-view marginR1">
+            <switch checked="{{switchChecked}}" bindchange="switchChange"/>
+        </view>
+        <view class="color_ff3" wx:if="{{checked}}">已自动参团</view>
+        <view class="color_ff3" wx:else>未自动参团</view>
+      </view>
+    </view>
+    <view class="flex_row_between padding1 prefecture_item marginB5" wx:for="{{goodsList}}" wx:key="index" bindtap="toGoodsInfo" data-id="{{item.id}}" data-goodsid="{{item.good_id}}">
+      <view class=" marginR1">
+        <view class="fontSize16 fontBold marginB5 text-overflow_11">{{item.goods.goods_name}}</view>
+        <view class="fontSize12 text_through text_gray marginB5">¥{{item.good_spec[0].line_price}}</view>
+        <view class="fontSize18 flex_grow1 marginB5 color_ef4">¥{{item.good_spec[0].goods_price}}</view>
+        <view class="fontSize12 marginB5">{{item.goods.team_num || 0}}个团正在进行中.....</view>
+        <view class="hrg_tip1 color_white fontSize13 fontBold width100 marginT1">
+              <text class="tip_left marginR5">参与拼单</text>
+              <text class="tip_right">发起拼单</text>
+          </view>
+      </view>
+      <view>
+        <image class="siftLogo" src="{{item.goods.image?item.goods.image:'../../image/goods_empty.png'}}" alt=""></image>
+      </view>
+    </view>
+  </view>
+  <image bindtap="goMyOrderList" class="user_order_list" src="../../image/doorShop/user_order_list.png"></image>
+  <view class="marginT15 paddingB15 flex_row_center text_gray">
+      <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+      <text class="fontSize14">我是有底线的</text>
+  </view>
+
+  <block wx:if="{{isShowConfirm}}">
+    <view class='toast-box'>
+      <view class='toastbg'></view>
+      <view class='showToast'>
+          <view class='toast-title'>
+              <text>确认充值</text>
+          </view>
+          <view class='toast-main'>
+              <view class='toast-input'>
+                  <input type='number' placeholder='输入充值的百旺金豆数量' bindinput='setValue' value="{{bwjdNum}}"></input>
+              </view>
+          </view>
+          <view class='toast-button'>
+              <view class='button1'>
+                  <view catchtap='cancel'>取消</view>
+              </view>
+              <view class='button2'>
+                  <view catchtap='confirmAcceptance'>确定</view>
+              </view>
+          </view>
+      </view>
+    </view>
+</block>
+
+<block wx:if="{{isShowConfirm1}}">
+    <view class='toast-box'>
+      <view class='toastbg'></view>
+      <view class='showToast'>
+          <view class='toast-title'>
+              <text>确认支付</text>
+          </view>
+          <view class='toast-main'>
+              <view class='toast-input'>
+                  <input type='number' placeholder='输入支付密码' bindinput='setValue1' value="{{payInfo.password}}"></input>
+              </view>
+          </view>
+          <view class='toast-button'>
+              <view class='button1'>
+                  <view catchtap='cancel'>取消</view>
+              </view>
+              <view class='button2'>
+                  <view catchtap='confirmRecharge'>确定</view>
+              </view>
+          </view>
+      </view>
+    </view>
+</block>
+
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel}}"></view>
+<view wx:if="{{showModel}}" class="dialogModel">
+    <view class="order_pay bg_white width100">
+      <view class="op_title bg_gray padding_custom text_center posi_relative  fontSize16">
+          <image class='op_close' src="../../image/gi_close.png" bindtap="preventTouchMove" alt=""></image> 支付方式
+      </view>
+      <view class="op_price padding_custom  color_default BB1 text_center fontBold fontSize20">¥{{bwjdNum}}</view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="miniapp">
+          <image class='marginR10' src="../../image/wechat_logo.png" alt=""></image>
+          <text class="flex_grow1">微信</text>
+          <view class="common_radio {{payInfo.type == 'miniapp'?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="money">
+          <image class='marginR10' src="../../image/money_icon.png" alt=""></image>
+          <text class="flex_grow1">余额<text class="color_red">({{userInfo.money}})</text></text>
+          <view class="common_radio {{payInfo.type == 'money' ?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_center">
+          <view class="common_submit_btn" bindtap="submit">确定</view>
+      </view>
+  </view>
+</view>

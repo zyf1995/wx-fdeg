@@ -1,0 +1,37 @@
+/* packageB/pages/selectedLessonDate/selectedLessonDate.wxss */
+.lesson_detail{
+  width: 24rpx;
+  height: 24rpx;
+}
+.selectDate{
+  width:78%;
+  margin: 0 11% 24rpx;
+  background:rgba(245,245,245,1);
+  border-radius:10rpx;
+}
+.select_date_icon{
+  width:44rpx;
+  height:44rpx;
+}
+.address{
+  margin: 0 11%;
+}
+.classTime{
+  margin-bottom: 90rpx;
+}
+.footer{
+  width: 100%;
+  height: 90rpx;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+}
+.footer view {
+  width: 50%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+.footer view:nth-child(2){
+  background-color: #FF5840;
+}

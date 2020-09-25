@@ -1,0 +1,37 @@
+/* pages/technicianList/technicianList.wxss */
+.noSelected .left{
+  width: 10%;
+}
+.noSelected .left image{
+  width: 44rpx;
+  height: 44rpx;
+}
+.noSelected .center{
+  width: 60%;
+}
+.selectedList>view .left image{
+  width:114rpx;
+  height:114rpx;
+  border-radius:50%;
+}
+.selectedList>view .left{
+  width: 30%;
+}
+.selectedList>view .center{
+  width: 40%;
+}
+.selectedList>view .right{
+    width: 26%;
+}
+.selectedList>view .center view:nth-child(2){
+  width:96rpx;
+  height:38rpx;
+  line-height: 38rpx;
+  text-align: center;
+  background:rgba(255,163,3,1);
+  border-radius:6rpx;
+}
+.select_date_icon{
+  width:44rpx;
+  height:44rpx;
+}

@@ -1,0 +1,23 @@
+<!--pages/detail/detail.wxml-->
+<view>
+    <template name="items">
+        <view class="row">
+            <view class="time">
+                {{AcceptTime}}
+            </view>
+            <view class="icon"></view>
+            <view class="infos">
+                {{AcceptStation}}
+            </view>
+        </view>
+    </template>
+    <!--查询成功时-->
+    <view wx:if="{{haslist}}">
+        <view class="mainline"></view>
+        <block wx:for="{{list}}" wx:key="*this" class="scroll-view-item bc_green">
+          <template is="items" data="{{...item}}" />
+        </block>
+    </view> 
+    <!--查询失败时-->
+    <view wx:else style="padding: 20px;">{{errmsg}}</view>
+</view>

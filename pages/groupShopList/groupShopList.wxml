@@ -1,0 +1,20 @@
+<!--pages/groupShopList/groupShopList.wxml-->
+<view class="goodsList marginT1">
+  <view class="goodsItem paddingB1" wx:for="{{groupGoodsList}}" wx:key="index" data-goodsid="{{item.goods_id}}" bindtap="goGroupShopDetail">
+    <view class="top flex_row_between padding1rem">
+      <view class="left">
+        <view class="text-overflow_1 fontSize15 fontBold marginB1"><span class="fontSize12 weekBuy color_white marginR5">周期购</span>{{item.goods_name}}</view>
+        <view class="text-overflow_2 color_947 fontSize12 marginB5">{{item.introduction}}</view>
+        <view class="text_through text_gray fontSize12 marginB5">￥{{item.price}}</view>
+        <view class="fontSize16 color_ef4">￥{{item.origin_price}}</view>
+      </view>
+      <view class="right flex_row_center">
+        <image class="branchShop" src="{{item.cover}}" alt=""></image>
+      </view>
+    </view>
+    <view class="bottom flex_row_between">
+      <view class="goBuy fontSize14 color_white marginL1">立即购买</view>
+      <view class="marginR1 fontSize12 fontBold">每隔<text class="color_ff3">{{item.interval}}</text>天发一次货，持续<text class="color_ff3">{{item.interval * item.groupbuy_num}}</text>天</view>
+    </view>
+  </view>
+</view>

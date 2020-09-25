@@ -1,0 +1,23 @@
+<!--pages/technicianList/technicianList.wxml-->
+<view class="noSelected flex_row_left margin1rem bg_white paddingT1 paddingB1" bindtap="goBack">
+  <view class="left flex_row_center">
+    <image src="../../image/doorShop/no_selected_icon.png" alt=""></image>
+  </view>
+  <view class="center fontSize14">
+    <text>暂不选择</text>
+  </view>
+  <view class="right fontSize12 color_666">
+    <text>不选择技师</text>
+  </view>
+</view>
+<view class="selectedList">
+  <view class="flex_row_left bg_white paddingT1 paddingB1 marginL1 marginR1 marginB1" bindtap="selectTechnician" data-item="{{item}}" wx:for="{{technicianList}}" wx:key="index">
+    <view class="left flex_row_center">
+      <image src="{{item.avatar}}" alt=""></image>
+    </view>
+    <view class="center">
+      <view class="fontSize15 fontBold marginB1">{{item.name}}</view>
+      <view class="fontSize10 color_white">{{item.position}}</view>
+    </view>
+  </view>
+</view>

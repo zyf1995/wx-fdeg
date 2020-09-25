@@ -1,0 +1,271 @@
+<!--pages/my/my.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="v_info padding1 marginB10">
+    <view class="flex_row_left addApp" wx:if="{{hidden}}">
+      <view class="color_white fontSize14">"添加到我的小程序"快速进入丰德E购</view>
+      <image bindtap="closeTip" class="close_icon marginL1" src="../../image/close_icon.png"></image>
+    </view>
+    <!-- <view class="flex_row_right color_white marginB5 marginT2">
+        <i class="iconfont icon-message fontSize20 marginR10"></i>
+    </view> -->
+    <view class="v_i_top flex_row_left marginB10 color_white width100">
+        <view class="left fontSize15">
+          <view class="starbg">
+            <image class='borderRadius50 marginR10 avatar_default' src="{{userInfo.avatar?userInfo.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+          </view>
+          <view class="levelBg marginB10">
+            <view class="text_center">{{userInfo.level.name}}</view>
+            <image class='marginB15' src="../../image/levelbg.png" alt=""></image>
+          </view>
+        </view>
+
+        <view class="flex_col_left right">
+            <view class="flex_row_left codeBox2 marginB5 fontSize15">
+                <text class="marginR5 text-overflow_1 nickname">{{userInfo.nickname || userInfo.mobile}}</text>
+                <text class="bg_black color_fed codeBox">ID:{{userInfo.id}}</text>
+            </view>
+            <!-- <view class="flex_row_left codeBox1 marginB5 fontSize15">
+                <text class="fontBold text-overflow_1 userInviter1">邀请人：{{userInviter.nickname || userInviter.mobile }}</text>
+                <image class="more_icon" bindtap="getInviterToast" src="../../image/more1.png"></image>
+            </view> -->
+            <view class="flex_row_left codeBox fontSize15">
+                <text class="fontBold marginR5">邀请码 <text class="codeMain">{{userInfo.mobile}}</text></text>
+                <text class="v_i_copy bg_color1 fontSize10 btn_padding" bindtap="copy" data-mobile="{{userInfo.mobile}}">复制</text>
+            </view>
+        </view>
+    </view>
+    <view class="v_i_points flex_row_left bg_th borderRadius1rem">
+        <view class="flex_col_left flex_grow1">
+            <view class="marginB1 myyue marginT5">
+                <text class="marginR10 color_fed">余额</text>
+                <text class="color_fed">￥{{userInfo.money}}</text>
+            </view>
+            <text class="color_fed">轻松挣钱，潇洒生活</text>
+        </view>
+        <view class="v_i_p_go marginT1" bindtap="goWithdraw">立即提现</view>
+    </view>
+</view>
+<!-- <view class="m_assets padding1 marginB10 flex_row_left">
+    <view class="assets">
+        <view class="flex_row_between">
+            <view class="flex_col_center asset" bindtap="goShopProfit">
+              <text class="flex_row_left marginB3">累计收益(元)<text class="marginL1 iconfont icon-arrow-right"></text></text>
+              <text class="total_money">{{userInfo.total_money || 0}}</text>
+            </view>
+            <view class="flex_col_center asset" bindtap="goShopArrive">
+                <text class="flex_row_left marginB3">即将到账(元)<text class="marginL1 iconfont icon-arrow-right"></text></text>
+                <text class=" total_money">{{to_be || 0}}</text>
+            </view>
+        </view>
+    </view>
+</view> -->
+<view class="m_assets padding1 marginB10 borderRadius1rem">
+    <view class="assets flex_row_left flex_wrap">
+      <view class="flex_col_center flex_grow1 marginB1" bindtap="goShopProfit" data-type="money">
+          <text class="color_red marginB5 fontSize14">{{userInfo.total_money || 0}}</text>
+          <text class="">累计收益(元）</text>
+      </view>
+      <view class="flex_col_center flex_grow1 marginB1">
+          <text class="color_red marginB5 fontSize14">{{to_be || 0}}</text>
+          <text class="">即将到账(元）</text>
+      </view>
+      <view class="flex_col_center flex_grow1 marginB1">
+          <text class="color_red marginB5 fontSize14">{{userInfo.year_score || 0}}</text>
+          <text class="">累计使用积分(个）</text>
+      </view>
+      <view class="flex_col_center flex_grow1 marginB1" bindtap="goShopProfit" data-type="point">
+          <text class="color_red marginB5 fontSize14">{{userInfo.score_new || 0}}</text>
+          <text class="">我的积分(个）</text>
+      </view>
+      <view class="flex_col_center flex_grow1" bindtap="goBranchRecord">
+          <text class="color_red marginB5 fontSize14">{{userInfo.score || 0}}</text>
+          <text class="">我的百旺金</text>
+      </view>
+      <view class="flex_col_center flex_grow1" bindtap="goShopProfit" data-type="EGouQianBao">
+          <text class="color_red marginB5 fontSize14">{{userInfo.money_e || 0}}</text>
+          <text class="">E购钱包</text>
+      </view>
+    </view>
+</view>
+
+<view class="m_popularize  borderRadius1rem  bg_white">
+    <view class="m_p_title BB1 fontSize14">我的订单</view>
+    <view class="flex_row_left Brd1 flex_wrap" style="padding: 24rpx 24rpx 0;">
+        <view class="m_p_item flex_col_center posi_relative" data-dataType="payment" bindtap="goOrderList">
+            <image src="../../image/order_unpaied.png" alt=""></image>
+            <text>待付款</text>
+            <text class="tip" wx:if="{{orderNum.NoPayNum <= 10 && orderNum.NoPayNum >0}}">{{orderNum.NoPayNum}}</text>
+            <text class="tip" wx:if="{{orderNum.NoPayNum > 10}}">10+</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-dataType="delivery" bindtap="goOrderList">
+            <image src="../../image/order_paied.png" alt=""></image>
+            <text>待发货</text>
+            <text class="tip" wx:if="{{orderNum.NoFreightNum <= 10 && orderNum.NoFreightNum >0}}">{{orderNum.NoFreightNum}}</text>
+            <text class="tip" wx:if="{{orderNum.NoFreightNum > 10}}">10+</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-dataType="received" bindtap="goOrderList">
+            <image src="../../image/order_delivery.png" alt=""></image>
+            <text>待收货</text>
+            <text class="tip" wx:if="{{orderNum.NoReceiptNum <= 10 && orderNum.NoReceiptNum >0}}">{{orderNum.NoReceiptNum}}</text>
+            <text class="tip" wx:if="{{orderNum.NoReceiptNum > 10}}">10+</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-dataType="finish" bindtap="goOrderList">
+            <image src="../../image/order_done.png" alt=""></image>
+            <text>已完成</text>
+        </view>
+    </view>
+</view>
+
+<view class="borderRadius1rem m_popularize1 bg_white">
+    <view class="m_p_title BB1 fontSize14">拼赚订单</view>
+    <view class="flex_row_left Brd1 flex_wrap" style="padding: 1rem 1rem 0;">
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="9" bindtap="goFightOrderList">
+            <image src="../../image/order_unpaied.png" alt=""></image>
+            <text>全部</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="1" bindtap="goFightOrderList">
+            <image src="../../image/order_paied.png" alt=""></image>
+            <text>进行中</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="2" bindtap="goFightOrderList">
+            <image src="../../image/order_delivery.png" alt=""></image>
+            <text>已拼成</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="4" bindtap="goFightOrderList">
+            <image src="../../image/order_done.png" alt=""></image>
+            <text>已失效</text>
+        </view>
+    </view>
+</view>
+
+<view class="borderRadius1rem m_popularize1 bg_white">
+    <view class="m_p_title BB1 fontSize14">套餐订单</view>
+    <view class="flex_row_left Brd1 flex_wrap" style="padding: 1rem 1rem 0;">
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="10" data-status="detail" bindtap="goGroupOrderList">
+            <image src="../../image/order_unpaied.png" alt=""></image>
+            <text>未生效</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="20" data-status="detail" bindtap="goGroupOrderList">
+            <image src="../../image/order_paied.png" alt=""></image>
+            <text>待发货</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="30" data-status="detail" bindtap="goGroupOrderList">
+            <image src="../../image/order_delivery.png" alt=""></image>
+            <text>待收货</text>
+        </view>
+        <view class="m_p_item flex_col_center posi_relative" data-datatype="50" data-status="detail" bindtap="goGroupOrderList">
+            <image src="../../image/order_done.png" alt=""></image>
+            <text>已完成</text>
+        </view>
+    </view>
+</view>
+<view wx:if='{{userInfo.level.level >= 1}}' class="m_shop_owner borderRadius1rem bg_white">
+    <view bindtap="goShopCenter" class="m_p_title BB1 fontSize14 flex_row_left">
+        <text class="flex_grow1">店长中心</text>
+        <text class="iconfont icon-arrow-right fontSize20"></text>
+    </view>
+    <view class=" flex_row_left Brd1 flex_wrap" style="padding: 24rpx 24rpx 0;">
+        <view class="m_p_item flex_col_center" bindtap="goApplyHelp">
+            <image src="../../image/applyHelp.png" alt=""></image><text>申请补助</text>
+        </view>
+        <view class="m_p_item flex_col_center" bindtap="goTeamList">
+            <image src="../../image/shop_team_icon.png" alt=""></image><text>团队粉丝</text>
+        </view>
+        <view class="m_p_item flex_col_center" bindtap="goShopTeamOrder">
+            <image src="../../image/shop_team_order_icon.png" alt=""></image><text>粉丝订单</text>
+        </view>
+    </view>
+</view>
+<view class="adress padding1 bg_white" bindtap="goAddressList">
+  <text>我的收货地址</text>
+</view>
+<view class="adress padding1 bg_white" bindtap="shareApp">
+  <text>我的分享海报</text>
+</view>
+<!-- <view class="adress padding1 bg_white" bindtap="goGroupShop">
+  <text>团购商品</text>
+</view> -->
+<view class="flex_row_center marginT2">
+  <view class="fontSize14 color_bcb">已经到底啦</view>
+</view>
+<!-- 遮罩层 -->
+<!-- <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showDialog}}"></view> -->
+<!-- 弹出层 -->
+<view wx:if="{{showDialog}}" class="dialog-wrap">
+ <view class="padding1 fontSize16 fontBold">提示</view>
+ <view class="dialog width100 text_center">
+  请您先开启权限，才能下载图片
+  <view class="dialog-footer marginT1 flex_row_around">
+   <button
+    class="btn"
+    open-type="openSetting"
+    bindtap="confirm" >
+     授权
+   </button>
+   <button class="btn" bindtap="cancel">取消</button>
+  </view>
+ </view>
+</view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel}}"></view>
+<!-- 弹出层 -->
+<view wx:if="{{showModel}}" class="dialogModel flex_col_center">
+  <view class="ui_img">
+    <image src="{{poster}}"></image>
+  </view>
+  <view class='ui_btn1 flex_row_center color_white'>
+      <view class="poster flex_row_center marginB1" bindtap="share">下载图片</view>
+  </view>
+</view>
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal1}}"></view>
+<!-- 弹出层 -->
+<view class="box" wx:if="{{showModal1 && step == 1}}">
+    <view class="header flex_row_center marginB2 posi_relative">
+      <view class="fontSize15 fontBold">邀请人资料</view>
+      <view bindtap="goAuthentication" class="authentication fontSize14">去修改</view>
+    </view>
+    <view class="fontSize14 cont">
+      <view class="marginB2">真实姓名：{{userInviter.name || ''}}</view>
+      <view class="marginB2">联系电话：{{userInviter.mobile || ''}}</view>
+      <view class="marginB2">所在区域：{{userInviter.address || ''}}</view>
+      <view class="marginB2 text-overflow_2">个性签名：{{userInviter.bio || ''}}</view>
+    </view>
+    <view class="close flex_row_center width100 fontSize20 color_white" bindtap="close">
+      <view>X</view>
+    </view>
+</view>
+<view class="authInviter" wx:if="{{showModal1 && step == 2}}">
+  <view class="header flex_row_left">
+    <view class="left">
+      <text class="iconfont icon-left-arrow" bindtap="goBack"></text>
+    </view>
+    <view class="center fontSize15 fontBold">
+      认证邀请人
+    </view>
+  </view>
+  <view class="cont BB1 flex_row_left">
+    <view class="marginL1">邀请人：</view>
+    <input class="flex_grow1 marginR1 border_none" style="width:50%;" type="text" placeholder="请输入邀请码" value="{{code}}" bindinput="changeVal"></input>
+    <view class="marginR1" bindtap="query">查询</view>
+  </view>
+  <view wx:if="{{isObj == '{}'}}" class="userInfo flex_col_center">
+    <image class="inviter_avatar marginB1" src="../../image/inviter_avatar.png" alt=""></image>
+    <view class="fontSize16 color_aea">待确认邀请人</view>
+  </view>
+  <view wx:else class="userInfo flex_col_center">
+    <image class="inviter_avatar marginB1" src="{{inviterInfo.avatar}}" alt=""></image>
+    <view class="fontSize16 color_aea">{{inviterInfo.nickname || inviterInfo.mobile}}</view>
+  </view>
+  <view wx:if="{{isObj == '{}'}}" class="footer flex_row_center marginT1">
+    <view class="color_aea fontSize16">确认修改</view>
+  </view>
+  <view wx:else class="footer flex_row_center marginT1">
+    <view bindtap="submit" class="color_aea fontSize16 submit">确认修改</view>
+  </view>
+  <view class="close flex_row_center width100 fontSize20 color_white" bindtap="close">
+    <view>X</view>
+    </view>
+</view>

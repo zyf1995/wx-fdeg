@@ -1,0 +1,43 @@
+/* pages/detail/detail.wxss */
+page{
+  background-color: #fff;
+}
+.row{
+	padding: 20rpx 40rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+  -moz-box-align:center;
+  -ms-flex-align:center;
+  align-items:center;
+	font-size: 36rpx;
+}
+.mainline{
+	position: fixed;
+	top: 10rpx;
+	bottom: 0;
+	left: 35%;
+	width: 12rpx;
+	background-color: #1AAD19;
+	z-index: 1;
+}
+
+.time{
+	width: 35%;
+}
+.infos{
+	margin-left: 5%;
+	width: 60%;
+}
+.icon{
+	width: 40rpx;
+	height: 40rpx;
+	margin-left: -16rpx;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background: #1AAD19;
+}

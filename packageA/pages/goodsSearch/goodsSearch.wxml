@@ -1,0 +1,22 @@
+<!--packageA/pages/goodsSearch/goodsSearch.wxml-->
+<import src="../../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="header_wrapper_50">
+  <view id='header' class='flex_row_left bg_white color_black'>
+    <view>
+      <input type="text" placeholder="输入关键词" value="{{keyword}}" bindinput="changeVal"></input>
+    </view>
+    <view class="marginL2" bindtap="search">搜索</view>
+  </view>
+</view>
+<!-- <view class="gcl_tab flex_row_left fontSize14 bg_white marginB10" wx:if="{{from != 'dsDetail'}}">
+    <view class="gcl_t_item flex_row_center {{currentType == '0' ? 'on' : ''}}" bindtap="tabS" data-index="0">门店</view>
+    <view class="gcl_t_item flex_row_center {{currentType == '1' ? 'on' : ''}}" bindtap="tabS" data-index="1">商城</view>
+</view> -->
+<!-- <view class="gcl_tab flex_row_left fontSize14 bg_white marginB10">
+    <view class="gcl_t_item flex_row_center {{info.types == 'normal' ? 'on' : ''}}" bindtap="tabS" data-type="normal">门店</view>
+    <view class="gcl_t_item flex_row_center {{info.types == 'sales' ? 'on' : ''}}" bindtap="tabS" data-type="sales">商城</view>
+    <view class="gcl_t_item flex_row_center {{info.types == 'price' ? 'on' : ''}}" bindtap="tabS" data-type="price">
+        <text class="marginR5">价格</text>
+    </view>
+</view> -->

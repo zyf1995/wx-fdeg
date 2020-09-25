@@ -1,0 +1,43 @@
+/* pages/buyLessonList/buyLessonList.wxss */
+@import "../../iconfont.wxss";
+.gs_tabs{
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0;
+  top: 0;
+  z-index: 120;
+}
+.gs_t_item {
+    height: 96rpx;
+    min-width: 25%;
+}
+.gs_t_item text {
+    height: 72rpx;
+    line-height: 72rpx;
+    text-align: center;
+    font-size: 28rpx;
+    width: 80%;
+}
+.gs_t_item text.on {
+    border-bottom: 4rpx solid #fff;
+}
+.gs_tabs .line {
+    position: absolute;
+    height: 4rpx;
+    width: 25%;
+    left: 0;
+    bottom: 10rpx;
+    transition: all 0.25s ease;
+}
+.gs_tabs .line text {
+    width: 70%;
+    height: 100%;
+    background: #FFBF41;
+}
+.cancelOrder{
+  width:162rpx;
+  height:56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  border-radius:28rpx;
+}

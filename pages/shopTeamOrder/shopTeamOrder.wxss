@@ -1,0 +1,112 @@
+/* pages/shopTeamOrder/shopTeamOrder.wxss */
+.header_wrapper {
+    height: 50px;
+}
+
+.gs_t_item {
+    height: 96rpx;
+    min-width: 33.33%;
+    /*color: #0*/
+}
+
+.gs_t_item text {
+    height: 96rpx;
+    line-height: 96rpx;
+    text-align: center;
+    font-size: 28rpx;
+    width: 80%;
+}
+
+.gs_t_item text.on {
+    border-bottom: 4rpx solid red;
+}
+
+.gs_tabs .line {
+    position: absolute;
+    height: 4rpx;
+    width: 33.33%;
+    left: 0;
+    bottom: 10rpx;
+    transition: all 0.25s ease;
+}
+
+.gs_tabs .line text {
+    width: 70%;
+    height: 100%;
+}
+.gs_tabs.gs_tabs_sub .gs_t_item {
+    height: 72rpx;
+    min-width: 25%;
+    /*color: #0*/
+}
+.gs_tabs.gs_tabs_sub  .line text{
+  background: red;
+}
+.gs_tabs.gs_tabs_sub .line {
+    width: 25%;
+    bottom: 0;
+}
+.q1 {
+    background-color: white;
+    margin-top: 24rpx;
+    padding: 24rpx;
+    box-sizing: border-box;
+    max-width: 100vw;
+}
+
+.q2 {
+    width: 25vw;
+    height: 25vw;
+}
+
+image.q3 {
+    width: 25vw;
+    height: 25vw;
+    max-width: 25vw;
+}
+
+.q4 {
+    max-width: 100vw;
+    width: 66vw;
+    flex: 1;
+}
+
+.q5 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.q6 {
+    font-size: 21.6rpx;
+    color: #A9A9A9;
+    margin-top: 20rpx;
+}
+
+.q6 {
+    font-size: 21.6rpx;
+    color: #A9A9A9;
+    margin-top: 20rpx;
+}
+
+.q7 {
+    border: 2rpx solid black;
+    padding: 0 12rpx;
+    border-radius: 24rpx;
+    color: black;
+    margin-left: 24rpx;
+}
+
+.q8 {
+    font-size: 21.6rpx;
+    color: #A9A9A9;
+    margin-top: 20rpx;
+}
+
+.q9 {
+    color: #ff9900;
+    margin-left: 24rpx;
+    float: right;
+    margin-right: 24rpx;
+    font-size: 24rpx;
+}

@@ -1,0 +1,221 @@
+<!--pages/mall/mall.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="header_wrapper hasbannerBg" id='header_wrapper' style="background:{{impotBg}}">
+    <view class="flex_row_between headerBoxT">
+        <view class="headerBlou">
+            <view class="heaImg">
+                <image class="xiaoxi_icon" src="../../image/logo.png" alt=""></image>
+            </view>
+        </view>
+        <view class="headerTite">正国魂 强民生</view>
+        <view class="flex_row_right" bindtap="shareApp">
+            <view class="heaImg heaImgxi flex_col_center">
+                <image class="xiaoxi_icon" src="../../image/tool_share_icon.png" alt=""></image>
+            </view>
+        </view>
+    </view>
+    <view class="h_header flex_row_center" id="header">
+        <view class="h_search" bindtap="goSearch">
+            <text class="iconfont icon-search marginR10"></text>
+            <input class='border_none' type="text" disabled="true" placeholder="输入关键字进行搜索吧"></input>
+        </view>
+        <image class="icon-category1" src="../../image/categroy_icon2.png" alt="" bindtap="goCateList" wx:if="{{info.bannerlist.shortcut}}"></image>
+    </view>
+</view>
+<view class="h_banner">
+    <view class="h_b_bg bg_2E_18" style="background:{{impotBg}}"></view>
+    <swiper
+      id="banner"
+      indicator-dots="true"
+      autoplay="true"
+      interval="2000"
+      circular="true"
+      indicator-color="#fff"
+      indicator-active-color="#666874"
+      class="hasbannerBg"
+      id="bannerSwiper"
+      bindchange = "changeSwiper"
+    >
+      <swiper-item wx:key="index" wx:for="{{info.bannerlist.main}}" bindtap="toGoodsPage">
+        <image class="headset" src="{{item.image}}" />
+      </swiper-item>
+    </swiper>
+</view>
+<view class="h_cate flex_row_left flex_wrap paddingT1 paddingL1 paddingR1 bg_white margin_custom1 borderRaidus1rem">
+    <view class="flex_row_left width100  fontSize12 flex_wrap">
+        <view class="h_cate_item flex_col_center" wx:for="{{info.bannerlist.shortcut}}" wx:key="index" bindtap="toGoodsList" data-item="{{item}}">
+            <image class='marginB5' src="{{item.image}}" alt=""></image>
+            <text>{{item.title}}</text>
+        </view>
+    </view>
+</view>
+<!-- 下单提示 -->
+<view class="marquee marginT1">
+    <view class="marquee_box flex_col_center fontSize14 padding12rpx" bindtap="toInfo" data-id="{{title_list[0].id}}">
+        <marquee text="{{title_list[0].desc}}"></marquee>  
+    </view>
+</view>
+<!-- <view class="bg_white margin1rem prefecture padding1" wx:if="{{fightGoodsList.length != 0}}">
+  <view class="fontBold fontSize20 marginB1 flex_row_left">
+    <view class="BL4 paddingL1">拼赚<text class="color_ff4">专区</text></view>
+    <view class="flex_grow1 text_gray text_right fontSize16" bindtap="seeMore">更多</view>
+    <text class="iconfont icon-arrow-right text_gray fontSize16 fontBold marginL5" bindtap="seeMore"></text>
+  </view>
+  <view class="flex_row_between padding1 prefecture_item marginB5" wx:for="{{fightGoodsList}}" wx:key="index" bindtap="toFightGoodsInfo" data-id="{{item.id}}" data-goodsid="{{item.good_id}}">
+    <view class="marginL1 marginR1">
+      <view class="fontSize16 fontBold marginB5 text-overflow_11">{{item.goods.goods_name}}</view>
+      <view class="fontSize12 text_through text_gray marginB5">¥{{item.good_spec[0].line_price}}</view>
+      <view class="fontSize18 flex_grow1 marginB5 color_ef4">¥{{item.good_spec[0].goods_price}}</view>
+      <view class="fontSize12 marginB5">{{item.goods.team_num || 0}}个团正在进行中.....</view>
+      <view class="hrg_tip color_white fontSize12 width100 marginT5">
+            <text class="tip_left">参与拼单</text>
+            <text class="tip_right ">发起拼单</text>
+        </view>
+    </view>
+    <view>
+      <image class="siftLogo" src="{{item.goods.image?item.goods.image:'../../image/goods_empty.png'}}" alt=""></image>
+    </view>
+  </view>
+</view> -->
+<image class='mall_cart_icon' src="../../image/mall_cart_icon.png" alt="" bindtap="goShopCart"></image>
+<!-- VIP高级套餐 -->
+<view class="bg_white margin1rem prefecture padding1" wx:if="{{groupGoodsList.length != 0}}">
+  <view class="fontBold fontSize20 marginB1 flex_row_left">
+    <view class="BL4 paddingL1">VIP<text class="color_ff4">高级套餐</text></view>
+    <view class="flex_grow1 text_gray text_right fontSize16" bindtap="seeVipMore">更多</view>
+    <text class="iconfont icon-arrow-right text_gray fontSize16 fontBold marginL5" bindtap="seeVipMore"></text>
+  </view>
+  <view class="goodsList marginT1">
+    <view class="goodsItem paddingB1" wx:for="{{groupGoodsList}}" wx:key= "index" bindtap="goGroupShopDetail" data-goodsid="{{item.goods_id}}">
+      <view class="top flex_row_between padding1">
+        <view class="left">
+          <view class="text-overflow_1 fontSize15 fontBold marginB1"><text class="fontSize12 weekBuy color_white marginR5">周期购</text>{{item.goods_name}}</view>
+          <view class="text-overflow_2 color_947 fontSize12 marginB5">{{item.introduction}}</view>
+          <view class="text_through text_gray fontSize12 marginB5">￥{{item.origin_price}}</view>
+          <view class="fontSize16 color_ef4">￥{{item.price}}</view>
+        </view>
+        <view class="right flex_row_center">
+          <image class="branchShop" src="{{item.cover}}" alt=""></image>
+        </view>
+      </view>
+      <view class="bottom flex_row_between">
+        <view class="goBuy fontSize14 color_white marginL1">立即购买</view>
+        <view class="marginR1 fontSize12 fontBold">每隔<text class="color_ff3">{{item.interval}}</text>天发一次货，持续<text class="color_ff3">{{item.interval * item.groupbuy_num}}</text>天</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="h_rec_img width100 borderBox marginB5" wx:for="{{info.bannerlist.secondary}}" wx:key= "index"  bindtap="toGoodsPage" data-item="{{item}}">
+    <image src="{{item.image}}" alt=""></image>
+</view>
+<view class="h_rec_one color_white marginB10 overflow_h">
+    <image class="hro_item {{i % 2 == 0 ? 'marginRCustomer':''}}" src="{{item.image}}" wx:for="{{info.bannerlist.activity}}" wx:key= "index"  alt="" bindtap="toGoodsPage" data-item="{{item}}"></image>
+</view>
+
+<!-- 商品主题场 -->
+<view class="fontBold fontSize20 BL4 paddingL1" style="margin:24rpx 48rpx 0">
+  商品<text class="color_ff4">主题场</text>
+</view>
+<view class="h_rec_three marginT15 marginB15" wx:for="{{info.themelist}}" wx:key="index">
+    <view class="hrth_title  borderBox fontSize16 color_white ">
+        <image src="{{item.image}}" alt=""></image>
+    </view>
+    <scroll-view scroll-x class="margin_custom fontSize10 borderRadius1rem" style="width: calc( 100% - 24rpx );white-space: nowrap;">
+        <view class="hrth_item bg_white borderBox" wx:for="{{item.goods}}" wx:for-item="itemGoods" wx:for-index="indexGoods" wx:key="indexGoods" style="display:inline-block;width:32%;" bindtap="toGoodsInfo" data-goodsid="{{itemGoods.goods_id}}">
+            <view class="hrth_img squareImg posi_relative">
+                <image src="{{itemGoods.image}}" alt=""></image>
+            </view>
+            <view class="hrth_item_Bt">
+                <view class="text-overflow_2 marginB5 fontSize13">{{itemGoods.goods_name}}</view>
+                <view class="flex_row_left align_items_end">
+                    <text class="color_red fontSize14 marginR5">￥{{itemGoods.spec[0].goods_price || 0}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+
+<!-- 精选专区 -->
+<view class="bg_white margin1rem prefecture padding1">
+    <view class="fontBold fontSize20 marginB1">
+        <view class="BL4 paddingL1">精选<text class="color_ff4">专区</text></view>
+    </view>
+    <view class="flex_row_between padding1 prefecture_item marginB5" wx:for="{{info.siftList}}" wx:key="index" bindtap='toMallGoodsInfo' data-goodsid="{{item.goods.goods_id}}">
+        <view class="marginL1 marginR1">
+          <view class="fontSize16 fontBold marginB5 text-overflow_11">{{item.goods.goods_name}}</view>
+          <view class="fontSize13 marginB5 color_947 text-overflow_2">{{item.goods.goods_name}}</view>
+          <view class="fontSize12 text_through text_gray marginB5">¥{{item.goods.spec[0].line_price || 0}}</view>
+          <view class="fontSize18 flex_grow1 marginB5 color_ef4">
+            <text class="">¥{{item.goods.spec[0].goods_price - item.goods.score | toFixed2}}</text>
+            <text class="" wx:if='{{item.goods.score != 0}}'> + {{ item.goods.score | toFixed2}}</text>
+            <text class="fontSize13 font_normal" wx:if='{{item.goods.score != 0}}'>积分</text>
+          </view>
+          <view class="goBuyRightNow fontSize14 color_white fontBold">立即购买</view>
+        </view>
+        <view><image class="siftLogo" src="{{item.goods.image}}" alt=""></image></view>
+    </view>
+</view>
+
+<!-- 最新热销 -->
+<view class="bg_white margin1rem newShops padding1">
+  <view class="fontBold fontSize20">
+    <view class="BL4 paddingL1">最新<text class="color_ff4">热销</text></view>
+  </view>
+  <scroll-view scroll-x class="overflow_h borderRadius1rem overflow_h bg_white flex_row_left marginT1" style="width: 100%;white-space: nowrap;">
+      <view class="newShops_item borderBox" wx:for="{{info.newup}}" wx:key="index" style="display:inline-block;width:32%;" bindtap='toMallGoodsInfo' data-goodsid="{{item.goods_id}}">
+         <view class="marginR5">
+              <view class="shopsLogo flex_row_center">
+                <image class="marginT1 marginB1" src="{{item.image}}" alt=""></image>
+              </view>
+              <view class="marginT1 marginL1 marginR1">
+                <view class="fontSize13 fontBold text-overflow_1 marginB5">{{item.goods_name}}</view>
+                <view class="fontSize12 text_through text_gray marginB5">¥{{item.spec[0].line_price}}</view>
+                <view class="fontSize12 color_ff4 fontBold marginB5 text-overflow_1">
+                  <text class="">促销价: ¥{{item.spec[0].goods_price - item.score | toFixed2}}</text>
+                  <text class="" wx:if='{{item.score != 0}}'> + {{ item.score | toFixed2}}</text>
+                  <text class="fontSize13 font_normal" wx:if='{{item.score != 0}}'>积分</text>
+                </view>
+              </view>
+            </view>
+      </view>
+  </scroll-view>
+</view>
+
+<!-- 推荐好货 -->
+<view class="fontBold fontSize20 BL4 paddingL1" style="margin:24rpx 48rpx 0;">
+  推荐<text class="color_ff4">好货</text>
+</view>
+<view class="h_red_goods1">
+    <view class="hrg_list1 flex flex_wrap padding1">
+        <view class="hrg_item1 bg_white marginB10 posi_relative" wx:for="{{goodsList}}" wx:key="index" wx:if='{{goodsList.length > 0 && item.spec.length > 0}}' bindtap='toMallGoodsInfo' data-goodsid="{{item.goods_id}}">
+            <view class="hrg_img1 marginB10">
+                <image src="{{item.image ? item.image :'../../image/goods_empty.png'}}" alt=""></image>
+            </view>
+            <view class="hrg_info1 flex_grow1 padding1">
+                <view class="marginB10 text-overflow_2">{{item.goods_name}}</view>
+                <view class="marginB10">
+                  <text class="hrg_original text_through flex_grow1 text_gray">¥{{item.spec[0].line_price}}</text>
+                </view>
+                <view class="flex_row_left">
+                    <view class="hrg_price fontBold fontSize16 color_red">
+                      <text class="fontBold fontSize16">¥{{item.spec[0].goods_price - item.score | toFixed2}}</text>
+                      <text class="fontBold fontSize16" wx:if='{{item.score != 0}}'> + {{ item.score | toFixed2}}</text>
+                      <text class="fontSize13 font_normal " wx:if='{{item.score != 0}}'>积分</text>
+                    </view>
+                </view>
+                <view class="hotSale fontSize10 color_white">
+                  热销
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="marginT15 paddingB15 flex_row_center text_gray" wx:if='{{!toBottom}}'>
+    <image class="loadingGif" src="../../image/timg23.gif" alt=""></image>
+    <text class="fontSize14">加载中...</text>
+</view>
+<view class="marginT15 paddingB15 flex_row_center text_gray" wx:if='{{toBottom}}'>
+    <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+    <text class="fontSize14">我是有底线的</text>
+</view>

@@ -1,0 +1,26 @@
+<!--pages/cateList/cateList.wxml-->
+<view class="header_wapper bg_default" id="header_wapper">
+    <view class="h_header flex_row_left bg_default">
+        <view class="h_search flex_grow1" bindtap="goSearch">
+            <text class="iconfont icon-search marginR10"></text>
+            <input class='border_none' disabled="true" type="text"></input>
+        </view>
+    </view>
+</view>
+<view class="gc_left bg_gray float_left overflow_y_scroll" id="gc_left" style="height:{{leftMenuH}}rpx;">
+    <view class="gc_l_item flex_row_center {{currentIndex == index ? 'on' :''}}" bindtap='cateS' data-index="{{index}}" wx:key="index" wx:for='{{list}}'>
+        <text>{{item.name}}</text>
+    </view>
+</view>
+<view class="gc_right float_left overflow_y_scroll borderBox" id="gc_right" style="height:{{leftMenuH}}rpx;">
+    <view class="gr_r_wrapper" id="cate1">
+        <view class="gc_r_area">
+            <view class="gr_r_list flex_row_left flex_wrap">
+                <view class="gc_r_item flex_col_center marginB10" bindtap="toGoodsList" data-id="{{item.id}}" wx:for='{{currentList.childlist}}' wx:key="index">
+                    <image src="{{item.ImageFrist}}" alt=""></image>
+                    <text class="fontSize12">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,39 @@
+<!--pages/buyLessonList/buyLessonList.wxml-->
+<view class="gs_tabs flex_row_left bg_white  posi_relative marginB10">
+    <view class="gs_t_item flex_row_center" data-item="{{item}}" data-index="{{index}}" wx:key="index" wx:for="{{tabArray}}" bindtap='tabS'>
+        <text class="{{status == item.status?'color_f4':''}}">{{item.title}}</text>
+    </view>
+</view>
+<view class="lessonList padding1 margin1rem bg_white" wx:for="{{orderList}}" wx:key="index" wx:if="{{item.order_status != 30}}" bindtap="buyLessonDetail" data-item="{{item}}">
+  <view class="top flex_row_between marginB1">
+    <p class="text-overflow_1 fontSize14 fontBold" style="width:50%;">{{item.course_name}}</p>
+    <p class="fontSize14 color_ff8" wx:if="{{item.order_status == 40}}">待确定</p>
+    <p class="fontSize14 color_ff5" wx:if="{{item.order_status == 10}}">待上课</p>
+    <p class="fontSize14 color_a0a" wx:if="{{item.order_status == 20}}">已完成</p>
+  </view>
+  <view class="cont fontSize14 BB1">
+    <view class="marginB5">上课时间：<text class="{{item.class_time?'':'color_ff8'}}">{{item.class_time || '待确定'}}</text></view>
+    <view class="marginB5">上课地点：<text class="{{item.address?'':'color_ff8'}}">{{item.address || '待确定'}}</text></view>
+    <view class="flex_row_between marginB5">
+      <view>参加人：<text>{{item.member.name}}</text></view>
+      <view class="color_a0a">{{item.member.phone}}</view>
+    </view>
+  </view>
+  <view class="bottom flex_row_between marginT1" wx:if="{{item.order_status == 40}}">
+    <view class="fontSize12">学费共计<text class="fontSize16">￥{{item.price}}</text></view>
+  </view>
+  <view class="bottom flex_row_between marginT1" wx:if="{{item.order_status == 10}}">
+    <rich-text nodes="{{item.start_time}}"></rich-text>
+  </view>
+  <view class="bottom flex_row_between marginT1" wx:if="{{item.order_status == 20 && item.training_times != 0}}">
+    <view class="fontSize12">您已参加过该课程<text>{{item.buy_times}}</text>次，剩<text>{{item.training_times}}</text>次复训机会</view>
+    <view class="cancelOrder fontSize12 color_white bg_ff8">参加复训</view>
+  </view>
+  <view class="bottom flex_row_between marginT1" wx:if="{{item.order_status == 20 && item.training_times == 0}}">
+    <view class="fontSize12">您已参加过该课程<text>{{item.buy_times}}</text>次，剩<text>{{item.training_times}}</text>次复训机会</view>
+    <view class="cancelOrder fontSize12 color_white bg_ff8">删除订单</view>
+  </view>
+</view>
+<view class="marginT15 marginB15 flex_row_center">
+  <view class="color_bcb fontSize12">——<text class="marginL1 marginR1">暂无更多</text>——</view>
+</view>

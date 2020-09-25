@@ -1,0 +1,86 @@
+<!--packageB/pages/buyLessonDetail/buyLessonDetail.wxml-->
+<view id="buyLessonDetail">
+  <view class="hint padding1 bg_white fontSize14" wx:if="{{orderDetail.course_date_id == 0}}">
+    <view class="marginL1 marginR1">提示：<text class="color_ff3">未在确定时间结束前</text>确定上课时间等信息，将<text class="color_ff3">直接视为取消报名</text>
+    ，并全额退款学费回原路，<text class="color_ff3">确定时间结束后无法修改报名信息</text>，并将安排上课</view>
+  </view>
+  <view class="flex padding1rem marginT1 marginB1">
+    <image class="lesson_detail marginR1" src="../../image/lesson/lesson_detail.png" alt=""></image>
+    <view class="fontSize12 color_9b9">课程信息</view>
+  </view>
+  <view class="lesson_item bg_white">
+    <view class="top BB1 flex_row_left margin1rem paddingT1 paddingB1">
+      <image class="shopLogo marginR1" src="{{orderDetail.course.images[0]}}" alt=""></image>
+      <view class="cont width70">
+        <view class="fontSize16 fontBold text-overflow_1 marginB5">{{orderDetail.course_name}}</view>
+        <view class="fontSize14 text-overflow_1 color_bcb">{{orderDetail.course.introduction}}</view>
+        <view class="flex marginT5 marginB5">
+          <view class="fontSize12 color_ff8">首次报名 ￥<text class="fontSize18">{{orderDetail.course.first_price}}/人</text></view>
+        </view>
+
+      </view>
+    </view>
+    <view class="bottom margin1rem paddingB1 flex_row_left fontSize12">
+      <view class="color_666 text-overflow_1">还剩<text class="color_ff3 marginL5 marginR5">{{orderDetail.course.training_times}}</text>次复训机会</view>
+      <view class="flex_grow1 color_ff8 seeDetail text_right">查看详情<text class="iconfont icon-arrow-right"></text></view>
+    </view>
+  </view>
+  <view class="orderMsg bg_white margin1rem paddingB4">
+    <view class="flex padding1 marginT1 marginB1">
+      <image class="lesson_detail marginR1" src="../../image/lesson/lesson_time_icon.png" alt=""></image>
+      <view class="fontSize12 color_9b9">预约信息</view>
+    </view>
+    <view class="flex_row_between" wx:if="{{orderDetail.course_date_id == 0}}">
+      <view class="marginL2">
+        <view class="fontSize14 color_ff3 marginB5">未确定上课时间</view>
+        <view class="fontSize12 color_4f4">请先选择预约上课时间</view>
+      </view>
+      <view class="color_white fontSize13 fontBold selecte" bindtap="selectedDate">选择</view>
+    </view>
+    <view class="flex_row_between" wx:else>
+      <view class="marginL2">
+        <view class="fontSize14 marginB5">{{orderDetail.start_time}}</view>
+        <view class="fontSize12 color_4f4">课程时长约 {{orderDetail.length}} 分钟</view>
+      </view>
+    </view>
+    <view class="flex padding1 marginT1 marginB1 marginL1">
+      <view class="fontSize12 color_9b9">报名人</view>
+    </view>
+    <view class="personMsg padding1rem">
+      <view class="fontSize16 marginB5">{{orderDetail.member.name}}</view>
+      <view class="fontSize14 color_666 marginB5">手机号：{{orderDetail.member.phone}}</view>
+      <view class="fontSize14 color_666 marginB5">身份证号：{{orderDetail.member.id_no}}</view>
+      <view class="fontSize14 color_666">生辰八字：{{orderDetail.member.birth}}</view>
+    </view>
+    <view class="flex padding1 marginT1 marginB1 marginL1">
+      <view class="fontSize12 color_9b9">上课地点</view>
+    </view>
+    <view class="flex marginL2 paddingB2 width80">
+      <view class="fontSize14 text-overflow_1">{{orderDetail.course.address}}</view>
+    </view>
+  </view>
+  <view class="orderMsg bg_white margin1rem marginB4" wx:if="{{orderDetail.course_date_id != 0 && orderDetail.order_status != 20}}">
+    <view class="flex padding1 marginT1 marginB1">
+      <image class="lesson_detail marginR1" src="../../image/lesson/lesson_scan.png" alt=""></image>
+      <view class="fontSize12 color_9b9">扫码上课</view>
+    </view>
+    <view class="explain flex_row_center">
+      <view>文字说明请扫描下方二维码</view>
+    </view>
+    <view class="flex_row_center paddingT2 paddingB2">
+      <image class="scanImg" src="{{upUrl + orderDetail.qrcode}}" alt=""></image>
+    </view>
+  </view>
+  <view class="footer flex_row_left fontSize14" wx:if="{[{orderDetail.course_date_id != 0}}">
+    <view class="marginL1 color_ff3 marginR1">待上课</view>
+    <view>{{orderDetail.start_time}}</view>
+  </view>
+  <view class="footer flex_row_left fontSize14" wx:if="{{orderDetail.order_status == 20 && orderDetail.course.training_times == 0}}">
+    <view class="marginL1 color_ff3">复训已完成</view>
+    <view class="cancelOrder color_white bg_ff5">删除订单</view>
+  </view>
+  <view class="footer flex_row_left fontSize14" wx:if="{{orderDetail.order_status == 20 && orderDetail.course.training_times > 0}}">
+    <view class="marginL1 color_ff3 marginR1">待复训</view>
+    <view class="cancelOrder color_white bg_ff8" bindtap="payPanelS">参加复训</view>
+  </view>
+</view>

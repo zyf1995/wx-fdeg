@@ -1,0 +1,219 @@
+/* pages/addressAdd/addressAdd.wxss */
+@import "../../iconfont.wxss";
+page{
+  background-color: #fff;
+}
+.padding_custom {
+      padding: 24rpx 36rpx;
+}
+
+.us_avatar {
+    padding: 24rpx 0;
+}
+
+.us_avatar image {
+    width: 120rpx;
+    height: 120rpx;
+    object-fit: cover;
+}
+
+.us_list {
+    padding: 0 24rpx;
+    margin-bottom: 100rpx;
+}
+
+.us_item {
+    line-height: 3.6;
+}
+.us_item text{
+  display: inline-block;
+  width: 40%;
+}
+.us_item i {
+    font-size: 48rpx;
+    line-height: 1.8;
+}
+
+.bottom_bar {
+    height:120rpx;
+    line-height: 120rpx;
+    position: fixed;
+    bottom: 0;
+    font-size: 30rpx;
+}
+
+.bottom_bar view{
+  width: 90%;
+  height: 86rpx;
+  line-height: 86rpx;
+  border-radius: 12rpx;
+  font-size: 34rpx;
+}
+
+.uun_input input {
+    line-height: 60rpx;
+    height: 60rpx;
+}
+
+.input2 {
+    height:108rpx;
+    padding: 24rpx 36rpx;
+}
+
+.input2 text {
+    width: 20%;
+    min-width: 20%;
+}
+
+.input2 input {
+        max-width: 50%;
+}
+
+.common_submit_btn {
+    margin: 72rpx auto;
+}
+
+.send {
+    width: 120rpx;
+    padding: 9.8rpx 12rpx;
+    border: 2rpx solid red;
+    color: red;
+    border-radius: 126rpx;
+    text-align: center;
+}
+
+.input2 .icon-down-arrow, .input2 .icon-shangjiantou {
+    width: 72rpx;
+    font-size: 48rpx;
+}
+
+input[disabled] {
+    background: transparent;
+}
+
+.bank_list {
+    height: 0;
+    transition: height 300ms;
+    font-size: 28rpx;
+    max-height: 312rpx;
+    overflow-y: scroll;
+    background: linear-gradient(to bottom, #f44444, #F48784);
+    color: #fff;
+}
+
+.bank_list.on {
+    height: 288rpx;
+}
+
+.bank_list li {
+    height: 72rpx;
+    line-height: 72rpx;
+}
+
+/* // 共用地址列表为空时的样式 */
+.al_empty {
+  width: 100%;
+  height: 100%;
+}
+.al_empty .al_e_img {
+  width: 264rpx;
+  height: 264rpx;
+  margin-bottom: 48rpx;
+  background: #dbdbdb;
+  border-radius: 50%;
+}
+.al_empty .al_e_img image {
+  width: 70%;
+  height: 70%;
+}
+
+
+/*.mall_address_list .address_list_footer::before {
+  content: "";
+  background-image: none;
+}*/
+.user_address_list .common_submit_btn {
+  margin: 20rpx auto 48rpx;
+  border-radius: 20rpx;
+  width: 85%;
+}
+.user_address_list .al_empty {
+  width: 100vw;
+  height: 100vh;
+}
+.user_address_list .al_empty .al_e_img {
+  width: 264rpx;
+  height: 264rpx;
+  margin-bottom: 48rpx;
+  background: #dbdbdb;
+  border-radius: 50%;
+}
+.user_address_list .al_empty .al_e_img image {
+  width: 70%;
+  height: 70%;
+}
+.user_address_list .al_item i {
+  color: #999;
+}
+.user_address_list .al_i_info,
+.al_i_act {
+  padding: 24rpx;
+}
+.user_address_list .al_i_a_edit {
+  margin: 0 24rpx;
+}
+.user_address_list .common_radio {
+  min-width: 36rpx;
+  min-height: 36rpx;
+  border: 2rpx solid #999;
+}
+.user_address_list .common_radio.on {
+  border:none
+}
+
+
+.input2 .common_radio {
+  width: 36rpx;
+  height: 36rpx;
+  min-width: 36rpx;
+  min-height: 36rpx;
+  border-radius: 50%;
+  border: 2rpx solid #e8f0fe;
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.alert_wrapper {
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.alert_wrapper_content {
+    width: 65vw;
+    height: 408rpx;
+    display: flex;
+    align-items: flex-end;
+    background: url(../../image/new_version.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+
+.alert_wrapper .common_submit_btn {
+    height: 55rpx;
+    width: 45%;
+    line-height: 55rpx;
+    border-radius: 12rpx;
+    margin: 0;
+}
+
+.alert_wrapper .icon-arrow-right2 {
+    font-size: 60rpx;
+    color: #C7C7C7;
+}

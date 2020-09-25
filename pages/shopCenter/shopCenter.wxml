@@ -1,0 +1,45 @@
+<!--pages/shopCenter/shopCenter.wxml-->
+<view class="sc_info bg_default margin1rem borderRadius1rem">
+    <view class="sc_i_top flex_row_left padding1 ">
+        <image class='borderRadius50 marginR10' src="{{userInfo.avatar ? userInfo.avatar :'../../image/avatar_default.png'}}" alt=""></image>
+        <view class="flex_col_left marginB5">
+          <text class="marginB5 color_white">{{userInfo.nickname || userInfo.mobile}}</text>
+          <text class="marginB5 color_white" wx:if='{{shopInfo.p_info}}'>推荐人:{{shopInfo.p_info.mobile}}</text>
+          <text class="marginB5 color_white" wx:else>推荐人:暂无</text>
+          <text class="v_i_level bg_white color_default borderRadius1rem btn_padding fontSize10">{{userInfo.level.name}}</text>
+        </view>
+    </view>
+    <view class="sc_i_bottom flex_row_left color_white padding1 flex_wrap">
+        <view class=" flex_col_center marginB10">
+            <text class="marginB5 fontSize14">￥{{userInfo.total_money?userInfo.total_money:0}}</text>
+            <text>累计收入</text>
+        </view>
+        <view class=" flex_col_center marginB10">
+            <text class="marginB5 fontSize14">{{shopInfo.sons_num?shopInfo.sons_num:0}}</text>
+            <text>累计粉丝</text>
+        </view>
+        <view class=" flex_col_center ">
+            <text class="marginB5 fontSize14">{{shopInfo.week_score?shopInfo.week_score:0}}</text>
+            <text>活跃值</text>
+        </view>
+        <view class=" flex_col_center ">
+            <text class="marginB5 fontSize14">{{shopInfo.kpi?shopInfo.kpi:0}}</text>
+            <text>上月KPI</text>
+        </view>
+    </view>
+</view>
+
+<view class="sc_list flex_row_center flex_wrap bg_white margin1rem borderRadius1rem">
+    <view class="sc_item flex_col_center" bindtap="goShopTeamOrder">
+        <image class='marginB10' src="../../image/sc_order_icon.png" alt=""></image>
+        <text>粉丝订单</text>
+    </view>
+    <view class="sc_item flex_col_center" bindtap="goTeamList">
+        <image class='marginB10' src="../../image/sc_team_icon.png" alt=""></image>
+        <text>团队粉丝</text>
+    </view> 
+    <view class="sc_item flex_col_center" bindtap="goApplyHelp">
+        <image class='marginB10' src="../../image/applyHelp.png" alt=""></image>
+        <text>申请补助</text>
+    </view>
+</view>

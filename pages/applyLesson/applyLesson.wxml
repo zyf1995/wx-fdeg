@@ -1,0 +1,47 @@
+<!--packageB/pages/applyLesson/applyLesson.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="applyLesson">
+  <view class="addPerson flex_row_left bg_white paddingL1T2" wx:if="{{lessonMemberLists.length == 0}}" bindtap="addPersonMsg">
+    <image class="marginL5 marginR1" src="../../image/lesson/add_person_icon.png" alt=""></image>
+    <view class="fontSize16">添加报名人信息</view>
+    <text class="iconfont icon-arrow-right flex_grow1 text_right"></text>
+  </view>
+  <view class="addPerson flex_row_left bg_white padding12" wx:else bindtap="updatePersonMsg">
+    <view class="marginL1" wx:for="{{lessonMemberLists}}" wx:key="index" wx:if="{{item.isdefault == 1}}">
+      <view class="fontSize16 fontBold">{{item.name}}<text class="marginL2">{{item.phone}}</text></view>
+      <!-- <view class="fontSize14 color_b5b">身份证号：{{item.id_no}}</view> -->
+    </view>
+    <text class="iconfont icon-arrow-right flex_grow1 text_right"></text>
+  </view>
+  <image class="cut_line marginB1" src="../../image/lesson/cut_line.png" alt=""></image>
+  <view class="flex_col_center bg_white padding12 marginB1">
+    <view class="fontSize16 marginB1 marginT1">支付学费</view>
+    <view class="fontSize30 color_ff9 marginB2" wx:if="{{is_first == 10 && !is_second}}">￥ {{first_price}}</view>
+    <view class="fontSize30 color_ff9 marginB2" wx:if="{{is_first == 20 || is_second}}">￥ {{second_price}}</view>
+    <view class="fontSize14 color_b5b marginB1">支付成功后，可在我的预约中查看预约的课程</view>
+    <view class="fontSize14 color_b5b marginB1">选择上课时间和地点</view>
+  </view>
+  <view class="payType bg_white marginB1" wx:if="{{is_first == 10}}" bindtap="tabS">
+    <view class="flex_row_between padding12">
+      <view class="flex_row_left">
+        <view class="fontSize14 marginL1">我是复训学员（新学员请勿勾选）</view>
+      </view>
+      <image wx:if="{{is_second}}" class="lesson_circle" src="../../image/lesson/lesson_circle_active.png" alt=""></image>
+      <image wx:else class="lesson_circle" src="../../image/lesson/lesson_circle.png" alt=""></image>
+    </view>
+  </view>
+  <view class="payType bg_white">
+    <view class="flex_row_between padding12" bindtap="payTypeS" data-type="miniapp">
+      <view class="flex_row_left">
+        <image class="wx_icon marginR1" src="../../image/lesson/wx_icon.png" alt=""></image>
+        <view class="fontSize14">微信支付</view>
+      </view>
+      <image wx:if="{{payInfo.type == 'miniapp'}}" class="lesson_circle" src="../../image/lesson/lesson_circle_active.png" alt=""></image>
+      <image wx:else class="lesson_circle" src="../../image/lesson/lesson_circle.png" alt=""></image>
+    </view>
+  </view>
+  <view class="footer flex_row_center" bindtap="pay">
+    <view class="color_white fontSize16">立即支付</view>
+  </view>
+</view>

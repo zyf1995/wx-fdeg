@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "marquee": "../../components/marquee/marquee"
+  },
+  "navigationBarTitleText": "商城",
+  "enablePullDownRefresh": true
+}

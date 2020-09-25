@@ -1,0 +1,24 @@
+<!--pages/bindAlipay/bindAlipay.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="input2 padding1 borderBox bg_white BB1  width100 flex_row_left marginT15">
+    <text class="fontSize14">姓名</text>
+    <input class='border_none ' type="text" placeholder="支付宝认证姓名" bindinput="updateValue" data-type="name" value="{{info.alipay_name}}"></input>
+</view>
+<view class="input2 padding1 borderBox bg_white BB1  width100 flex_row_left" >
+    <text class="fontSize14">支付宝号</text>
+    <input class='border_none ' type="text" placeholder="支付宝账号" bindinput="updateValue" data-type="alipay" value="{{info.alipay}}"></input>
+</view>
+<view class="input2 padding1 borderBox bg_white BB1  width100 flex_row_left ">
+    <text class="fontSize14">手机号码</text>
+    <input class='border_none' type="text" placeholder="手机号码" bindinput="updateValue" data-type="mobile" value="{{info.mobile}}"></input>
+</view>
+<view class="input2 padding1 borderBox bg_white  width100  flex_row_left " >
+    <text class="fontSize14">验证码</text>
+    <input class='border_none ' type="text" placeholder="请输入验证码" bindinput="updateValue" data-type="code" value="{{info.code}}"></input>
+    <text class="send fontSize13" wx:if='{{sendable}}' bindtap='sendMsg'>获取验证码</text>
+    <text class="send fontSize13" wx:else>{{info.number}}S后重发</text>
+</view>
+<view class="common_submit_btn marginCenter" bindtap='bind' wx:if="{{info.handle == 'bind'}}">立即绑定</view>
+<view class="common_submit_btn marginCenter" bindtap='bind' wx:else>立即修改</view>
+  

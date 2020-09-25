@@ -1,0 +1,258 @@
+<!--pages/home/home.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="header_wrapper_50">
+  <view id='header' class='flex_row_left bg_white color_black'>
+    <view class="width100" bindtap="goSearch">
+      <input disabled="true" type="text" placeholder="输入关键词"></input>
+    </view>
+    <image bindtap="goCart" class="backIcon marginR1" src="../../image/cart_icon.png" alt=""></image>
+  </view>
+</view>
+<swiper
+id="banner"
+indicator-dots="true"
+autoplay="true"
+interval="2000"
+circular="true"
+indicator-color="#fff"
+indicator-active-color="#666874"
+class="bg_white paddingT5 paddingB1"
+>
+  <swiper-item wx:key="index" wx:for="{{liveBanner}}">
+    <image class="headset" src="{{item.image}}" />
+  </swiper-item>
+</swiper>
+<view class="hotSell paddingL1">
+  <view class="headline marginT1 marginB1">
+    <text class="paddingL1 fontSize16 fontBold"><text class="color_ff6 marginR1">热卖</text>
+    <text class="fontSize12 color_666">销量前茅，你值得拥有</text></text>
+  </view>
+  <view class="hotSellList">
+    <scroll-view scroll-x style="width: 100%;white-space: nowrap;">
+      <view bindtap="toGoodsInfo" data-goodsId="{{item.goods_id}}" class="bg_white posi_relative marginR1" style="width:80%;display:inline-block;"  wx:key="{{index}}" wx:for="{{liveHotsale}}">
+        <image class="branchShopLogo margin1rem flex" src="{{item.images}}" alt=""></image>
+        <view class="right marginR1">
+          <view class="fontSize14 marginB1 text-overflow_1">
+            <text class="hotsale marginR5">热卖</text>
+            <text class="text-overflow_1">{{item.goods_name}}</text>
+          </view>
+          <view class="marginB1">
+            <text class="fontSize18 color_ff6 marginR1">￥{{item.spec[0].goods_price}}</text>
+            <text class="fontSize12 color_a0a text_through">￥{{item.spec[0].line_price}}</text>
+          </view>
+          <view class="flex_row_left hot">
+            <image class="hot_icon marginL1 marginR5" src="../../image/live/hot_icon.png" alt=""></image>
+            <text class="fontSize10 color_white">美妆栏销量第一</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<view>
+  <view class="headline marginT1 marginB1 marginL1">
+    <text class="paddingL1 fontSize16 fontBold"><text class="color_ff6 marginR1">官方直播</text>
+    <text class="fontSize12 color_666">人气主播，你值得观看</text></text>
+  </view>
+  <view class="recommendLive marginT1">
+    <view class="flex flex_wrap width100">
+      <view bindtap="gowxLive" data-item="{{item}}" class="liveItem marginB1" wx:key="index" wx:for="{{wechatLiveList}}">
+        <view class="cover posi_relative">
+          <image class="coverImg" src="{{item.share_img}}" alt=""></image>
+          <view class="flex_row_left leftStatus">
+            <view wx:if="{{item.live_status == 101}}" class="liveStatus1 flex_row_left">
+              <image class="living_icon marginR5 marginL5" src="../../image/live/living.gif" alt=""></image>
+              <text class="fontSize10 color_white">直播中</text>
+            </view>
+            <view wx:if="{{item.live_status == 102}}" class="liveStatus2">
+              <text class="fontSize10">预约</text>
+            </view>
+            <view wx:if="{{item.live_status == 103}}" class="liveStatus3 flex_row_left">
+              <image class="living_icon marginR5 marginL5" src="../../image/live/live_end_icon.png" alt=""></image>
+              <text class="fontSize10 color_white">已结束</text>
+            </view>
+            <!-- <view wx:if="{{item.room.status == 2 || item.room.status == 0}}"><text class="fontSize10 color_white personNum">{{item.room.online + item.room.default_online}}人观看</text></view>
+            <view wx:if="{{item.room.status == 1}}"><text class="fontSize10 color_white personNum">{{item.room.booking + item.room.default_online}}人想看</text></view> -->
+          </view>
+          <!-- <view class="attention flex_col_center">
+            <image class="live_guanzhu" src="../../image/live/dz_active_icon.png" alt=""></image>
+            <text class="fontSize10 color_white marginT5">999</text>
+          </view> -->
+          <view class="anchorMessage flex_row_left">
+            <image class="avatar_default marginR1" src="{{item.anchor_img?item.anchor_img:'../../image/avatar_default.png'}}" alt=""></image>
+            <text class="fontSize13 color_white fontBold">{{item.anchor_name}}</text>
+          </view>
+        </view>
+        <view class="liveList bg_white">
+          <view class="fontSize14 fontBold text-overflow_1 padding1 marginR1">{{item.name}}</view>
+          <view class="flex_row_left width100 shopMessage" wx:if="{{item.goods.length != 0}}">
+            <view class="left flex_row_center">
+              <image class="LiveProductImg marginB1" src="{{item.goods[0].cover_img}}" alt=""></image>
+            </view>
+            <view class="right marginR1">
+              <text class="fontSize12 text-overflow_2">{{item.goods[0].name}}</text>
+              <text class="fontSize12 color_ff3">￥{{item.goods[0].price / 100}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="headerCates" id="headerUl">
+  <view class="headerUl bg_gray">
+      <view class="fontSize15 li {{tindex == index?'cur':''}}" wx:key="index" wx:for="{{cateList}}" bindtap="tabS" data-index="{{index}}" data-title="{{item}}">{{item.name}}</view>
+  </view>
+</view> -->
+<!-- <scroll-view scroll-x="true" class="nav" scroll-left="{{scrollLeft}}" scroll-with-animation="{{true}}">
+    <block wx:for="{{cateList}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+        <view class="nav-item {{currentTab == idx ?'active':''}}"  data-current="{{navItem.id}}" data-title="{{navItem}}" bindtap="swichNav">{{navItem.name}}</view>
+    </block>        
+</scroll-view>
+<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{cateList}}" wx-key="index" class="liveItem">
+        <scroll-view scroll-y="true" class="scoll-h">
+          <block wx:for="{{on_line_list}}" class="liveItem marginB1" wx:for-i="{{index}}" wx:key="i"> 
+            <view class="marginB1" bindtap="goSeeLive" data-room="{{item.room}}">
+              <view class="cover posi_relative">
+                <image class="coverImg" src="{{item.room.cover}}" alt=""></image>
+                <view class="flex_row_left leftStatus">
+                  <view wx:if="{{item.room.status == 2}}" class="liveStatus1 flex_row_left">
+                    <image class="living_icon marginR5 marginL5" src="../../image/live/living.gif" alt=""></image>
+                    <text class="fontSize10 color_white">直播中</text>
+                  </view>
+                  <view wx:if="{{item.room.status == 1}}" class="liveStatus2">
+                    <text class="fontSize10">预约</text>
+                  </view>
+                  <view wx:if="{{item.room.status == 0}}" class="liveStatus3 flex_row_left">
+                    <image class="living_icon marginR5 marginL5" src="../../image/live/live_end_icon.png" alt=""></image>
+                    <text class="fontSize10 color_white">已结束</text>
+                  </view>
+                  <view wx:if="{{item.room.status == 2 || item.room.status == 0}}"><text class="fontSize10 color_white personNum">{{item.room.online + item.room.default_online}}人观看</text></view>
+                  <view wx:if="{{item.room.status == 1}}"><text class="fontSize10 color_white personNum">{{item.room.booking + item.room.default_online}}人想看</text></view>
+                </view>
+                <view class="attention flex_col_center">
+                  <image class="live_guanzhu" src="../../image/live/dz_active_icon.png" alt=""></image>
+                  <text class="fontSize10 color_white marginT5">999</text>
+                </view>
+                <view class="anchorMessage flex_row_left">
+                  <image class="avatar_default marginR1" src="{{item.room.avatar?item.room.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+                  <text class="fontSize10 color_white">{{item.room.anchor_name}}</text>
+                </view>
+              </view>
+              <view class="liveList bg_white">
+                <text class="fontSize14 fontBold text-overflow_1 paddingT1 paddingL1 paddingR1">{{item.room.title}}</text>
+                <view class="flex_row_left width100 shopMessage">
+                  <view class="left flex_row_center">
+                    <image class="LiveProductImg marginT1 marginB1" src="{{item.goods[0].images?item.goods[0].images:''}}" alt=""></image>
+                  </view>
+                  <view class="right marginR1">
+                    <text class="fontSize12 text-overflow_2">{{item.goods[0].goods_name}}</text>
+                    <text class="fontSize12 color_ff3">￥{{item.goods[0].spec[0].goods_price}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="marginB1">
+              <view class="cover posi_relative">
+                <image class="coverImg" src="{{item.room.cover}}" alt=""></image>
+                <view class="flex_row_left leftStatus">
+                  <view wx:if="{{item.room.status == 2}}" class="liveStatus1 flex_row_left">
+                    <image class="living_icon marginR5 marginL5" src="../../image/live/living.gif" alt=""></image>
+                    <text class="fontSize10 color_white">直播中</text>
+                  </view>
+                  <view wx:if="{{item.room.status == 1}}" class="liveStatus2">
+                    <text class="fontSize10">预约</text>
+                  </view>
+                  <view wx:if="{{item.room.status == 0}}" class="liveStatus3 flex_row_left">
+                    <image class="living_icon marginR5 marginL5" src="../../image/live/live_end_icon.png" alt=""></image>
+                    <text class="fontSize10 color_white">已结束</text>
+                  </view>
+                  <view wx:if="{{item.room.status == 2 || item.room.status == 0}}"><text class="fontSize10 color_white personNum">{{item.room.online + item.room.default_online}}人观看</text></view>
+                  <view wx:if="{{item.room.status == 1}}"><text class="fontSize10 color_white personNum">{{item.room.booking + item.room.default_online}}人想看</text></view>
+                </view>
+                <view class="attention flex_col_center">
+                  <image class="live_guanzhu" src="../../image/live/dz_active_icon.png" alt=""></image>
+                  <text class="fontSize10 color_white marginT5">999</text>
+                </view>
+                <view class="anchorMessage flex_row_left">
+                  <image class="avatar_default marginR1" src="{{item.room.avatar?item.room.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+                  <text class="fontSize10 color_white">{{item.room.anchor_name}}</text>
+                </view>
+              </view>
+              <view class="liveList bg_white">
+                <text class="fontSize14 fontBold text-overflow_1 paddingT1 paddingL1 paddingR1">{{item.room.title}}</text>
+                <view class="flex_row_left width100 shopMessage">
+                  <view class="left flex_row_center">
+                    <image class="LiveProductImg marginT1 marginB1" src="{{item.goods[0].images?item.goods[0].images:''}}" alt=""></image>
+                  </view>
+                  <view class="right marginR1">
+                    <text class="fontSize12 text-overflow_2">{{item.goods[0].goods_name}}</text>
+                    <text class="fontSize12 color_ff3">￥{{item.goods[0].spec[0].goods_price}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block >     
+        </scroll-view>
+    </swiper-item>
+</swiper> -->
+
+<!-- <view class="recommendLive marginT1">
+  <view class="flex_row_left flex_wrap width100">
+    <view class="liveItem marginB1" wx:key="index" wx:for="{{on_line_list}}" bindtap="goSeeLive" data-room="{{item.room}}">
+      <view class="cover posi_relative">
+        <image class="coverImg" src="{{item.room.cover}}" alt=""></image>
+        <view class="flex_row_left leftStatus">
+          <view wx:if="{{item.room.status == 2}}" class="liveStatus1 flex_row_left">
+            <image class="living_icon marginR5 marginL5" src="../../image/live/living_icon.png" alt=""></image>
+            <text class="fontSize10 color_white">直播中</text>
+          </view>
+          <view wx:if="{{item.room.status == 1}}" class="liveStatus2">
+            <text class="fontSize10">预约</text>
+          </view>
+          <view wx:if="{{item.room.status == 0}}" class="liveStatus3 flex_row_left">
+            <image class="living_icon marginR5 marginL5" src="../../image/live/live_end_icon.png" alt=""></image>
+            <text class="fontSize10 color_white">已结束</text>
+          </view>
+          <view wx:if="{{item.room.status == 2 || item.room.status == 0}}"><text class="fontSize10 color_white personNum">{{item.room.online + item.room.default_online}}人观看</text></view>
+          <view wx:if="{{item.room.status == 1}}"><text class="fontSize10 color_white personNum">{{item.room.booking + item.room.default_online}}人想看</text></view>
+        </view>
+        <view class="attention flex_col_center">
+          <image class="live_guanzhu" src="../../image/live/dz_active_icon.png" alt=""></image>
+          <text class="fontSize10 color_white marginT5">999</text>
+        </view>
+        <view class="anchorMessage flex_row_left">
+          <image class="avatar_default marginR1" src="{{item.room.avatar?item.room.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+          <text class="fontSize10 color_white">{{item.room.anchor_name}}</text>
+        </view>
+      </view>
+      <view class="liveList bg_white">
+        <text class="fontSize14 fontBold text-overflow_1 paddingT1 paddingL1 paddingR1">{{item.room.title}}</text>
+        <view class="flex_row_left width100 shopMessage">
+          <view class="left flex_row_center">
+            <image class="LiveProductImg marginT1 marginB1" src="{{item.goods[0].images?item.goods[0].images:''}}" alt=""></image>
+          </view>
+          <view class="right marginR1">
+            <text class="fontSize12 text-overflow_2">{{item.goods[0].goods_name}}</text>
+            <text class="fontSize12 color_ff3">￥{{item.goods[0].spec[0].goods_price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> -->
+<!-- <view class="marginT15 marginB15 flex_row_center text_gray" wx:if='{{!toBottom}}'>
+    <image class="loadingGif" src="../../image/timg23.gif" alt=""></image>
+    <text class="fontSize14">加载中...</text>
+</view> -->
+<view class="marginT15 flex_row_center text_gray">
+    <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+    <text class="fontSize14">我是有底线的</text>
+</view>
+<view class="goBack flex_col_center">
+  <image bindtap="goTop" class="backIcon1" src="../../image/live/goTop.png" alt=""></image>
+</view>

@@ -1,0 +1,41 @@
+<!--pages/shareApp/shareApp.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="flex_col_center page">
+  <view class="ui_img">
+    <swiper
+    id="banner"
+    indicator-dots="true"
+    circular="true"
+    indicator-color="#fff"
+    indicator-active-color="#666874"
+    bindchange="onSlideChange"
+    >
+      <swiper-item wx:key="index" wx:for="{{imgUrl}}">
+          <image class="headset" src="{{item}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class='ui_btn flex_row_center color_white'>
+      <view class="poster flex_row_center marginB1" bindtap="share">下载图片</view>
+  </view>
+</view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showDialog}}"></view>
+<!-- 弹出层 -->
+<view wx:if="{{showDialog}}" class="dialog-wrap">
+ <view class="padding1 fontSize16 fontBold">提示</view>
+ <view class="dialog width100 text_center">
+  请您先开启权限，才能下载图片
+  <view class="dialog-footer marginT1 flex_row_around">
+   <button
+    class="btn"
+    open-type="openSetting"
+    bindtap="confirm" >
+     授权
+   </button>
+   <button class="btn" bindtap="cancel">取消</button>
+  </view>
+ </view>
+</view>

@@ -1,0 +1,38 @@
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="user_address_list">
+  <view class="al_empty flex_col_center" wx:if='{{list.length == 0}}'>
+    <view class="al_e_img flex_row_center bg_gray">
+        <image src="../../image/al_empty.png" alt=""></image>
+    </view>
+    <text class="color_gray">还没有收货地址呢!</text>
+  </view>
+  <view class="al_list fontSize14" wx:else>
+    <view class="al_item BB5" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list[0].name}}" data-id="{{item.address_id}}" bindtap="defaultS">
+        <view class="al_i_info BB1" >
+            <view class="flex_row_left marginB10">
+                <view class="flex_grow1">{{item.name}}</view>
+                <view>{{item.phone}}</view>
+            </view>
+            <view>{{item.Area.province}}{{item.Area.city}}{{item.Area.region}} {{item.detail}}</view>
+        </view>
+        <view class="al_i_act flex_row_left">
+            <view class="flex_grow1 flex_row_left">
+                <view class="common_radio marginR10 {{item.isdefault == 1 ? 'on':''}}"></view>
+                <text>默认地址</text>
+            </view>
+            <view class="al_i_a_edit" data-item="{{item}}" catchtap="edit">
+                <text class="iconfont icon-edit"></text>
+                <text>编辑</text>
+            </view>
+            <view data-item="{{item}}" catchtap="deleteAddress">
+                <text class="iconfont icon-remove"></text>
+                <text>删除</text>
+            </view>
+        </view>
+    </view>
+  </view>
+  <navigator url="/pages/addressAdd/addressAdd" class="bottom_bar flex_row_center color_white text_center width100">
+    <view class="bg_default">添加新地址</view>
+  </navigator>
+</view>

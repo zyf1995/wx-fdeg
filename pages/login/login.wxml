@@ -1,0 +1,54 @@
+<!--pages/login/login.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view>
+  <image class="bg_left" src="{{upUrl + 'wxbackground/bg_right.png'}}"></image>
+  <image class="bg_right" src="{{upUrl + 'wxbackground/bg_left.png'}}"></image>
+  <image class="bg_bottom" src="{{upUrl + 'wxbackground/bg_bottom.png'}}"></image>
+</view>
+<view class="flex_col_center logo">
+  <image class="marginB1 hdt_logo" src="../../image/logo.png"></image>
+  <image class="small_live" src="../../image/small_live.png.png"></image>
+</view>
+<view class="register flex_row_between paddingB1"> 
+  <button class="cancel" bindtap="cancel">暂不登录</button>
+  <button class="login" open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">立即登录</button>
+</view>
+<view class="text_center fontSize14 paddingT1">登录即表示您同意我们的<text class="color_c54">《用户协议》</text></view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 弹出层 -->
+<view class="modalDlg" wx:if="{{showModal}}">
+    <image src="../../image/logo.png"/>
+    <button class="ok" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+</view>
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal1}}"></view>
+<view class="authInviter" wx:if="{{showModal1}}">
+  <view class="header flex_row_left">
+    <view class="left">
+      <text class="iconfont icon-left-arrow" bindtap="goBack"></text>
+    </view>
+    <view class="center fontSize15 fontBold">
+      认证邀请人
+    </view>
+  </view>
+  <view class="cont BB1 flex_row_left">
+    <view class="marginL1">邀请人：</view>
+    <input class="flex_grow1 marginR1 border_none" style="width:50%;" type="text" placeholder="请输入邀请码" value="{{code}}" bindinput="changeVal"></input>
+    <view class="marginR1" bindtap="query">查询</view>
+  </view>
+  <view wx:if="{{isObj == '{}'}}" class="userInfo flex_col_center">
+    <image class="inviter_avatar marginB1" src="../../image/inviter_avatar.png" alt=""></image>
+    <view class="fontSize16 color_aea">待确认邀请人</view>
+  </view>
+  <view wx:else class="userInfo flex_col_center">
+    <image class="inviter_avatar marginB1" src="{{inviterInfo.avatar}}" alt=""></image>
+    <view class="fontSize16 color_aea">{{inviterInfo.nickname || inviterInfo.mobile}}</view>
+  </view>
+  <view class="footer flex_row_center marginT1">
+    <view bindtap="cancel" class="color_aea fontSize16 cancel1 marginR1">取消</view>
+    <view bindtap="submit" class="color_aea fontSize16 submit marginL1">确认</view>
+  </view>
+</view>

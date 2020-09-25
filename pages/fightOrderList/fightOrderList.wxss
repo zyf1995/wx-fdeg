@@ -1,0 +1,261 @@
+/* pages/fightOrderList/fightOrderList.wxss */
+.allShop{
+  border-left: 3px solid #000;
+  text-indent: 48rpx;
+}
+.hrg_img {
+  width: 30vw;
+  min-width: 30vw;
+  padding-bottom: 30vw;
+  height: 0;
+  position: relative;
+}
+
+.hrg_img image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#banner{
+  width: 90%;
+  margin-left: 5%;
+  height: 302rpx;
+  position: relative;
+  margin-top: -100rpx;
+}
+#banner image{
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+swiper-item{
+  border-radius: 20rpx;
+  overflow:hidden;
+}
+.hrg_tip>text.tip_right {
+  background: #864502;
+}
+
+.user_order_list{
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right: 24rpx;
+  bottom: 200rpx;
+}
+
+.prefecture{
+  border-radius: 16rpx;
+}
+.prefecture_item{
+  background:rgba(255,233,229,1);
+  border-radius:16rpx;
+}
+.siftLogo{
+  width:240rpx;
+  height:240rpx;
+  border-radius:16rpx;
+  display: block;
+}
+.goBuyRightNow{
+  width:174rpx;
+  height:48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  background:linear-gradient(90deg,rgba(255,57,57,1) 0%,rgba(255,137,91,1) 100%);
+  box-shadow:0px 2px 3px 0px rgba(255,184,168,1);
+  border-radius:24rpx;
+}
+
+.marquee {
+  width: 100%;
+  align-items: center;
+  color: #3a3a3a;
+  background-color: white;
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.marquee_box {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 252rpx;
+  overflow: hidden;
+  border-radius: 20rpx;
+  background-color:  rgba(255,233,229,1);
+}
+
+.marquee_list {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.marquee_top {
+  transition: all 0.5s;
+  margin-top: -84rpx;
+}
+
+.marquee_list view {
+  height: 84rpx;
+  line-height: 84rpx;
+  font-style: 28.8rpx;
+}
+
+.marquee_list view image{
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 28.8rpx;
+}
+
+.marquee_list view text {
+  padding: 0 4rpx;
+}
+
+/*积分板块*/
+.branchPlate{
+  margin: 24rpx;
+  padding: 24rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+  border-radius: 20rpx;
+}
+.branchPlate text{
+  width: 2rpx;
+  height: 40rpx;
+  background: #666;
+}
+.branchPlate>view{
+  flex: 1;
+  text-align: center;
+  font-size: 28.8rpx;
+  padding: 12rpx 0;
+}
+
+.avatar_default{
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+}
+.saleOut{
+  width: 96rpx;
+  padding: 4.8rpx;
+  color: #fed78a !important;
+  border-radius: 24rpx;
+  border: 2px solid #fed78a;
+}
+ /* 遮罩层 */
+ .mask{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#000;
+  z-index:9000;
+  opacity:0.5;
+}
+/* 弹出层 */
+
+.order_pay {
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.order_pay image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.order_pay .common_submit_btn {
+  width: 90%;
+  border-radius: 48rpx;
+}
+
+.order_pay .op_close {
+  position: absolute;
+  right: 24rpx;
+  top: 14.4rpx;
+}
+
+.op_title text {
+  width: 48rpx;
+  height: 48rpx;
+  background: red;
+  border-radius: 50%;
+}
+
+.op_price {
+  border-bottom: 2px dashed #efefef;
+}
+.padding_custom {
+  padding: 24rpx 36rpx;
+}
+
+.hrg_tip1 .tip_left{
+  padding: 12rpx 24rpx;
+  background: #FF484A;
+  box-shadow: 1px 2px 3px 0px #FFB9A8;
+  border-radius: 26rpx;
+}
+.hrg_tip1 .tip_right{
+  padding: 12rpx 24rpx;
+  background: #FF9920;
+  box-shadow: 1px 2px 3px 0px #FFB9A8;
+  border-radius: 26rpx;
+}
+
+.bwz_bg{
+  width: 100%;
+  height: 478rpx;
+  background-image: url('http://fd.weitaosong.com/wechatqr/bwz_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.avatar_default{
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+}
+.rank_icon{
+  width: 24rpx;
+  height: 24rpx;
+}
+.vip{
+  display: inline-block;
+  width: 44rpx;
+  height: 40rpx;
+  line-height: 56rpx;
+  background-image: url('http://fd.weitaosong.com/wechatqr/vip_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.rankList{
+  width: 256rpx;
+  height: 68rpx;
+  background-image: url('http://fd.weitaosong.com/wechatqr/rank_bg3.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.line_icon{
+  width: 90%;
+  height: 2rpx;
+  margin-left: 5%;
+}
+.bwjd_icon{
+  width: 38rpx;
+  height: 40rpx;
+}
+.recharge{
+  padding: 20rpx 48rpx;
+  background-image: url('http://fd.weitaosong.com/wechatqr/recharge_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

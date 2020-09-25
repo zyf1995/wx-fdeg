@@ -1,0 +1,50 @@
+/* pages/search/search.wxss */
+#header input{
+  width: 70%;
+  height: 60rpx;
+  background:rgba(238,238,238,1);
+  border-radius:32rpx;
+  background-image: url("https://testhdt.teadrf.cn/wxbackground/search_icon.png");
+  background-repeat: no-repeat;
+  background-size: 32rpx 32rpx;
+  background-position:24rpx center;
+  /* text-indent: 64rpx; */
+  padding-left: 64rpx;
+}
+
+.gcl_tab_mall .gcl_t_item {
+  width: 33.33%
+}
+.gcl_tab {
+  padding:12rpx 0;
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0;
+  top: 100rpx;
+  z-index: 120;
+}
+.gcl_t_item {
+    width: 25%;
+    height: 60rpx;
+}
+.gcl_t_item.on {
+    color: red;
+}
+.hrg_tip>text.volume{
+  color: #A6A6A6;
+  background-color: #fff;
+  position:absolute;
+  right: 12rpx;
+}
+.hrg_tip>text.tip_left{
+    background: #FF7800 !important;
+}
+.hrg_tip{
+  float: left;
+}
+.hrg_tip>text.tip_right {
+    color: #993333 !important;
+    background: #FDD380 !important;
+}
+
+

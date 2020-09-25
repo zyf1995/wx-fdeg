@@ -1,0 +1,34 @@
+<!--packageA/pages/dsSearchList/dsSearchList.wxml-->
+<import src="../../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="header_wrapper_50">
+  <view id='header' class='flex_row_left bg_white color_black'>
+    <view bindtap="goSearch">
+      <input type="text" placeholder="输入关键词" value="{{keyword}}" bindinput="changeVal"></input>
+    </view>
+    <view class="marginL2" bindtap="search">搜索</view>
+  </view>
+</view>
+<view class="shopList">
+  <view class="shopItem marginT5" wx:for="{{goodsList}}" wx:key="index" bindtap="getshopDetail" data-item="{{item}}">
+    <view class="flex_row_left cont padding1 bg_white marginB5">
+      <view class="storeImg flex_row_center paddingT1 paddingB1 marginR1">
+        <image class="productImg" src="{{item.image}}" alt=""></image>
+      </view>
+      <view class="right flex_grow1">
+        <view class="fontSize14 fontBold marginB1 text-overflow_2">{{item.name}}</view>
+        <view class="fontSize12 color_gray marginB5">
+        </view>
+        <view class="fontSize14 marginB5">
+          <text class="color_red">￥{{item.price}}</text>
+          <text class="color_gray text_through">￥{{item.origin_price}}</text>
+        </view>
+        <view class="fontSize14">库存：{{item.stock}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="marginT15 paddingB15 flex_row_center text_gray">
+    <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+    <text class="fontSize14">我是有底线的</text>
+</view>

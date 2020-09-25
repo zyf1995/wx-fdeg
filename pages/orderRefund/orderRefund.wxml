@@ -1,0 +1,76 @@
+<!--pages/orderRefund/orderRefund.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="goodsBox flex_row_left BB5">
+  <image src="{{goodInfo.image ? goodInfo.image : ''}}" alt=""></image>
+  <view class="goodsMain flex_col_between">
+    <view class="goodsInfo">
+      <view class="text-overflow_3" style="margin-right: 1rem;">{{goodInfo.goods_name}}</view>
+      <text>¥{{goodInfo.goods_price}}</text>
+    </view>
+    <view class="norms flex_row_between">
+      <text>{{goodInfo.goods_attr}}</text>
+      <text>X{{goodInfo.total_num}}</text>
+    </view>
+  </view>
+</view>
+<view class="tipsP" wx:if="{{returnInfo.status}}">
+  <view wx:if="{{returnInfo.status == 10}}">退款信息以提交成功，请耐心等待商家反馈！</view>
+  <view wx:if="{{returnInfo.status == 20}}">退款已完成</view>
+  <view wx:if="{{returnInfo.status == 30 && returnInfo.type == 'only'}}">商家以同意您的退款申请，请耐心等待退款！</view>
+  <view wx:if="{{returnInfo.status == 30 && returnInfo.type == 'all' && !returnInfo.express_no}}">商家已同意您的退货退款申请，请提交退款商品快递信息，并耐心等待退款！</view>
+  <view wx:if="{{returnInfo.status == 30 && returnInfo.type == 'all' && returnInfo.express_no}}">您已提交过快递单号信息，请耐心等待商家退款！</view>
+  <view wx:if="{{returnInfo.status == 40}}">商家已拒绝您的退款申请，您可以再次提交退款申请！</view>
+</view>
+
+<view wx:if="{{returnInfo.type == 'all' && returnInfo.status == 30  && !returnInfo.express_no}}">
+  <view class="deliveryUl">
+    <view class="flex_row_left li">
+      <view class="span1">快递公司</view>
+      <view class="flex_row_between tinpi">
+        <picker class="width100" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="company">
+          <view class="picker width100">
+            {{array[index].company || '请选择'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="flex_row_left li">
+      <view class="span1">快递单号</view>
+      <view class="flex_row_between tinpi">
+        <input type="text" value="{{express_no}}" bindinput="updateValue" placeholder="请输入快递单号"></input>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{returnInfo.status == 40 || !returnInfo.status}}">
+  <view class="flex_row_between padding12 BB1" bindtap="orderRefundSubmit" data-type="">
+    <view class="flex_row_left refundType">
+      <view class="refundimgB">
+        <image src="../../image/refund1.png" alt=""></image>
+      </view>
+      <view class="flex_col_between refundType">
+        <text>仅退款</text>
+        <text>未收到货</text>
+      </view>
+    </view>
+    <text class="iconfont icon-arrow-right"></text>
+  </view>
+  <view class="flex_row_between padding12"  bindtap="orderRefundSubmit" data-type="1">
+    <view class="flex_row_left refundType">
+      <view class="refundimgB">
+        <image src="../../image/refund2.png" alt=""></image>
+      </view>
+      <view class="flex_col_between refundType">
+        <text>退货退款</text>
+        <text>已收到货，需要退换已收到的货物</text>
+      </view>
+    </view>
+    <text class="iconfont icon-arrow-right"></text>
+  </view>
+</view>
+<view class="refundSubmit flex_row_between">
+  <view class="returnCancel flex_row_center" wx:if="{{returnInfo && !returnInfo.express_no}}" bindtap="cancelReturn">撤销退款</view>
+  <view class="returnNext flex_row_center" wx:if="{{returnInfo.type == 'all' && returnInfo.status == 30 && !returnInfo.express_no}}" bindtap="submit">提交快递单号</view>
+</view>

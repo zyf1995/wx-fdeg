@@ -1,0 +1,31 @@
+<!--pages/rankList/rankList.wxml-->
+<view>
+  <image class="rankList_bg" src="../../image/fightOrder/rankList_bg.png" alt=""></image>
+</view>
+<view class="rankList bg_white">
+  <view class="title flex_row_left fontSize16 paddingT1 paddingB1 BB1 marginL1 marginR1">
+    <view class="item1 text_center">排名</view>
+    <view class="item2 text_center">用户</view>
+    <view class="item3 text_center">交易金额</view>
+  </view>
+  <view class="ranlItem">
+    <view class="flex_row_left fontSize16 padding1" wx:for="{{rankList}}" wx:key="index" wx:if="{{item.user_id != 0}}">
+      <view class="item1 flex_row_center" wx:if="{{index == 0}}">
+        <image class="rankFirst_icon" src="../../image/fightOrder/rankFirst_icon.png" alt=""></image>
+      </view>
+      <view class="item1 flex_row_center" wx:elif="{{index == 1}}">
+        <image class="rankFirst_icon" src="../../image/fightOrder/rankSecond_icon.png" alt=""></image>
+      </view>
+      <view class="item1 flex_row_center" wx:elif="{{index == 2}}">
+        <image class="rankFirst_icon" src="../../image/fightOrder/rankThird_icon.png" alt=""></image>
+      </view>
+      <view class="item1 flex_row_center" wx:else>{{index + 1}}</view>
+      <view class="item2 flex_row_left">
+        <view><image class="avatar_default marginR1" src="{{item.avatar?item.avatar:'../../image/avatar_default.png'}}" alt=""></image></view>
+        <view class="text-overflow_1">{{item.name}}</view>
+      </view>
+      <view class="item3 text_center color_fda text-overflow_1">{{item.money}}</view>
+    </view>
+  </view>
+</view>
+<view class="paddingT15 paddingB15" style="height: 48rpx;"></view>

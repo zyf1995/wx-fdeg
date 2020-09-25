@@ -1,0 +1,6 @@
+<!--components/marquee/marquee.wxml-->
+<view class='marquee_container'>
+  <view class='marquee_text' style='{{ orientation }}:{{ marqueeDistance }}px;font-size: {{size}}px;'>
+    {{ text }}
+  </view>
+</view>

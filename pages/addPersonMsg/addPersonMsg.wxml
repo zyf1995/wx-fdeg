@@ -1,0 +1,39 @@
+<!--packageB/pages/addPersonMsg/addPersonMsg.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="addPersonMsg">
+  <view class="formData bg_white marginT1">
+    <view class="flex_row_left padding1">
+      <input class="border_none padding1 fontSize14" type="text" bindinput="updateValue1" value="{{info.name}}" placeholder="报名人"></input>
+    </view>
+    <view class="flex_row_left padding1">
+      <input class="border_none padding1 fontSize14" type="text" bindinput="updateValue2" value="{{info.phone}}" placeholder="手机号"></input>
+    </view>
+    <!-- <view class="flex_row_left padding1">
+      <input class="border_none padding1 fontSize14" type="text" bindinput="updateValue3" value="{{info.id_no}}" placeholder="身份证号"></input>
+    </view>
+    <view class="flex_row_left padding1">
+      <picker class="width100" mode="date" bindchange="bindDateChange" value="{{info.birth}}" start="1940-01-01" end="2040-01-01">
+        <view class="picker flex_row_left width100 padding1">
+          <view class="flex_grow1 {{info.birth?'color_727':''}}">
+            {{info.birth?info.birth:'农历生辰'}}
+          </view>
+          <text class="iconfont icon-arrow-right text_right marginR1"></text>
+        </view>
+      </picker>
+    </view> -->
+  </view>
+  <view class="flex_row_between padding1 bg_white marginT1">
+    <view class="fontSize14 fontBold">设为默认报名人</view>
+    <switch checked="{{isChecked}}" bindchange="switchChange"/>
+  </view>
+  <view class="flex_row_center padding1 bg_white marginT1" bindtap="deleteS">
+    <view class="fontSize14 fontBold">删除</view>
+  </view>
+  <view class="footer flex_row_center" wx:if="{{type == 'add'}}" bindtap="add">
+    <view class="fontSize16 color_white fontBold">保存并使用</view>
+  </view>
+  <view class="footer flex_row_center" wx:if="{{type == 'edit'}}" bindtap="update">
+    <view class="fontSize16 color_white fontBold">保存</view>
+  </view>
+</view>

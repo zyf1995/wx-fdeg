@@ -1,0 +1,400 @@
+/* packageB/pages/lessonList/lessonList.wxss */
+@import "../../iconfont.wxss";
+.lesson_listBg{
+  width:100%;
+  height:344rpx;
+}
+.shopLogo{
+  width:200rpx;
+  height:200rpx;
+}
+.lesson_item{
+  width: 92vw;
+  margin-left: 4%;
+  position: relative;
+  border-radius:12rpx;
+}
+.lesson_item:nth-child(1){
+  margin-top: -72rpx;
+}
+.firstJoin{
+  width:60rpx;
+  height:30rpx;
+  /*line-height: 1.25rem;*/
+  text-align: center;
+  color: #fff;
+  background:linear-gradient(90deg,rgba(255,57,57,1) 0%,rgba(255,168,81,1) 100%);
+  border-radius:8rpx;
+}
+.addressIcon{
+  width:26rpx;
+  height:30rpx;
+}
+.bottom .seeDetail{
+  width: 20vw;
+}
+.buy_cart_icon{
+  width: 82rpx;
+  position: fixed;
+  height: 82rpx;
+  z-index: 100;
+  bottom: 96rpx;
+  right: 48rpx;
+}
+.gs_tabs{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 120;
+}
+.gs_t_item {
+  height: 96rpx;
+  min-width: 50%;
+}
+.gs_t_item text {
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  font-size: 28rpx;
+  width: 80%;
+}
+.gs_tabs .line {
+  /* background: #FFBF41; */
+  height: 4rpx;
+  width: 50%;
+  position: absolute;
+  bottom: 8rpx;
+  transition: all .3s linear;
+}
+.gs_tabs .line text {
+  width: 30%;
+  height: 100%;
+  background: #FFBF41;
+}
+
+.cateList_icon{
+  width:38rpx;
+  height:34rpx;
+}
+.search_white_icon{
+  width:32rpx;
+  height:34rpx;
+}
+#banner{
+  width: 100%;
+  /*margin: 0 3%;*/
+  height: 302rpx;
+}
+#banner image{
+  width: 94%;
+  margin: 0 3%;
+  height: 100%;
+  border-radius:20rpx;
+}
+.headline p{
+  border-left: 6rpx solid #FF6407;
+}
+
+.branchShopLogo{
+  width:198rpx;
+  height:198rpx;
+}
+.hotsale{
+  display: inline-block;
+  font-size: 17rpx;
+  width:48rpx;
+  height:24rpx;
+  line-height: 24rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background:rgba(255,100,7,1);
+  border-radius:2rpx;
+}
+.hot{
+  width:240rpx;
+  height:38rpx;
+  line-height: 38rpx;
+  background-image: url('https://testhdt.teadrf.cn/wxbackground/valume_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.hot_icon{
+  width: 42rpx;
+  height: 13rpx;
+}
+.liveItem{
+  width: 50% !important;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.cover{
+  width:48vw;
+  height:327rpx;
+  margin-left: 1vw;
+}
+.liveList{
+  width: 48vw;
+  margin-left: 1vw;
+}
+.cover .coverImg{
+  width:100%;
+  height:100%;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.leftStatus{
+  position: absolute;
+  top: 12rpx;
+  left: 12rpx;
+}
+.personNum{
+  display: inline-block;
+  background-color: rgba(0,0,0,0.6);
+  width:142rpx;
+  height:28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  margin-left: -12rpx;
+  border-radius:0 16rpx 16rpx 0;
+}
+.liveStatus1{
+  width:104rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  z-index: 100;
+  background-image: url('https://testhdt.teadrf.cn/wxbackground/livestatus_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.liveStatus2{
+  width:66rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  z-index: 100;
+  background-color: #fff;
+  color: #FF6407;
+  border-radius:16rpx;
+}
+.liveStatus3{
+  width:104rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  z-index: 100;
+  background-color: #6d7c91;
+  border-radius:16rpx;
+}
+.living_icon{
+  width: 15rpx;
+  height: 15rpx;
+}
+.attention{
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+}
+.attention .live_guanzhu{
+  width: 24rpx;
+  height: 24rpx;
+}
+.anchorMessage{
+  position: absolute;
+  left: 12rpx;
+  bottom: 24rpx;
+}
+.anchorMessage .avatar_default{
+  width:48rpx;
+  height:48rpx;
+  border-radius:50%
+}
+
+.liveList .shopMessage .left{
+  width: 38%;
+}
+.liveList .shopMessage .right{
+  width: 62%;
+}
+.LiveProductImg{
+  width:85rpx;
+  height:85rpx;
+  border-radius:10rpx;
+}
+.backIcon{
+  width:80rpx;
+  height:80rpx;
+}
+.backIcon1{
+  width:120rpx;
+  height:120rpx;
+}
+.hotSellList .right{
+  width: 54%;
+  position: absolute;
+  left: 246rpx;
+  top: 24rpx;
+}
+.nav {
+    height: 80rpx;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 80rpx;
+    background: #f2f2f2;
+    font-size: 32rpx;
+    white-space: nowrap;
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    top: 100rpx;
+    z-index: 120;
+}
+.nav-item {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+}
+.nav-item.active{
+    font-weight: bold;
+    color: #FF6407;
+    font-size: 34rpx;
+}
+.scoll-h{
+  height: 100%;
+}
+
+
+.menu .menuList .li{
+  width: 25%;
+  padding: 20rpx 0 0;
+}
+.menu .menuList .li view{
+  width: 140rpx;
+  height: 56rpx;
+  color:rgba(0,0,0,1);
+  line-height: 56rpx;
+  text-align: center;
+  background-color:rgba(241,246,249,1);
+  border-radius:30rpx;
+}
+.rankList{
+  margin: 0 20rpx;
+  margin-top: 44rpx;
+}
+.rankList .top{
+  height: 84rpx;
+}
+.rankList .top view{
+  line-height: 84rpx;
+  font-weight:bold;
+  float: left;
+}
+.rankList .bottom{
+  clear: both;
+}
+.rankList .bottom .li{
+  height: 192rpx;
+  padding-left: 104rpx;
+}
+.rankList .bottom .li:first-child{
+  margin-top: 40rpx;
+  background-image: url(https://testhdt.teadrf.cn/wxbackground/paihangbang1.png);
+  background-size: 94rpx 130rpx;
+  background-position: 3.6rpx 24rpx;
+  background-repeat: no-repeat;
+}
+.rankList .bottom .li:nth-child(2){
+  margin-top: 40rpx;
+  background-image: url(https://testhdt.teadrf.cn/wxbackground/paihangbang2.png);
+  background-size: 80rpx 94rpx;
+  background-position: 12rpx 56rpx;
+  background-repeat: no-repeat;
+}
+.rankList .bottom .li:nth-child(3){
+  margin-top: 40rpx;
+  background-image: url(https://testhdt.teadrf.cn/wxbackground/paihangbang3.png);
+  background-size: 62rpx 94rpx;
+  background-position: 18rpx 56rpx;
+  background-repeat: no-repeat;
+}
+.rankList .bottom .li .studyimg{
+  width: 268rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  float: left;
+  margin-right: 32rpx;
+}
+.rankList .bottom .li .cont .cont1{
+  padding-top: 12rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color:rgba(0,0,0,1);
+}
+.rankList .bottom .li .cont .cont2{
+  height: 52rpx;
+  line-height: 52rpx;
+  color:rgba(125,143,151,1);
+  font-size: 24rpx;
+}
+
+.goodLesson{
+  margin-top: 28rpx;
+}
+.goodLesson .top{
+  height: 84rpx;
+  margin: 0 20rpx;
+}
+.goodLesson .top view{
+  line-height: 84rpx;
+  font-weight:bold;
+  float: left;
+}
+.goodLesson .bottom .goodLessonList{
+  display: flex;
+}
+.goodLesson .bottom .goodLessonList .li{
+  width: 50%;
+}
+.goodLesson .bottom .goodLessonList .li>view{
+  width: 98%;
+  margin-left: 1%;
+}
+.goodLesson .bottom .goodLessonList .li .studyimg{
+  width: 100%;
+  height: 190rpx;
+  border-radius: 10rpx;
+}
+.goodLesson .bottom .goodLessonList .li .cont1{
+  font-size: 28rpx;
+  font-weight: bold;
+  color:rgba(0,0,0,1);
+  height: 48rpx;
+  line-height: 48rpx;
+  margin-top: 8rpx;
+}
+.goodLesson .bottom .goodLessonList .li .cont2{
+  font-size:24rpx;
+  color:rgba(125,143,151,1);
+  width: 90%;
+  height: 42rpx;
+  line-height: 42rpx;
+  margin-bottom: 8rpx;
+}
+.goodLesson .bottom .goodLessonList .li .vip .vipImg{
+  display: block;
+  width: 74rpx;
+  height: 26rpx;
+  margin-right: 19rpx;
+}
+.goodLesson .bottom .goodLessonList .li .vip .price1{
+  font-size: 24rpx;
+  font-weight: bold;
+  color:rgba(255,61,0,1);
+  margin-right: 15rpx;
+}
+.goodLesson .bottom .goodLessonList .li .vip .price2{
+  position: relative;
+  font-size: 24rpx;
+  color:rgba(125,143,151,1);
+}

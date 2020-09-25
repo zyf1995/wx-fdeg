@@ -1,0 +1,104 @@
+/* pages/branchRecord/branchRecord.wxss */
+@import "../../iconfont.wxss";
+.mybranch{
+  background: #F44444;
+  padding: 24rpx 48rpx;
+}
+.mybranch view{
+  color: #ffffff;
+  font-size: 28.8rpx;
+  margin: 3vw 0;
+}
+.saleOut{
+  width: 96rpx;
+  padding: 4.8rpx;
+  color: #fed78a !important;
+  border-radius: 24rpx;
+  border: 2px solid #fed78a;
+}
+
+
+.toast-box {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+
+.toastbg {
+  opacity: 0.2;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.showToast {
+  position: absolute;
+  opacity: 1;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 50%;
+}
+
+.toast-title {
+  padding-left: 5%;
+  background-color: #F44444;
+  color: white;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  border-top-right-radius: 16rpx;
+  border-top-left-radius: 16rpx;
+}
+
+.toast-main {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  background-color: white;
+  text-align: center;
+}
+
+.toast-input {
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 1px solid #ddd;
+  padding-left: 2vh;
+  padding-right: 2vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.toast-button {
+  display: flex;
+}
+
+.button1 {
+  width: 50%;
+}
+
+.button2 {
+  width: 50%;
+}
+
+.button1 view {
+  width: 100%;
+  background-color: white;
+  color: red;
+  border-radius: 0px;
+  border-bottom-left-radius: 16rpx;
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.button2 view{
+  width: 100%;
+  background-color: white;
+  color: black;
+  border-radius: 0px;
+  border-bottom-right-radius: 16rpx;
+  text-align: center;
+  padding: 20rpx 0;
+}

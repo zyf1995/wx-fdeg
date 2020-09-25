@@ -1,0 +1,130 @@
+<!--pages/goodsInfo/goodsInfo.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<import src="../../wxParse/wxParse.wxml"/>
+<!-- <view class="go_back flex_row_center posi_absolute">
+   <image src="../../image/ds_detailBack_icon.png"></image>
+</view> -->
+<view class="swiperContainer">
+  <swiper
+  id="banner"
+  indicator-dots="true"
+  autoplay="true"
+  interval="2000"
+  circular="true"
+  indicator-color="#fff"
+  indicator-active-color="#666874"
+  bindchange="swiperChange"
+  class="bg_white paddingT5"
+  >
+    <swiper-item wx:key="{{index}}" wx:for="{{goodsInfo.detail.imgs_url}}">
+      <image bindtap="previewImg" data-index="{{index}}" class="headset" src="{{item}}" />
+    </swiper-item>
+  </swiper>
+  <view class="imageCount">{{current+1}}/{{goodsInfo.detail.imgs_url.length}}</view>
+</view>
+<view class="gi_info  bg_white marginB10">
+    <view class="gi_i_data flex_row_left marginB10">
+        <text class="color_red fontSize16 marginR10">￥{{buyInfo.goods_price}}</text>
+        <text class="flex_grow1 text_gray text_through">￥{{buyInfo.line_price}}</text>
+        <view class="flex_row_left shareBtn" bindtap="shareFriend">
+          <image class="share_icon" src="../../image/wxShare_icon.png" alt=""></image>
+          <view>分享</view>
+        </view>
+    </view>
+    <view class="gi_i_title text-overflow_2 marginB10">
+        <text>{{goodsInfo.detail.goods_name || '丰德E购'}} </text>
+    </view>
+</view>
+<view class="mgi_shop bg_white padding1 flex_row_left marginB15" style="padding-left:1.5rem;">
+  <image class='marginR10' src="{{goodsInfo.detail.shop.logo ?goodsInfo.detail.shop.image : '../../image/logo.png'}}" alt=""></image>
+  <view class="flex_col_left flex_grow1">
+    <text>{{goodsInfo.detail.shop.shop_name || '丰德E购'}}</text>
+  </view>
+</view>
+<view class="gi_description">
+    <view class="text_seperate flex_space_between_colCenter width80 marginCenter text_gray" style="height:2rem">
+        <view class="line text_gray"></view>
+        <view class="lineHeight0 fontSize14">商品详情</view>
+        <view class="line text_gray"></view>
+    </view>
+    <view>
+      <template is="wxParse" data="{{wxParseData:dkcontent.nodes}}"></template>
+    </view>
+</view>
+<view class="bottom_act flex_row_left" wx:if="{{goodsInfo.detail.is_virtual == 1}}">
+    <view class="bg_theme onlyBuy flex_row_center fontSize14" data-type="buy" bindtap="cartPanelS">立即报名</view>
+</view>
+<view class="flex_row_left freeBuy" wx:elif="{{goodsInfo.detail.is_limited == 1}}">
+    <view class="flex_row_center fontSize14 width50 fontBold">150件已被领取</view>
+    <view class="flex_row_center fontSize14 width50 fontBold" data-type="freeBuy" bindtap="cartPanelS">免费领取</view>
+</view>
+<view class="bottom_act flex_row_left" wx:else>
+    <view class="bg_black buy flex_row_center fontSize14" data-type="cart" bindtap="cartPanelS">加入购物车</view>
+    <view class="bg_theme buy flex_row_center fontSize14" data-type="buy" bindtap="cartPanelS">立即购买</view>
+</view>
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body cart_box bottom-pos" animation="{{animationData}}">
+      <!-- <image class="cb_close" src="../../image/gi_close.png" alt=""></image> -->
+      <view class="cb_info flex_row_left BB1">
+          <image class="cb_i_img" src="{{goodsInfo.detail.image?goodsInfo.detail.image:'../../image/goods_empty.png'}}"></image>
+          <view class="flex_col_left">
+              <text class="color_default fontSize16">¥{{buyInfo.goods_price}}</text>
+              <text class="">库存{{buyInfo.goods_stock}}</text>
+          </view>
+      </view>
+      <view class="cb_type BB1" wx:if="{{goodsInfo.specData.spec_attr.length > 0}}" wx:key="index" wx:for="{{goodsInfo.specData.spec_attr}}">
+          <view class="c_y_title">{{item.group_name}}</view>
+          <view class="c_y_list flex_row_left flex_wrap">
+            <view class="fontSize12 flex_row_center selectItem {{isSelect[attrItem.isClick]}}" wx:for="{{item.spec_items}}" wx:for-item="attrItem" wx:for-index="attrIndex" wx:key="attrIndex" bindtap="attrS" data-itemId="{{attrItem.item_id}}" data-standard-index="{{index}}" data-index="{{attrIndex}}">
+              {{attrItem.spec_value}}
+            </view>
+          </view>
+      </view>
+      <view class="cb_num flex_row_left BB1">
+          <view class="cb_n_title flex_grow1">购买数量</view>
+          <view class="cb_n_edit flex_row_center">
+            <text class="cb_n_minus flex_row_center" data-type="minus" bindtap="changeNum" wx:if="{{buyType != 'freeBuy'}}">
+              <text class="iconfont icon-minus fontSize12"></text>
+            </text>
+            <input type="text text_center" bindinput="updateValue" disabled="disabled"  value='{{buyInfo.goods_num}}'></input>
+            <text class="cb_n_plus flex_row_center" data-type="add" bindtap="changeNum" wx:if="{{buyType != 'freeBuy'}}">
+              <text class="iconfont icon-plus fontSize12"></text> 
+            </text>
+          </view>
+      </view>
+      <view class="cd_act common_submit_btn" wx:if="{{buyInfo.handle == 'cart'}}" data-type="cart" bindtap="attrComputed">加入购物车</view>
+      <view class="cd_act common_submit_btn" wx:else data-type="buy" bindtap="attrComputed">立即购买</view>
+    </view>
+</view>
+<!-- 遮罩层 -->
+<!-- <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showDialog}}"></view> -->
+<!-- 弹出层 -->
+<view wx:if="{{showDialog}}" class="dialog-wrap">
+ <view class="padding1 fontSize16 fontBold">提示</view>
+ <view class="dialog width100 text_center">
+  请您先开启权限，才能下载图片
+  <view class="dialog-footer marginT1 flex_row_around">
+   <button
+    class="btn"
+    open-type="openSetting"
+    bindtap="confirm" >
+     授权
+   </button>
+   <button class="btn" bindtap="cancel">取消</button>
+  </view>
+ </view>
+</view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel}}"></view>
+<!-- 弹出层 -->
+<view wx:if="{{showModel}}" class="dialogModel flex_col_center">
+  <view class="ui_img">
+    <image src="{{poster}}"></image>
+  </view>
+  <view class='ui_btn1 flex_row_center color_white'>
+      <view class="poster flex_row_center marginB1" bindtap="share">下载图片</view>
+  </view>
+</view>

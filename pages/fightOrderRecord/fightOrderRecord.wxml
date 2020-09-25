@@ -1,0 +1,19 @@
+<!--pages/fightOrderRecord/fightOrderRecord.wxml-->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="orderRecordList bg_white">
+  <view class="orderItem flex_row_between padding1rem BB1" wx:if="{{sucTeamList.length != 0}}" wx:for="{{sucTeamList}}" wx:key="index">
+      <view class="left flex_row_left">
+        <image class="avatar_default marginR1" src="{{item.user.avatar?item.user.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+        <view class="fontSize15 username">{{item.user.nickname || item.user.mobile}}等{{item.user_num_max}}人</view>
+      </view>
+      <view class="right text_right">
+        <view class="fontSize12 marginR1">
+          <view class="marginB5">拼单成功</view>
+          <view>{{filter.formatDate(item.createtime)}}</view>
+        </view>
+      </view>
+    </view>
+</view>
+<view class="marginT15 paddingB15 flex_row_center text_gray" >
+    <text class="fontSize14">暂无更多数据</text>
+</view>

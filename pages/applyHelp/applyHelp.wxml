@@ -1,0 +1,74 @@
+<!--pages/applyHelp/applyHelp.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="gs_tabs  flex_row_left bg_default posi_relative color_white">
+  <view class="line flex_row_center color_white" id="line" style="transform:{{scrollLeft}}">
+      <text class="bg_f4"></text>
+  </view>
+  <view class="gs_t_item flex_row_center" wx:for="{{tabArray}}" wx:key="index" bindtap="tabS" data-index="{{index}}" data-item="{{item}}">
+      <text class="fontSize12 {{item.type == type?'color_f4':''}}">{{item.title}}</text>
+  </view>
+</view>
+<view wx:if="{{type == 1}}">
+    <view class="flex_row_left personalDetails marginB15">
+        <image class="avatar_default" src="{{userInfo.avatar ? userInfo.avatar :'../../image/avatar_default.png'}}" alt=""></image>
+        <view>
+            <view class="fontSize14 cont1 marginB10">
+                {{userInfo.nickname || userInfo.mobile}}
+                <text class="fontSize12 marginL1">{{userInfo.level.name}}</text>
+            </view>
+            <view class="fontSize12 cont2">
+                可申请补助额度:
+                <text>￥{{userInfo.subsidy_num || 0}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="bg_white marginB10 flex_row_left padding1">
+        <view class="flex_grow1">申请原因</view>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            {{array[index] || '请选择'}}
+          </view>
+        </picker>
+        <text class="iconfont icon-arrow-right marginL1"></text>
+    </view> 
+    <view class="postProof padding1">
+        <view class="fontSize15 paddingB1">上传凭证</view>
+        <view class="big-logos flex_row_left">  
+            <block wx:for="{{img_arr}}">  
+              <view class='logoinfo'>  
+                <image class="marginR1" src='{{item}}'></image>  
+              </view>  
+            </block> 
+            <image bindtap="upimg" src='../../image/uploadingVoucher.png'></image>   
+          </view>
+    </view>
+    <view class="footer flex_row_center" bindtap="submit">
+        <view class="fontSize18">提交</view>
+    </view>
+</view>
+<view wx:if="{{type == 2}}">
+  <view class="gs_tabs_sub  flex_row_left posi_relative color_white marginB1">
+      <view class="line flex_row_center color_white" id="lineSub">
+          <text></text>
+      </view>
+      <view class="gs_t_item1 flex_row_center text_gray bg_white" wx:for="{{tabArraySub}}" bindtap='tabSubS' data-index="{{index}}" data-item="{{item}}">
+          <text class="fontSize12 {{status == item.status?'color_ff3':''}}">{{item.title}}</text>
+      </view>
+  </view>
+  <view class="helpDetail">
+      <view class="flex bg_white li" wx:for="{{subsidyLog}}" wx:key="index">
+          <view class="left">
+            <view class="cont1 fontSize14">申请原因：{{item.remark}}</view>
+            <view class="cont2 fontSize12">时间：{{item.createtime_text}}</view>
+          </view>
+          <view class="right">
+            <view class="cont1 fontSize14" wx:if="{{item.status == 10}}">申请中</view>
+            <view class="cont1 fontSize14" wx:if="{{item.status == 20}}">已通过</view>
+            <view class="cont1 fontSize14" wx:if="{{item.status == 40}}">已驳回</view>
+            <view class="cont2 fontSize14">￥{{filter.toNum(item.num) + filter.toNum(item.cost)}}</view>
+          </view>
+      </view>-
+  </view>
+</view>

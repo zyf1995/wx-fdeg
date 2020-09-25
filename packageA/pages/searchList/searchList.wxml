@@ -1,0 +1,47 @@
+<!--packageA/pages/searchList/searchList.wxml-->
+<import src="../../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="header_wrapper_50">
+  <view id='header' class='flex_row_left bg_white color_black'>
+    <view bindtap="goSearch">
+      <input type="text" placeholder="输入关键词" value="{{keyword}}" bindinput="changeVal"></input>
+    </view>
+    <view class="marginL2" bindtap="search">搜索</view>
+  </view>
+</view>
+<view class="gcl_tab flex_row_left fontSize14 bg_white marginB10">
+    <view class="gcl_t_item flex_row_center {{sortType == 'normal' ? 'on' : ''}}" bindtap="tabS" data-type="normal">综合</view>
+    <view class="gcl_t_item flex_row_center {{sortType == 'sales' ? 'on' : ''}}" bindtap="tabS" data-type="sales">热销</view>
+    <view class="gcl_t_item flex_row_center {{sortType == 'price' ? 'on' : ''}}" bindtap="tabS" data-type="price">
+        价格
+    </view>
+</view>
+<view class="h_red_goods">
+    <view class="hrg_list">
+        <view class="hrg_item flex_row_left   padding1 bg_white marginB10" wx:for="{{goodsList}}" wx:key="index" wx:if='{{goodsList.length > 0}}' bindtap='toMallGoodsInfo' data-id="{{item.spec[0].goods_id}}">
+            <view class="hrg_img marginR10">
+                <image src="{{item.image ? item.image :'../../image/goods_empty.png'}}" alt=""></image>
+            </view>
+            <view class="hrg_info flex_grow1">
+                <view class="marginB5 fontSize15">{{item.goods_name}}</view>
+                <view class="flex_row_left marginB5">
+                    <text class="hrg_price marginR5 fontBold fontSize16 color_red">¥{{item.spec[0].goods_price}}</text>
+                    <text class="hrg_original text_through flex_grow1 text_gray">¥{{item.spec[0].line_price}}</text>
+                </view>
+                <view class="hrg_tip color_white fontSize10 flex_row_left">
+                    <text class="tip_left flex_row_center" wx:if='{{item.reward_data}}'>自购省 ¥{{item.reward_data[user_level].value || 0}}</text>
+                    <text class="tip_right flex_row_center" wx:if='{{item.reward_data}}'>升级赚 ¥{{item.reward_data[user_level_next].value || 0}}</text>
+                    <text class="volume">销量 {{item.sales_initial + item.sales_actual}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- <view class="marginT15 marginB15 flex_row_center text_gray">
+    <image class="loadingGif" src="../../image/timg23.gif" alt=""></image>
+    <text class="fontSize14">加载中...</text>
+</view> -->
+<view class="marginT15 paddingB15 flex_row_center text_gray">
+    <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+    <text class="fontSize14">我是有底线的</text>
+</view>

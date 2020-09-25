@@ -1,0 +1,161 @@
+/* pages/wxShare/wxShare.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.wxShare_TLbg{
+  width:55%;
+  height:362rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.wxShare_Bbg{
+  width:100%;
+  height:572rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.wxShare_Rbg{
+  width:214rpx;
+  height:284rpx;
+  position: absolute;
+  left: 0;
+  top: 240rpx;
+}
+.wxShare_Lbg{
+  width:220rpx;
+  height:284rpx;
+  position: absolute;
+  right: 0;
+  top: 360rpx;
+}
+.shareBtn{
+  width: 30% !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color:rgba(255,255,255,1);
+  border:1px solid rgba(191,191,191,1);
+  border-radius:34rpx;
+  position: absolute;
+  top: 48rpx;
+  right: 46rpx;
+}
+.shareBtn image{
+  margin-right: 8rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+.shareBtn::after {
+  border-radius: 34rpx;
+  border: 0; 
+}
+.imgBox{
+  width:88%;
+  height:532rpx;
+  background:rgba(255,255,255,1);
+  border-radius:14rpx;
+  margin-top: 160rpx;
+  z-index: 100;
+}
+.imgBox image{
+  width:100%;
+  height:100%;
+}
+.ui_img {
+  width: 80vw;
+  height: 80vh;
+  margin: 0 0 72rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+.ui_img image{
+  width: 100%;
+  height: 100%;
+  margin-top: 24rpx;
+}
+.ui_btn {
+  width: 70%;
+  position: absolute;
+  bottom: 190rpx;
+}
+
+.ui_btn  > view {
+  width: 46%;
+  height: 90rpx;
+  line-height: inherit;
+  border-radius: 46rpx;
+  z-index: 100;
+}
+.ui_btn > view.poster {
+  background: #fff;
+  border:1px solid rgba(191,191,191,1);
+}
+.ui_btn > view.link {
+  background: #DE6362;
+  color: #fff;
+}
+.ui_btn1 {
+  width: 80%;
+}
+
+.ui_btn1  > view {
+  width: 49%;
+  height: 60rpx;
+  line-height: inherit;
+  border-radius: 12rpx;
+}
+.ui_btn1 > view.poster {
+  background: #F44444;
+}
+/* 遮罩层 */
+.mask{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background:#000;
+    z-index:9000;
+    opacity:0.5;
+}
+  
+/* 弹出层 */
+.dialog-wrap{
+    width:70%;
+    height: 240rpx;
+    position:fixed;
+    top:50%;
+    left:0;
+    right:0;
+    z-index:9999;
+    margin:0 auto;
+    margin-top: -120rpx;
+    background-color:#fff;
+    border-radius:5px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.btn{
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+}
+.dialogModel{
+  width:80vw;
+  position:fixed;
+  top:25rpx;
+  left:0;
+  right:0;
+  z-index:9998;
+  margin:0 auto;
+  background-color:#fff;
+  border-radius:5px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}

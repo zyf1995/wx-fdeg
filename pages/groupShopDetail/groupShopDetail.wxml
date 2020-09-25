@@ -1,0 +1,72 @@
+<!--pages/groupShopDetail/groupShopDetail.wxml-->
+<view id="groupShopDetail">
+  <view class="swiperContainer">
+    <swiper
+    id="banner"
+    indicator-dots="true"
+    autoplay="true"
+    interval="2000"
+    circular="true"
+    indicator-color="#fff"
+    indicator-active-color="#666874"
+    bindchange="swiperChange"
+    class="bg_white paddingT5"
+    >
+      <swiper-item wx:key="index" wx:for="{{groupGoodsDetail.images}}">
+        <image bindtap="previewImg" data-index="{{index}}" class="headset" src="{{item}}" />
+      </swiper-item>
+    </swiper>
+    <view class="imageCount">{{current+1}}/{{groupGoodsDetail.images.length}}</view>
+  </view>
+  <view class="orderRecond flex_row_left padding1rem marginB1">
+    <view class="fontSize18 fontBold color_white marginR1 marginL1">周期购</view>
+    <view class="fontSize14 color_white marginL1">每隔{{groupGoodsDetail.interval}}天发一次货，持续{{groupGoodsDetail.interval * groupGoodsDetail.groupbuy_num}}天</view>
+  </view>
+  <view class="shopDetail padding1rem bg_white marginT1 marginB1">
+    <view class="fontSize16 fontBold marginB1">{{groupGoodsDetail.goods_name}}</view>
+    <view class="flex_row_left">
+      <view class="fontSize12 color_white weekBuy marginR5 fontBold">周期购</view>
+      <view class="fontSize18 color_ef4 marginR5">￥{{groupGoodsDetail.price}}</view>
+      <view class="fontSize14 color_aca text_through">￥{{groupGoodsDetail.origin_price}}</view>
+    </view>
+  </view>
+  <view class="gi_description">
+      <view class="text_seperate flex_space_between_colCenter width80 marginCenter text_gray" style="height:2rem">
+          <view class="line text_gray"></view>
+          <view class="lineHeight0 fontSize14">商品详情</view>
+          <view class="line text_gray"></view>
+      </view>
+      <rich-text nodes="{{groupGoodsDetail.content}}"></rich-text>
+  </view>
+
+  <view class="bottom_act flex_row_left">
+      <view class="bg_theme buy flex_row_center fontSize14" bindtap='cartPanelS' data-type="'buy'">立即购买</view>
+  </view>
+</view>
+
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body cart_box bottom-pos" animation="{{animationData}}">
+      <view class="cb_info flex_row_left BB1">
+          <image class="cb_i_img" src="{{groupGoodsDetail.cover?groupGoodsDetail.cover:'../../image/goods_empty.png'}}"></image>
+          <view class="flex_col_left">
+              <text class="color_default fontSize16">¥{{buyInfo.goods_price}}</text>
+              <text class="">库存{{buyInfo.goods_stock}}</text>
+          </view>
+      </view>
+      <view class="cb_num flex_row_left BB1">
+          <view class="cb_n_title flex_grow1">购买数量</view>
+          <view class="cb_n_edit flex_row_center">
+            <!-- <text class="cb_n_minus flex_row_center" data-type="minus" bindtap="changeNum">
+              <text class="iconfont icon-minus fontSize12"></text>
+            </text> -->
+            <input type="text text_center" bindinput="updateValue" disabled="disabled" value='{{buyInfo.goods_num}}'></input>
+            <!-- <text class="cb_n_plus flex_row_center" data-type="add" bindtap="changeNum">
+              <text class="iconfont icon-plus fontSize12"></text> 
+            </text> -->
+          </view>
+      </view>
+      <!-- <view class="cd_act common_submit_btn" wx:if="{{buyInfo.handle == 'cart'}}" data-type="cart" bindtap="attrComputed">加入购物车</view> -->
+      <view class="cd_act common_submit_btn" data-type="buy" bindtap="attrComputed">立即购买</view>
+    </view>
+</view>

@@ -1,0 +1,437 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": false,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.10.2",
+  "appid": "wxf6ce46548d8f487e",
+  "projectname": "miniprogram-1",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/shopCart/shopCart",
+          "pathName": "pages/shopCart/shopCart",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "pages/goodsInfo/goodsInfo",
+          "pathName": "pages/goodsInfo/goodsInfo",
+          "query": "goods_id=270",
+          "scene": 1012
+        },
+        {
+          "id": -1,
+          "name": "pages/orderList/orderList",
+          "pathName": "pages/orderList/orderList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/orderInfo/orderInfo",
+          "pathName": "pages/orderInfo/orderInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/tab/tab",
+          "pathName": "pages/tab/tab",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "pages/wxShare/wxShare",
+          "pathName": "pages/wxShare/wxShare",
+          "query": "pid=2922&roomId=1",
+          "scene": 1007
+        },
+        {
+          "id": -1,
+          "name": "pages/dsShopDetail/dsShopDetail",
+          "pathName": "pages/dsShopDetail/dsShopDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/doorShop/doorShop",
+          "pathName": "pages/doorShop/doorShop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/study/study",
+          "pathName": "pages/study/study",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/studyOnline/studyOnline",
+          "pathName": "pages/studyOnline/studyOnline",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/studyBuy/studyBuy",
+          "pathName": "pages/studyBuy/studyBuy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/shopProfitDetail/shopProfitDetail",
+          "pathName": "pages/shopProfitDetail/shopProfitDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/shopArrive/shopArrive",
+          "pathName": "pages/shopArrive/shopArrive",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/shopCenter/shopCenter",
+          "pathName": "pages/shopCenter/shopCenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/shopTeamOrder/shopTeamOrder",
+          "pathName": "pages/shopTeamOrder/shopTeamOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/teamList/teamList",
+          "pathName": "pages/teamList/teamList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/applyHelp/applyHelp",
+          "pathName": "pages/applyHelp/applyHelp",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/applyHelpSubmit/applyHelpSubmit",
+          "pathName": "pages/applyHelpSubmit/applyHelpSubmit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/bindAlipay/bindAlipay",
+          "pathName": "pages/bindAlipay/bindAlipay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/addressAdd/addressAdd",
+          "pathName": "pages/addressAdd/addressAdd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/mall/mall",
+          "pathName": "pages/mall/mall",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/goodsList/goodsList",
+          "pathName": "packageA/pages/goodsList/goodsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 24,
+          "name": "packageA/pages/goodsSearch/goodsSearch",
+          "pathName": "packageA/pages/goodsSearch/goodsSearch",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 25,
+          "name": "pages/lessonList/lessonList",
+          "pathName": "/pages/lessonList/lessonList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "packageB/pages/personMsgList/personMsgList",
+          "pathName": "packageB/pages/personMsgList/personMsgList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 27,
+          "name": "pages/lessonList/lessonList",
+          "pathName": "pages/lessonList/lessonList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 28,
+          "name": "pages/offlineStore/offlineStore",
+          "pathName": "pages/offlineStore/offlineStore",
+          "query": "",
+          "scene": 1007
+        },
+        {
+          "id": -1,
+          "name": "pages/dsDetail/dsDetail",
+          "pathName": "pages/dsDetail/dsDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/buyLessonList/buyLessonList",
+          "pathName": "pages/buyLessonList/buyLessonList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/dsOrderInfo/dsOrderInfo",
+          "pathName": "pages/dsOrderInfo/dsOrderInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 32,
+          "name": "pages/dsDetail/dsDetail",
+          "pathName": "pages/dsDetail/dsDetail",
+          "query": "store_id=7",
+          "scene": 1012
+        },
+        {
+          "id": -1,
+          "name": "pages/userOrderList/userOrderList",
+          "pathName": "pages/userOrderList/userOrderList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/immediatelySuccess/immediatelySuccess",
+          "pathName": "pages/immediatelySuccess/immediatelySuccess",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/fightOrderDetail/fightOrderDetail",
+          "pathName": "pages/fightOrderDetail/fightOrderDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 36,
+          "name": "pages/fightingOrder/fightingOrder",
+          "pathName": "pages/fightingOrder/fightingOrder",
+          "query": "id=217-1-1004&pid=2087",
+          "scene": 1048
+        },
+        {
+          "id": -1,
+          "name": "pages/fightingOrderList/fightingOrderList",
+          "pathName": "pages/fightingOrderList/fightingOrderList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/fightOrderRecord/fightOrderRecord",
+          "pathName": "pages/fightOrderRecord/fightOrderRecord",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/fightOrderList/fightOrderList",
+          "pathName": "pages/fightOrderList/fightOrderList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/shareApp/shareApp",
+          "pathName": "pages/shareApp/shareApp",
+          "query": "id=217-1-1004&pid=2087",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/groupShopList/groupShopList",
+          "pathName": "pages/groupShopList/groupShopList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vip/vip",
+          "pathName": "pages/vip/vip",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vipGoodsInfo/vipGoodsInfo",
+          "pathName": "pages/vipGoodsInfo/vipGoodsInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cateList/cateList",
+          "pathName": "pages/cateList/cateList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/lessonList/lessonList",
+          "pathName": "pages/lessonList/lessonList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/branchRecord/branchRecord",
+          "pathName": "pages/branchRecord/branchRecord",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/studyBuy/studyBuy",
+          "pathName": "pages/studyBuy/studyBuy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/pointRec/pointRec",
+          "pathName": "pages/pointRec/pointRec",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "components/inputToast/inputToast",
+          "pathName": "components/inputToast/inputToast",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/withdraw/withdraw",
+          "pathName": "pages/withdraw/withdraw",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/bindBank/bindBank",
+          "pathName": "pages/bindBank/bindBank",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,95 @@
+/* pages/fightingOrderList/fightingOrderList.wxss */
+@import "../../iconfont.wxss";
+.gs_tabs{
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0;
+  top: 0;
+  z-index: 120;
+}
+.gs_t_item {
+    height: 96rpx;
+    min-width: 25%;
+}
+.gs_t_item text {
+    height: 72rpx;
+    line-height: 72rpx;
+    text-align: center;
+    font-size: 28rpx;
+    width: 80%;
+}
+.gs_tabs1 .gs_t_item {
+  height: 96rpx;
+  min-width: 50%;
+}
+.padding_custom {
+  padding: 20rpx 48rpx;
+}
+.ol_i_goodsInfo {
+  background: #EFEFEF
+}
+
+.ol_i_goodsInfo .ol_i_g_img {
+  width: 156rpx;
+  height: 156rpx;
+  margin-right: 24rpx;
+}
+
+.ol_i_goodsInfo .ol_i_g_name {
+  width: 70%;
+}
+
+.ol_i_goodsInfo .ol_i_g_one {
+  align-items: flex-start;
+  margin-bottom: 36rpx;
+  width: 100%;
+}
+
+.ol_i_goodsInfo .ol_i_g_two {
+  width: 100%;
+}
+
+.ol_i_goodsInfo .ol_i_g_type {
+  max-width: 80%;
+}
+
+.orderDetail{
+  font-size: 26rpx;
+  color: #666;
+  padding: 12rpx 24rpx;
+  border:1px solid rgba(160,160,160,1);
+  border-radius:5px;
+}
+.inviterFriend{
+  font-size: 26rpx;
+  color: #fff;
+  padding: 12rpx 24rpx;
+  background:rgba(255,53,53,1);
+  border-radius:5px;
+}
+
+.gs_tabs.gs_tabs1 .tabline,.gs_tabs.gs_tabs1 .subline2{
+  height: 4rpx;
+  width: 50%;
+  position: absolute;
+  bottom: 4rpx;
+  transition: all .3s linear;
+}
+.gs_tabs.gs_tabs1 .tabline text,.gs_tabs.gs_tabs1 .subline2 text{
+  width: 50%;
+  height: 100%;
+  background: #FFBF41;
+}
+
+.gs_tabs.gs_tabs2 .subline1{
+  height: 4rpx;
+  width: 25%;
+  position: absolute;
+  bottom: 4rpx;
+  transition: all .3s linear;
+}
+.gs_tabs.gs_tabs2 .subline1 text{
+  width: 50%;
+  height: 100%;
+  background: #FFBF41;
+}

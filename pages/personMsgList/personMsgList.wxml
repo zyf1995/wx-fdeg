@@ -1,0 +1,24 @@
+<!--packageB/pages/personMsgList/personMsgList.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>            
+<view id="personMsgList">
+  <view class="applyPersonList bg_white">
+    <view class="flex_row_left padding1 marginB1" wx:for="{{lessonMemberLists}}" wx:key="index" bindtap="defaultS" data-id="{{item.member_id}}">
+      <image wx:if="{{item.isdefault == 1}}" class="lesson_circle marginR1" src="../../image/lesson/circle_active.png" alt=""></image>
+      <image wx:else class="lesson_circle marginR1" src="../../image/lesson/lesson_circle.png" alt=""></image>
+      <view class="center flex_grow1">
+        <view class="">
+          <text class="fontSize16 fontBold marginR1">{{item.name}}<text class="fontSize14 color_fd9" wx:if="{{item.isdefault == 1}}">（默认）</text></text>
+          <text class="fontSize16 fontBold">{{item.phone}}</text>
+        </view>
+        <!-- <view class="fontSize14 color_727">身份证号：{{item.id_no}}</view> -->
+      </view>
+      <view class="right flex_col_center" catchtap="edit" data-item="{{item}}">
+        <view class="fontSize14 color_727">编辑</view>
+      </view>
+    </view>
+  </view>
+  <view class="footer flex_row_center" bindtap="addPersonMsg">
+    <view class="fontSize16 color_white fontBold">新增报名人</view>
+  </view>
+</view>

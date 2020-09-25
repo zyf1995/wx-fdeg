@@ -1,0 +1,64 @@
+<!--pages/groupOrderConfirm/groupOrderConfirm.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="orderType">
+    <view bindtap="goAddressList" class="oc_address flex_row_left fontSize12 BB1 bg_white fontSize14" wx:if="{{info.address}}">
+        <text class="iconfont icon-address2"></text>
+        <view class="oc_a_info flex_col_left">
+            <view class="oc_a_username flex_row_left width100">
+                <text class="flex_grow1">{{info.address.name}}</text>
+                <text class="text_right">{{info.address.phone}}</text>
+            </view>
+            <view>收货地址：{{info.address.Area.province}}{{info.address.Area.city}}{{info.address.Area.region}}{{info.address.detail}}</view>
+        </view>
+        <text class="iconfont icon-arrow-right-bold marginL1"></text>
+    </view>
+    <view wx:else bindtap="goAddressAdd" class="oc_address flex_col_center fontSize12 BB5 bg_default color_white">
+        <text class="iconfont icon-jia marginB10"></text>
+        <text>添加地址</text>
+    </view>
+    <view class="oc_info BB5">
+        <view wx:for="{{info.goods_list}}" wx:key="index">
+            <view class="oc_i_shopInfo flex_row_left padding_custom bg_white">
+                <image src="{{item.shops.image}}" alt=""></image>
+                <view class="flex_col_left">
+                    <text class="text-overflow_1 marginB5">{{item.shops.shop_name}}</text>
+                </view>
+            </view>
+            <view class="oc_i_goodsInfo bg_gray flex_row_left padding_custom" style="border-bottom: 1px solid #ffffff;" wx:for="{{item.goods}}" wx:for-item="iti" wx:for-index="i" wx:key="{{i}}">
+                <image class="oc_i_g_img" src="{{iti.image ? iti.image : item.goods_sku.spec_image}}" alt=""></image>
+                <view class="oc_i_g_cnt fontSize12 flex_col_left flex_grow1">
+                    <view class="oc_i_g_name text-overflow_2 marginB15">{{iti.goods_name}} </view>
+                    <view class="oc_i_g_type text_gray">
+                        <text class="marginR5">{{iti.goods_sku.goods_attr ? iti.goods_sku.goods_attr :''}}</text>
+                    </view>
+                    <view class="oc_i_g_price fontSize14 flex_row_left width100">
+                        <text class="color_default flex_grow1">¥{{iti.goods_price}}</text>
+                        <text>x{{iti.total_num}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="flex_row_left padding_custom BB1 fontSize14">
+                <view class="flex_grow1">配送方式</view>
+                <view>快递:{{item.express_price == 0 ? '免运费' : ' ￥' + item.express_price}}</view>
+            </view>
+            <view class=" flex_row_left padding_custom BB1 fontSize14">
+                <view class="flex_grow1">消费总额</view>
+                <view>￥{{item.pay_price}}</view>
+            </view>
+            <view class="oc_i_message flex_row_left padding_custom BB1 fontSize14" wx:if="{{is_virtual != 1}}">
+                <view class="flex_grow1">订单备注</view>
+                <input type="text" bindinput="updateValue" value='{{remarks}}'></input>
+            </view>
+        </view>
+    </view>
+    <view class="order_confirm_footer bg_white flex_row_left padding1 fontSize14 BT1">
+        <view>共{{info.order_total_num}}件商品</view>
+        <view class="flex_grow1">合计:
+            <text class="color_default">￥{{info.order_pay_price}}</text>
+        </view>
+        <view class="submit bg_th color_f4 flex_row_center" bindtap="submit">提交订单</view>
+    </view>
+</view>
+
+

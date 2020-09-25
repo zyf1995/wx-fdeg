@@ -1,0 +1,18 @@
+<!--pages/shopArrive/shopArrive.wxml-->
+<wxs src="../../utils/filter.wxs" module="filters"/>
+<view class="wr_list">
+    <view class="wr_item padding1 marginB5 bg_white flex_row_left" wx:for="{{info}}" wx:key="index">
+        <view class="flex_col_left  flex_grow1">
+            <text class="marginB10">备注：{{item.remark}}</text>
+            <text class="marginB10">时间：{{filters.formatDate(item.createtime)}}</text>
+            <text>订单号：{{item.order_no}}</text>
+        </view>
+        <view class=" flex_col_left">
+            <text class="color_f4 fontSize14">佣金： {{item.num}}</text>
+        </view>
+    </view>
+</view>
+<view class="marginT15 flex_row_center text_gray">
+    <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+    <text class="fontSize14">我是有底线的</text>
+</view>

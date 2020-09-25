@@ -1,0 +1,100 @@
+<!--pages/orderRefundSubmit/orderRefundSubmit.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="goodsBox flex_row_left BB5">
+  <image src="{{goodInfo.image ? goodInfo.image : ''}}" alt=""></image>
+  <view class="goodsMain flex_col_between">
+    <view class="goodsInfo">
+      <view class="text-overflow_3" style="margin-right: 1rem;">{{goodInfo.goods_name}}</view>
+      <text>¥{{goodInfo.goods_price}}</text>
+    </view>
+    <view class="norms flex_row_between">
+      <text>{{goodInfo.goods_attr}}</text>
+      <text>X{{goodInfo.total_num}}</text>
+    </view>
+  </view>
+</view>
+<view class="flex_row_between refundList BB1" wx:if="{{!type}}" bindtap="stateTranFn">
+  <view>
+    货物状态
+  </view>
+  <view class="flex_row_right">
+    <text :class="stateText ? 'cur':''">{{stateText?stateText:'请选择'}}</text>
+    <text class="iconfont icon-arrow-right"></text>
+  </view>
+</view>
+<view class="flex_row_between refundList BB1" bindtap="reasonTranFn">
+  <view>
+    退款原因
+  </view>
+  <view class="flex_row_right">
+    <text :class="reasonText ? 'cur':''">{{reasonText?reasonText:'请选择'}}</text>
+    <text class="iconfont icon-arrow-right"></text>
+  </view>
+</view>
+<view class="flex_row_left refundList BB1">
+  <view>
+    退款金额：
+  </view>
+  <text class="color_default">￥{{goodInfo.total_price}}</text>
+</view>
+<view class="flex_row_left refundList BB1">
+  <view>
+    退款说明：
+  </view>
+  <input type="text" placeholder="选填" bindinput="changeVal"  value="{{remark}}"></input>
+</view>
+<view class="upBox">
+  <view>上传凭证</view>
+  <view class="flex_row_left">
+    <view class="flex_row_center upimg" wx:for="{{img_arr}}">
+      <view class="flex_row_center sup" catchtap="clImg" data-index="{{index}}">×</view>
+      <image src="{{item}}" alt=""></image>
+    </view>
+    <view class="flex_row_center upimg upClick" wx:if="{{img_arr.length < 3}}">
+      <image src="../../image/add.png" alt="" bindtap="upimg"></image>
+    </view>
+  </view>
+  <view class="upTips color_gray">注：上传凭证，最多上传三张</view>
+</view>
+<view class="refundSubmit flex_row_center" bindtap="submit">
+  提交申请
+</view>
+<view class="modals modals-bottom-dialog" hidden="{{reasonTran}}">
+    <view class="modals-cancel" bindtap="reasonTran"></view>
+    <view class="bottom-dialog-body stateBox bottom-pos" animation="{{animationData}}">
+      <view class="stateTop flex_col_center">退款原因</view>
+      <view class="stateList">
+        <view class="flex_row_between BB1 li">
+          <text>七天无理由退款</text>
+          <view class="stateRo {{reasonType == 1 ? 'on':''}}" bindtap="reasonSureFn" data-type="1" data-text="七天无理由退款"></view>
+        </view> 
+        <view class="flex_row_between BB1 li">
+          <text>商品质量不行</text>
+          <view class="stateRo {{reasonType == 2 ? 'on':''}}" bindtap="reasonSureFn" data-type="2" data-text="商品质量不行"></view>
+        </view>
+        <view class="flex_row_between BB1 li">
+          <text>商品描述的材质与实物不符</text>
+          <view class="stateRo {{reasonType == 3 ? 'on':''}}" bindtap="reasonSureFn" data-type="3" data-text="商品描述的材质与实物不符"></view>
+        </view>
+      </view>
+      <view class="bg_default flex_row_center clo color_white" bindtap="reasonTran">关闭</view>
+    </view>
+</view>
+<view class="modals modals-bottom-dialog" hidden="{{stateTran}}">
+    <view class="modals-cancel" bindtap="reasonTran"></view>
+    <view class="bottom-dialog-body stateBox bottom-pos" animation="{{animationData}}">
+      <view class="stateTop flex_col_center">货物状态</view>
+      <view class="stateList">
+        <view class="flex_row_between BB1 li">
+          <text>未收到货</text>
+          <view class="stateRo" :class="stateType == 0 ? 'on':''" bindtap="stateSureFn" data-type="0" data-text="未收到货"></view>
+        </view>
+        <view class="flex_row_between BB1 li">
+          <text>已收到货</text>
+          <view class="stateRo" :class="stateType == 1 ? 'on':''" bindtap="stateSureFn" data-type="1" data-text="已收到货"></view>
+        </view>
+      </view>
+      <view class="bg_default flex_row_center clo color_white" bindtap="reasonTran">关闭</view>
+    </view>
+</view>

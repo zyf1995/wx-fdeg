@@ -1,0 +1,25 @@
+/* pages/bindAlipay/bindAlipay.wxss */
+.input2 {
+    height:108rpx;
+    padding: 24rpx 36rpx;
+}
+
+.input2 text {
+    width: 20%;
+    min-width: 20%;
+}
+
+.input2 input {
+    max-width: 50%;
+}
+.send {
+    width: 120rpx;
+    padding: 10rpx 12rpx;
+    border: 2rpx solid red;
+    color: red;
+    border-radius: 216rpx;
+    text-align: center;
+}
+.common_submit_btn {
+    margin: 72rpx auto;
+}

@@ -1,0 +1,24 @@
+<!--components/inputToast/inputToast.wxml-->
+<block wx:if="{{inputToast.isShowConfirm}}">
+    <view class='toast-box'>
+      <view class='toastbg'></view>
+      <view class='showToast'>
+          <view class='toast-title'>
+              <text>{{inputToast.title}}</text>
+          </view>
+          <view class='toast-main'>
+              <view class='toast-input'>
+                  <input type='number' placeholder='{{inputToast.value}}' bindinput='setValue' value="{{inputToast.text}}"></input>
+              </view>
+          </view>
+          <view class='toast-button'>
+              <view class='button1'>
+                  <view catchtap='cancel'>取消</view>
+              </view>
+              <view class='button2'>
+                  <view catchtap='confirmRecharge'>确定</view>
+              </view>
+          </view>
+      </view>
+    </view>
+</block>

@@ -1,0 +1,104 @@
+<!--pages/orderInfo/orderInfo.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="order_info">
+    <!-- 地址 -->
+    <view class="oc_address flex_row_left fontSize12 BB5 bg_white">
+        <i class="iconfont icon-address2"></i>
+        <view class="oc_a_info flex_col_left">
+            <view class="oc_a_username flex_row_left">
+                <text class="flex_grow1">收货人：{{info.address.name}} </text>
+                <text>{{info.address.phone}}</text>
+            </view>
+            <view>收货地址：{{info.address.Area.province}}{{info.address.Area.city}}{{info.address.Area.region}}{{info.address.detail}}</view>
+        </view>
+    </view>
+    <!-- 内容 -->
+    <view class="ol_item BB5 bg_white">
+        <view class="ol_i_shopInfo  flex_row_between padding_custom ">
+            <view class="flex_row_left">
+              <text class="shop_name">{{info.shop.shop_name}}</text>
+              <text class="iconfont icon-arrow-right fontSize16" ></text>
+            </view>
+            <text class="color_default text_right" wx:if='{{info.pay_status == 10}}'>待付款</text>
+            <text class="color_default text_right" wx:if='{{info.pay_status == 20 && info.freight_status ==10}}'>待发货</text>
+            <text class="color_default text_right" wx:if='{{info.pay_status == 20 && info.freight_status == 20 && info.receipt_status == 10}}'>待收货</text>
+            <text class="color_default text_right" wx:if='{{info.order_status == 30 && info.freight_status == 20}}'>已完成</text>
+        </view>
+        <view wx:for="{{info.goods}}" wx:for-index="indexGoods" wx:for-item="itemGoods" wx:key="index" bindtap="toMallGoodsInfo" data-id="{{itemGoods.goods_id}}">
+          <view class="ol_i_goodsInfo flex_row_left bg_gray padding_custom" >
+              <image class="ol_i_g_img" src="{{itemGoods.spec.spec_image==''? itemGoods.image:itemGoods.sku_image}}" alt=""></image>
+              <view class="flex_col_left flex_grow1">
+                  <view class="ol_i_g_one flex_row_left width100">
+                      <view class="ol_i_g_name text-overflow_2 fontSize12 ">{{itemGoods.goods_name}}</view>
+                      <view class="ol_i_g_price flex_grow1 text_right">¥{{itemGoods.goods_price}}</view>
+                  </view>
+                  <view class="ol_i_g_two flex_row_left fontSize12 text_gray flex_wrap">
+                      <view class="ol_i_g_type ">
+                          <text>{{itemGoods.goods_attr}}</text>
+                      </view>
+                      <view class="ol_i_g_num flex_grow1 text_right">x{{itemGoods.total_num}}</view>
+                  </view>
+              </view>
+          </view>
+          <view class="flex_row_right bg_gray">
+            <view class="flex_row_right color_default padding_custom" wx:if="{{info.pay_status != 10 && !(info.order_status == 30 && info.freight_status == 20)}}">
+              <view wx:if="{{itemGoods.return_status == 10}}" class="profitBtn" catchtap="goOrderRefund" data-item="{{itemGoods}}" data-type="">
+                申请退款
+              </view>
+              <view wx:if="{{itemGoods.return_status == 20}}" class="profitBtn" catchtap="goOrderRefund" data-item="{{itemGoods}}" data-type="2">
+                退款中
+              </view>
+              <view wx:if="{{itemGoods.return_status == 30}}" class="profitBtn" catchtap="goOrderRefund" data-item="{{itemGoods}}" data-type="2">
+                已退款
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="oi_sumInfo flex_row_left fontSize12 text_gray">
+            <view class="flex_grow1">商品总价</view>
+            <view>¥{{info.total_price}}</view>
+        </view>
+        <view class="oi_sumInfo flex_row_left  fontSize12 text_gray ">
+            <view class="flex_grow1">运费</view>
+            <view>¥{{info.express_price}}</view>
+        </view>
+        <view class="oi_sumInfo flex_row_left marginB10">
+            <view class="flex_grow1">实付款(含运费)</view>
+            <view class="color_default">¥{{info.pay_price}}</view>
+        </view>
+        <view wx:if='{{info.freight_time!=0}}'>
+            <view class="oi_sumInfo flex_row_left marginB10">
+                <view class="flex_grow1">发货时间：</view>
+                <view class="color_default">{{info.freight_time_text}}</view>
+            </view>
+            <view class="oi_sumInfo flex_row_left marginB10">
+                <view class="flex_grow1">快递公司：</view>
+                <view class="color_default">{{info.express_company.company}}</view>
+            </view>
+            <view class="oi_sumInfo flex_row_left marginB10">
+                <view class="flex_grow1">快递单号：</view>
+                <view class="color_default">{{info.express_no}}</view>
+            </view>
+        </view>
+
+
+    </view>
+    <view class="oi_otherInfo text_gray fontSize12 padding_custom">
+        <view>订单编号：{{info.order_no}}</view>
+        <view>创建时间：{{info.creattime_text}}</view>
+        <view wx:if='{{info.pay_status == 20}}'>支付时间：{{info.pay_time_text}}</view>
+        <view wx:if='{{info.pay_status == 20 && info.freight_status == 20 && info.receipt_status == 10}}'>发货时间：{{info.freight_time_text}}</view>
+        <view wx:if='{{info.order_status == 30 && info.freight_status == 20}}'>发货时间：{{info.freight_time_text}}</view>
+        <view wx:if='{{info.order_status == 30 && info.freight_status == 20}}'>收货时间：{{info.receipt_time_text}}</view>
+    </view>
+
+    <!-- 底部按钮  -->
+    <view class="bottom_act flex_row_right">
+        <view wx:if='{{info.pay_status == 10}}' class="bg_black buy flex_row_center fontSize14" bindtap="cancelOrder" data-id="{{info.id}}">取消订单</view>
+        <view wx:if='{{info.pay_status == 10}}' class="bg_red buy flex_row_center fontSize14" bindtap="submit">立即支付</view>
+        <view wx:if='{{info.pay_status == "20" && info.freight_status == "20" && info.order_status == "10" && info.receipt_status == "10"}}' class="bg_red buy flex_row_center fontSize14" bindtap="orderReceived" data-id="{{info.id}}">确认收货</view>
+        <view wx:if='{{info.pay_status == "20" && info.freight_status == "20" && info.order_status == "10" && info.receipt_status == "10"}}' class="bg_red buy flex_row_center fontSize14" bindtap='expressS'>查看物流</view>
+        <view wx:if='{{info.order_status == 30 && info.freight_status == 20}}' class="bg_red buy flex_row_center fontSize14" bindtap='expressS'>查看物流</view>
+    </view>
+</view>

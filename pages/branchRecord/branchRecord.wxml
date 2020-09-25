@@ -1,0 +1,52 @@
+<!--pages/branchRecord/branchRecord.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="mybranch">
+  <view class="flex_row_center">当前百旺金</view>
+  <view class="flex_row_center">{{currentScore || 0}}</view>
+  <view class="flex_row_center" bindtap="saleOut">
+    <view class="text_center fontSize12 saleOut">出售</view>
+  </view>
+  <view class="flex_row_center">出售倍率：{{ratio}}（1百旺金转换成{{ratio}}余额）</view>
+</view>
+<view>
+  <view class="wr_list">
+      <view class="wr_item padding1 marginB5 bg_white flex_row_left" wx:for="{{list}}" wx:key="index">
+          <view class="flex_col_left  flex_grow1">
+              <text class="marginB10">备注：{{item.remark}}</text>
+              <text>时间：{{filter.formatDate(item.createtime)}}</text>
+          </view>
+          <view class=" flex_col_left">
+              <text class="color_red fontSize14"> {{item.num}}</text>
+          </view>
+      </view>
+  </view>
+</view>
+<view class="marginT15 paddingB15 flex_row_center text_gray" wx:if="{{noMore}}">
+  <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
+  <text class="fontSize14">我是有底线的</text>
+</view>
+ <block wx:if="{{isShowConfirm}}">
+    <view class='toast-box'>
+      <view class='toastbg'></view>
+      <view class='showToast'>
+          <view class='toast-title'>
+              <text>确认出售</text>
+          </view>
+          <view class='toast-main'>
+              <view class='toast-input'>
+                  <input type='number' placeholder='输入出售的百旺金数量' bindinput='setValue' value="{{bwgNum}}"></input>
+              </view>
+          </view>
+          <view class='toast-button'>
+              <view class='button1'>
+                  <view catchtap='cancel'>取消</view>
+              </view>
+              <view class='button2'>
+                  <view catchtap='confirmAcceptance'>确定</view>
+              </view>
+          </view>
+      </view>
+    </view>
+</block>

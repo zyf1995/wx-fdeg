@@ -1,0 +1,215 @@
+/* pages/studyOnline/studyOnline.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.tab view{
+  width: 50vw;
+  height: 106rpx;
+  line-height: 106rpx;
+}
+.nav-switch-style{
+  font-weight: bold;
+  font-size: 34rpx;
+  color: #000;
+}
+#study_online_frame1 .top {
+  height: 250rpx;
+  margin-top: 24rpx;
+  position: relative;
+  border-bottom: 10rpx solid #f2f2f2;
+  padding: 0 24rpx;
+}
+
+#study_online_frame1 .top .label{
+  width:182rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  background-color:rgba(241,245,247,1);
+  border-radius:24rpx;
+  font-size: 24rpx;
+  color:rgba(125,143,151,1);
+  /* background-image: url(../../image/right.png);
+  background-repeat: no-repeat;
+  background-size: 1.167rem 1.167rem;
+  background-position:0.5rem 0.5rem; */
+  text-indent: 18rpx;
+}
+
+#study_online_frame1 .top .convert{
+  width:284rpx;
+  height:48rpx;
+  background:rgba(0,0,0,1);
+  border-radius:24rpx;
+  color:rgba(245,193,90,1);
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 48rpx;
+  position: absolute;
+  bottom: 32rpx;
+  right: 18rpx;
+}
+#study_online_frame1 .bottom{
+  padding: 0 24rpx;
+}
+#study_online_frame1 .bottom .bottomList .li:first-child{
+  margin-top: 18rpx;
+}
+#study_online_frame1 .bottom .bottomList .li{
+  margin-bottom: 56rpx;
+  position: relative;
+}
+#study_online_frame1 .bottom .bottomList .li.on view.cont1,
+#study_online_frame1 .bottom .bottomList .li.on view.cont2{
+  color: #85e4b8;
+}
+/* #study_online_frame1 .bottom .bottomList .li:last-child{
+  margin-bottom: 140rpx;
+} */
+#study_online_frame1 .bottom .bottomList .li image{
+  width:212rpx;
+  height:120rpx;
+  float: left;
+  margin-right: 24rpx;
+}
+#study_online_frame1 .bottom .bottomList .li .play{
+  /* background-image: url(../../image/bofang.png);
+  background-repeat: no-repeat;
+  background-size: 2.67rem 2.67rem; */
+  width: 64rpx;
+  height: 64rpx;
+  position: absolute;
+  top: 32rpx;
+  left: 72rpx;
+  z-index: 100;
+}
+
+#study_online_frame1 .bottom .bottomList .li .play.active{
+  /* background-image: url(../../image/play_active.gif); */
+}
+#study_online_frame1 .bottom .bottomList .li view.cont1{
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+#study_online_frame1 .bottom .bottomList .li view.cont2{
+  font-size:24rpx;
+  margin-right: 96rpx;
+  color:rgba(125,143,151,1);
+  line-height:32rpx;
+  margin-top: 12rpx;
+}
+#study_online_frame1 .bottom .bottomList .li .lock{
+  width: 18rpx;
+  height: 18rpx;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -9.6rpx;
+}
+#study_online_frame1 .bottom .bottomList .li .trySee{
+  width: 72rpx;
+  height: 38rpx;
+  color: #fff;
+  background-color:rgba(255,184,49,1);
+  text-align: center;
+  line-height: 38rpx;
+  position: absolute;
+  border-radius: 80rpx;
+  top: 50%;
+  right: 0;
+  margin-top: -12rpx;
+}
+.footer{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  z-index: 200;
+}
+.footer view{
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius:40rpx;
+}
+.footer view.studyCard{
+  width: 40%;
+  background:linear-gradient(90deg,rgba(255,184,49,1),rgba(253,207,79,1));
+  color:rgba(255,255,255,1);
+}
+.footer view.buy{
+  width: 40%;
+  background:rgba(0,0,0,1);
+  color:rgba(245,193,90,1);
+}
+
+.study_vip{
+  width: 100%;
+  height: 500rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.buyBtn{
+  padding: 10rpx 24rpx;
+  background-color:#f5b331;
+  color: #fff;
+  border-radius: 90rpx;
+}
+.stop{
+  width: 95vw;
+  color: #f5c15a;
+}
+
+#study_online_frame2 .top{
+  height: 338rpx;
+  border-bottom: 1px solid #ccc;
+  padding: 0 24rpx;
+  margin-top: 106rpx;
+}
+#study_online_frame2 .top view.teacher{
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+#study_online_frame2 .top .produce{
+  margin-top: 9.84rpx;
+}
+#study_online_frame2 .top .produce image{
+   width: 170rpx;
+   height: 170rpx;
+   margin-right: 24rpx;
+   float: left;
+}
+#study_online_frame2 .top .produce view.cont1{
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+#study_online_frame2 .top .produce view.cont2{
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+#study_online_frame2 .bottom{
+  /*height: 14rem;*/
+  padding: 0 24rpx;
+  margin-bottom: 101rpx;
+}
+#study_online_frame2 .bottom view.cont1{
+  height: 68rpx;
+  line-height: 68rpx;
+  margin-top: 24rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+#study_online_frame2 .bottom view.cont2{
+  font-size: 24rpx;
+  line-height: 36rpx;
+}

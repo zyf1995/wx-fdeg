@@ -1,0 +1,23 @@
+<!--components/navbar.wxml-->
+<view style="height:{{statusHeight+navHeight}}px" hidden='{{header.hiddenBlock}}'></view>
+<view class='topbar' style="background:{{header.headerbg}}">
+  <view class='status' style="height:{{statusHeight}}px"></view>
+  <view class='navbar' style="height:{{navHeight}}px">
+    <block wx:if="{{header.slot}}">
+      <slot></slot>
+    </block>
+    <block wx:else>
+      <view class='navbar_home' wx:if="{{header.homeCapsule}}" style="background:{{header.capsulebg}};border:{{header.capsuleborder}}">
+        <image class="black_back" src='../images/black_back.png' bindtap='backClick' style="border-right:{{header.capsulesep}}"></image>
+        <image class="home_black" src='../images/home_black.png' bindtap='homeClick'></image>
+      </view>
+      <view class='navbar_back' bindtap='backClick' wx:else>
+        <text class="iconfont icon-left-arrow fontSize18"></text>
+      </view>
+      <view class='navbar_title' style="height:{{navHeight}}px">
+        <view class="title" style="color:{{header.fontColor}};font-size:{{header.fontSize}}">{{header.title}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+

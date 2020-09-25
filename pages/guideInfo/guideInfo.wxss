@@ -1,0 +1,4 @@
+/* pages/guideInfo/guideInfo.wxss */
+.ug_item {
+  margin: 12rpx 24rpx;
+}

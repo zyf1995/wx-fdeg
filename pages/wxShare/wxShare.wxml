@@ -1,0 +1,62 @@
+<!--pages/wxShare/wxShare.wxml-->
+<view class="flex_row_right width100">
+  <button open-type='share' class="shareBtn">
+    <image src="../../image/wxShare_icon.png"></image>
+    <view class="fontSize14">分享</view>
+  </button>
+</view>
+<view class="flex_col_center">
+  <view class="imgBox flex_col_center">
+    <image src="{{wechatLiveInfo.share_img}}" alt=""></image>
+  </view>
+  <view class="flex_row_center marginT1 fontSize14">
+    {{wechatLiveInfo.name}}
+  </view>
+  <view class='ui_btn flex_space_between fontSize17'>
+      <view class="poster flex_row_center" bindtap="shareProduct">生成二维码</view>
+      <view class="link flex_row_center" bindtap="joinRoom">进入直播间</view>
+  </view>
+  <!-- <view class="ui_img">
+    <image src="{{wechatLiveInfo.cover_img}}" alt=""></image>
+  </view>
+  <view class='ui_btn flex_space_between color_white'>
+      <view class="poster flex_row_center" bindtap="shareProduct">生成二维码</view>
+      <view class="link flex_row_center" bindtap="joinRoom">进入直播间</view>
+  </view> -->
+</view>
+<view>
+  <image class="wxShare_TLbg" src="https://testhdt.teadrf.cn/wxbackground/wxShare_TLbg.png"></image>
+  <image class="wxShare_Bbg" src="https://testhdt.teadrf.cn/wxbackground/wxShare_Bbg.png"></image>
+  <image class="wxShare_Lbg" src="https://testhdt.teadrf.cn/wxbackground/wxShare_Lbg.png"></image>
+  <image class="wxShare_Rbg" src="https://testhdt.teadrf.cn/wxbackground/wxShare_Rbg.png"></image>
+</view>
+<!-- 遮罩层 -->
+<!-- <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showDialog}}"></view> -->
+<!-- 弹出层 -->
+<view wx:if="{{showDialog}}" class="dialog-wrap">
+ <view class="padding1 fontSize16 fontBold">提示</view>
+ <view class="dialog width100 text_center">
+  请您先开启权限，才能下载图片
+  <view class="dialog-footer marginT1 flex_row_around">
+   <button
+    class="btn"
+    open-type="openSetting"
+    bindtap="confirm" >
+     授权
+   </button>
+   <button class="btn" bindtap="cancel">取消</button>
+  </view>
+ </view>
+</view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel}}"></view>
+<!-- 弹出层 -->
+<view wx:if="{{showModel}}" class="dialogModel flex_col_center">
+  <view class="ui_img">
+    <image src="{{poster}}"></image>
+  </view>
+  <view class='ui_btn1 flex_row_center color_white'>
+      <view class="poster flex_row_center marginB1" bindtap="share">下载图片</view>
+  </view>
+</view>

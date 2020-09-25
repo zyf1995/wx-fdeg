@@ -1,0 +1,29 @@
+/* pages/rankList/rankList.wxss */
+.rankList_bg{
+  width: 100%;
+  height: 276rpx;
+}
+.rankList{
+  position: relative;
+  width: 90%;
+  margin: -90rpx 5% 0;
+  border-radius: 24rpx;
+}
+.item1{
+  width: 18%;
+}
+.item2{
+  width: 52%;
+}
+.item3{
+  width: 30%;
+}
+.rankFirst_icon{
+  width: 52rpx;
+  height: 62rpx;
+}
+.avatar_default{
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 50%;
+}

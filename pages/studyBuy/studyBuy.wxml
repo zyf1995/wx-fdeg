@@ -1,0 +1,57 @@
+<!--pages/studyBuy/studyBuy.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="top">
+  <image src="{{vc_detail.image}}" alt=""></image>
+  <view class="quickly">{{vc_detail.title}}</view>
+  <view>
+    <text>￥</text>
+    {{filter.toFix(filter.toNum(vc_detail.price))}}
+  </view>
+</view>
+
+<view class="center padding1rem">
+  <view class="fontSize18 fontBold marginB1">支付方式</view>
+  <view class="warning fontSize14 color_gray">*您将购买的物品为虚拟内容服务，购买后不支持退订、转让、退换</view>
+  <view class="agree fontSize14 marginT1 flex_row_left">
+    <image class="select_date_active marginR1" src="../../image/lesson/select_date_active.png"></image>
+    我已经阅读并同意
+    <text>《用户付费协议》</text>
+  </view>
+</view>
+<view class="footer flex_row_between">
+  <view class="price marginL1">
+    <text class="changeColor fontSize14">实付</text>
+    <text class="changeSize fontSize20 color_ff3">￥{{filter.toFix(filter.toNum(vc_detail.price))}}</text>
+  </view>
+  <view bindtap="payPanelS" class="payBtn fontSize14 marginR1">立即支付</view>
+</view>
+<!-- 遮罩层 -->
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel}}"></view>
+
+<view wx:if="{{showModel}}" class="dialogModel1">
+    <view class="order_pay bg_white width100">
+      <view class="op_title bg_gray padding_custom text_center posi_relative fontSize16">
+          <image class='op_close' src="../../image/gi_close.png" bindtap="preventTouchMove" alt=""></image> 支付方式
+      </view>
+      <view class="op_price padding_custom  color_default BB1 text_center fontBold fontSize20">¥{{filter.toFix(filter.toNum(vc_detail.price))}}}</view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="miniapp">
+          <image class='marginR10' src="../../image/wechat_logo.png" alt=""></image>
+          <text class="flex_grow1">微信</text>
+          <view class="common_radio {{payInfo.type == 'miniapp'?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="money">
+          <image class='marginR10' src="../../image/money_icon.png" alt=""></image>
+          <text class="flex_grow1">余额<text class="color_red">({{userInfo.money}})</text></text>
+          <view class="common_radio {{payInfo.type == 'money' ?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="money" wx:if='{{payInfo.type == "money"}}'>
+          <text class="iconfont icon-lock"></text>
+          <input type="text" placeholder="请输入支付密码" value="{{payInfo.password}}" bindinput="updateValue"></input>
+      </view>
+      <view class="padding_custom flex_row_center">
+          <view class="common_submit_btn" bindtap="submit">确定</view>
+      </view>
+  </view>
+</view>

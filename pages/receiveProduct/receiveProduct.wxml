@@ -1,0 +1,57 @@
+<!--pages/receiveProduct/receiveProduct.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="orderType">
+    <view bindtap="goAddressList" wx:if="{{address}}" class="oc_address BB5 flex_row_left fontSize12 bg_white fontSize14">
+        <text class="iconfont icon-address2"></text>
+        <view class="oc_a_info flex_col_left">
+            <view class="oc_a_username flex_row_left">
+                <text class="marginR1">{{address.name}}</text>
+                <text>{{address.phone}}</text>
+            </view>
+            <view>收货地址：{{address.region}}{{address.detail}}</view>
+        </view>
+    </view>
+    <view wx:else bindtap="goAddressAdd" class="oc_address flex_col_center fontSize12 BB5 bg_default color_white">
+        <text class="iconfont icon-jia marginB10"></text>
+        <text>添加地址</text>
+    </view>
+    <view class="oc_info">
+        <view>
+            <view class="oc_i_shopInfo flex_row_left padding_custom bg_white">
+                <image src="../../image/doorShop/ds_detailMessage_icon.png" alt=""></image>
+                <view class="flex_row_left">
+                    <text class="text-overflow_1 marginR5">{{goodsInfo.goods.mer_name}}</text>
+                </view>
+            </view>
+            <view class="oc_i_goodsInfo bg_gray flex_row_left paddingT1 paddingB1" style="border-bottom: 1px solid #ffffff;">
+                <view class="left flex_row_center">
+                  <image class="oc_i_g_img" src="{{goodsInfo.goods.images[0]}}" alt=""></image>
+                </view>
+                <view class="oc_i_g_cnt fontSize12 flex_col_left">
+                    <view class="oc_i_g_name marginB15 width100 flex">
+                      <view class="text-overflow_2">{{goodsInfo.goods.goods_name}}</view>
+                      <view class="text_right">¥{{goodsInfo.good_spec[0].goods_price}}</view>
+                    </view>
+                    <view class="oc_i_g_price fontSize14 width100 flex_row_between">
+                        <view></view>
+                        <view class="marginR1">x1</view>
+                    </view>
+                </view>
+            </view>
+
+            <view class=" flex_row_left padding_custom fontSize12 color_9a9">
+                <view class="flex_grow1">商品总价</view>
+                <view>￥{{goodsInfo.good_spec[0].goods_price}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="order_confirm_footer bg_white flex_row_left fontSize14">
+      <view class="marginL1">共1件商品</view>
+        <view class="flex_grow1">合计:
+            <text class="color_default">￥{{goodsInfo.good_spec[0].goods_price}}</text>
+        </view>
+        <view class="submit color_white flex_row_center" bindtap="submit">领取产品</view>
+    </view>
+    
+</view>

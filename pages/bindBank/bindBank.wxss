@@ -1,0 +1,72 @@
+/* pages/bindBank/bindBank.wxss */
+@import "../../iconfont.wxss";
+.input2 {
+  height:108rpx;
+  padding: 24rpx 36rpx;
+}
+
+.input2 text {
+  width: 20%;
+  min-width: 20%;
+}
+
+.input2 input {
+      max-width: 50%;
+}
+.bank_list {
+  /* height: 0;
+  transition: height 300ms;
+  font-size: 14px;
+  max-height: 312rpx;
+  overflow-y: scroll; */
+  background: linear-gradient(to bottom, #f44444, #F48784);
+  color: #fff;
+  /* background-color: #fff; */
+  z-index: 100;
+  position: absolute;
+  top: 80rpx;
+  overflow-y: scroll;
+  max-height: 288rpx;
+  
+}
+
+.bank_list.on {
+  height: 288rpx;
+}
+
+.bank_list view {
+  height: 72rpx;
+  line-height: 72rpx;
+  box-sizing: border-box;
+}
+.common_submit_btn {
+  margin: 72rpx auto;
+}
+.send {
+  /* width: 120rpx; */
+  padding: 9.6rpx 12rpx;
+  border: 1px solid red;
+  color: red;
+  border-radius: 216rpx;
+  text-align: center;
+}
+
+.option_box{
+  position: absolute;
+  top: 70rpx;
+  width: 100%;
+  border:1px solid #efefef;
+  box-sizing: border-box;
+  height: 0;
+  overflow-y: auto;
+  border-top: 0;
+  background: #fff;
+  transition: height 0.3s;
+}
+.option{
+  display: block;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #efefef;
+  padding: 10rpx;
+}

@@ -1,0 +1,189 @@
+<!--pages/fightOrderDetail/fightOrderDetail.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view id="shopDetail">
+  <swiper
+  id="banner"
+  indicator-dots="true"
+  autoplay="true"
+  interval="2000"
+  circular="true"
+  indicator-color="#fff"
+  indicator-active-color="#666874"
+  class="bg_white"
+  >
+    <swiper-item wx:key="index" wx:for="{{goodsInfo.goods.images}}">
+      <image src="{{item}}" alt=""></image>
+    </swiper-item>
+  </swiper>
+  <view class="BB1 bg_white padding1">
+    <view class="flex_row_between marginB1">
+      <view class="flex_row_left">
+        <view class="marginR5 fontSize15 color_ff6">￥<text class="fontSize26">{{goodsInfo.good_spec[0].goods_price}}</text></view>
+        <view class="fontSize12 freeBuy">拼的多，赚的多，天天领红包</view>
+      </view>
+      <view class="flex_row_left">
+        {{teamList[teamList.length - 1].user_num_max || 0}}人拼
+      </view>
+    </view>
+    <view class="flex_row_between">
+      <view class="fontSize16 fontBold text-overflow_2" style="max-width: 70vw;">{{goodsInfo.goods.goods_name}}</view>
+      <view class="flex_row_left shareBtn" bindtap="shareFriend">
+        <image class="share_icon" src="../../image/wxShare_icon.png" alt=""></image>
+        <view>分享</view>
+      </view>
+    </view>
+  </view>
+  <view class="orderRecond flex_row_left padding1rem marginB1" bindtap="goOrderRecord">
+    <image class="order_record_icon marginR1" src="../../image/fightOrder/order_record_icon.png" alt=""></image>
+    <view class="flex_grow1 fontSize15 color_white">查看近期拼单成功记录</view>
+    <text class="iconfont icon-arrow-right color_white fontSize16 fontBold"></text>
+  </view>
+  <view class="fightOrderList bg_white marginB1">
+    <view class="top flex_row_left padding1rem BB1">
+      <view class="fontSize15">正在进行的拼单列表</view>
+      <view wx:if="{{teamList.length != 0}}" class="flex_grow1 fontSize15 color_b2b text_right marginR1" bindtap="seeOrderList">查看全部</view>
+      <text wx:if="{{teamList.length != 0}}"  class="iconfont icon-arrow-right color_b2b fontSize16 fontBold" bindtap="seeOrderList"></text>
+    </view>
+    <view class="spellSingleTable" style="max-height:{{orderListHeight}}px;overflow:hidden;">
+      <view class="orderItem flex_row_between padding1rem BB1" wx:for="{{teamList}}" wx:key="index">
+        <view class="left flex_row_left">
+          <image class="avatar_default marginR1" src="{{item.user.avatar?item.user.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+          <view class="fontSize15 nickname text-overflow_2">{{item.user.nickname || item.user.mobile}}</view>
+        </view>
+        <view class="right flex_row_left">
+          <view class="fontSize12 marginR1">
+            <view class="marginB5 text_right">还差<text class="color_ff3">{{item.user_num_max - item.user_num_now}}人</text>成团</view>
+            <rich-text nodes="{{item.desiduetime}}"></rich-text>
+          </view>
+          <view class="fontSize12 color_white goFightOrder" bindtap="goFightOrder" data-id="{{item.id}}">去拼单</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class="productDetail">
+    <view class="padding1rem fontSize15 bg_white">商品详情</view>
+    <view class="gi_description marginT15">
+        <view class="text_seperate paddingB1 flex_space_between_colCenter width80 marginCenter text_gray" style="height:2rem">
+            <view class="line text_gray"></view>
+            <view class="lineHeight0 fontSize14">商品详情</view>
+            <view class="line text_gray"></view>
+        </view>
+        <rich-text nodes="{{goodsInfo.goods.content}}"></rich-text>
+    </view>
+  </view>
+  <view class="footer fontSize16 color_white fontBold flex_row_left">
+    <view class="flex_row_center" bindtap="seeOrderList">参与拼单</view>
+    <view class="flex_col_center" bindtap="sendFightOrder">
+      <view>￥{{goodsInfo.good_spec[0].goods_price}}</view>
+      <view>发起拼单</view>
+    </view>
+  </view>
+</view>
+<image bindtap="goMyOrderList" class="user_order_list" src="../../image/doorShop/user_order_list.png"></image>
+<!-- 遮罩层 -->
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel || showModel1 || showModel2}}"></view>
+<!-- 弹出层 -->
+<view wx:if="{{showModel}}" class="dialogModel">
+    <view class="flex_row_center padding1rem fontSize16 BB1">
+      正在拼团
+    </view>
+    <view class="orderList">
+      <view class="orderItem flex_row_between padding1rem BB1" wx:for="{{teamList}}" wx:key="index">
+        <view class="left flex_row_left">
+          <image class="avatar_default marginR1" src="{{item.user.avatar?item.user.avatar:'../../image/avatar_default.png'}}" alt=""></image>
+          <view class="fontSize15 nickname text-overflow_2">{{item.user.nickname || item.user.mobile}}</view>
+        </view>
+        <view class="right flex_row_left">
+          <view class="fontSize12 marginR1 text_right">
+            <view class="marginB5 text_right">还差<text class="color_ff3">{{item.user_num_max - item.user_num_now}}人</text>成团</view>
+            <rich-text nodes="{{item.desiduetime}}"></rich-text>
+          </view>
+          <view class="fontSize12 color_white goFightOrder" bindtap="goFightOrder" data-id="{{item.id}}">去拼单</view>
+        </view>
+      </view>
+    </view>
+    <image class="close_icon" bindtap="preventTouchMove" src="../../image/doorShop/ds_detail_close_icon.png" alt=""></image>
+</view>
+
+<view wx:if="{{showModel1}}" class="dialogModel1">
+    <view class="order_pay bg_white width100">
+      <view class="op_title bg_gray padding_custom text_center posi_relative  fontSize16">
+          <image class='op_close' src="../../image/gi_close.png" bindtap="preventTouchMove" alt=""></image> 支付方式
+      </view>
+      <view class="op_price padding_custom  color_default BB1 text_center fontBold fontSize20">¥{{goodsInfo.good_spec[0].goods_price}}</view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="miniapp">
+          <image class='marginR10' src="../../image/wechat_logo.png" alt=""></image>
+          <text class="flex_grow1">微信</text>
+          <view class="common_radio {{payInfo.type == 'miniapp'?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="bwjd">
+          <image class='marginR10' src="../../image/lesson/money_icon.png" alt=""></image>
+          <text class="flex_grow1">百旺金豆<text class="color_red">({{userInfo.bwjd || 0}})</text></text>
+          <view class="common_radio {{payInfo.type == 'bwjd'?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="money">
+          <image class='marginR10' src="../../image/money_icon.png" alt=""></image>
+          <text class="flex_grow1">余额<text class="color_red">({{userInfo.money}})</text></text>
+          <view class="common_radio {{payInfo.type == 'money' ?'on' : ''}}"></view>
+      </view>
+      <!-- <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="money" wx:if='{{payInfo.type == "money"}}'>
+          <text class="iconfont icon-lock"></text>
+          <input type="text" placeholder="请输入支付密码" value="{{payInfo.password}}" bindinput="updateValue"></input>
+      </view> -->
+      <view class="padding_custom flex_row_center">
+          <view class="common_submit_btn" bindtap="submit">确定</view>
+      </view>
+  </view>
+</view>
+
+<block wx:if="{{isShowConfirm}}">
+    <view class='toast-box'>
+      <view class='toastbg'></view>
+      <view class='showToast'>
+          <view class='toast-title'>
+              <text>确认支付</text>
+          </view>
+          <view class='toast-main'>
+              <view class='toast-input'>
+                  <input type='text' placeholder='请输入支付密码' bindinput='updateValue' value="{{payInfo.password}}"></input>
+              </view>
+          </view>
+          <view class='toast-button'>
+              <view class='button1'>
+                  <view catchtap='cancel'>取消</view>
+              </view>
+              <view class='button2'>
+                  <view catchtap='confirmAcceptance'>确定</view>
+              </view>
+          </view>
+      </view>
+    </view>
+</block>
+
+<view wx:if="{{showDialog}}" class="dialog-wrap">
+ <view class="padding1 fontSize16 fontBold">提示</view>
+ <view class="dialog width100 text_center">
+  请您先开启权限，才能下载图片
+  <view class="dialog-footer marginT1 flex_row_around">
+   <button
+    class="btn"
+    open-type="openSetting"
+    bindtap="confirm" >
+     授权
+   </button>
+   <button class="btn" bindtap="cancel">取消</button>
+  </view>
+ </view>
+</view>
+
+<!-- 弹出层 -->
+<view wx:if="{{showModel2}}" class="dialogModel2 flex_col_center">
+  <view class="ui_img">
+    <image src="{{poster}}"></image>
+  </view>
+  <view class='ui_btn1 flex_row_center color_white'>
+      <view class="poster flex_row_center marginB1" bindtap="share">下载图片</view>
+  </view>
+</view>

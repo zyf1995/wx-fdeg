@@ -1,0 +1,134 @@
+{
+  "pages": [
+    "pages/mall/mall",
+    "pages/vip/vip",
+    "pages/my/my",
+    "pages/home/home",
+    "pages/goodsInfo/goodsInfo",
+    "pages/orderConfirm/orderConfirm",
+    "pages/addressList/addressList",
+    "pages/addressAdd/addressAdd",
+    "pages/shopCart/shopCart",
+    "pages/orderList/orderList",
+    "pages/orderInfo/orderInfo",
+    "pages/shopProfitDetail/shopProfitDetail",
+    "pages/shopArrive/shopArrive",
+    "pages/shopCenter/shopCenter",
+    "pages/shopTeamOrder/shopTeamOrder",
+    "pages/teamList/teamList",
+    "pages/bindAlipay/bindAlipay",
+    "pages/bindBank/bindBank",
+    "pages/search/search",
+    "pages/withdraw/withdraw",
+    "pages/orderRefund/orderRefund",
+    "pages/orderRefundSubmit/orderRefundSubmit",
+    "pages/detail/detail",
+    "pages/login/login",
+    "pages/vipGoodsInfo/vipGoodsInfo",
+    "pages/cateList/cateList",
+    "pages/branchRecord/branchRecord",
+    "pages/groupShopList/groupShopList",
+    "pages/groupShopDetail/groupShopDetail",
+    "pages/groupOrderConfirm/groupOrderConfirm",
+    "pages/groupOrderList/groupOrderList",
+    "pages/groupOrderInfo/groupOrderInfo",
+    "pages/fightOrderDetail/fightOrderDetail",
+    "pages/fightingOrder/fightingOrder",
+    "pages/fightingOrderList/fightingOrderList",
+    "pages/fightOrderRecord/fightOrderRecord",
+    "pages/fightOrderList/fightOrderList",
+    "pages/receiveProduct/receiveProduct",
+    "pages/lessonList/lessonList",
+    "pages/lessonDetail/lessonDetail",
+    "pages/applyLesson/applyLesson",
+    "pages/personMsgList/personMsgList",
+    "pages/addPersonMsg/addPersonMsg",
+    "pages/selectedLessonDate/selectedLessonDate",
+    "pages/buyLessonDetail/buyLessonDetail",
+    "pages/buyLessonList/buyLessonList",
+    "pages/shareApp/shareApp",
+    "pages/studyOnline/studyOnline",
+    "pages/studyBuy/studyBuy",
+    "pages/wxShare/wxShare",
+    "pages/applyHelp/applyHelp",
+    "pages/guideInfo/guideInfo",
+    "pages/rankList/rankList",
+    "components/navbar/navbar",
+    "components/marquee/marquee",
+    "components/inputToast/inputToast"
+  ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "name": "packageA",
+      "pages": [
+        "pages/goodsList/goodsList",
+        "pages/goodsSearch/goodsSearch",
+        "pages/dsSearchList/dsSearchList",
+        "pages/searchList/searchList"
+      ],
+      "independent": false
+    }
+  ],
+  "preloadRule": {
+    "pages/mall/mall": {
+      "network": "all",
+      "packages": [
+        "packageA"
+      ]
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "plugins": {
+    "live-player-plugin": {
+      "version": "1.2.0",
+      "provider": "wx2b03c6e691cd7370"
+    }
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "丰德E购"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#ff8339",
+    "list": [
+      {
+        "pagePath": "pages/mall/mall",
+        "text": "首页",
+        "iconPath": "./image/tab/doorShop.png",
+        "selectedIconPath": "./image/tab/doorShop_active.png"
+      },
+      {
+        "pagePath": "pages/vip/vip",
+        "text": "VIP",
+        "iconPath": "./image/tab/vip.png",
+        "selectedIconPath": "./image/tab/vip_active.png"
+      },
+      {
+        "pagePath": "pages/fightOrderList/fightOrderList",
+        "text": "百旺赚",
+        "iconPath": "./image/tab/baiwan.png",
+        "selectedIconPath": "./image/tab/baiwan_active.png"
+      },
+      {
+        "pagePath": "pages/lessonList/lessonList",
+        "text": "商学院",
+        "iconPath": "./image/tab/live.png",
+        "selectedIconPath": "./image/tab/live_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "./image/tab/my.png",
+        "selectedIconPath": "./image/tab/my_active.png"
+      }
+    ]
+  }
+}

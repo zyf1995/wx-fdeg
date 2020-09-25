@@ -1,0 +1,25 @@
+/* pages/shopCenter/shopCenter.wxss */
+.btn_padding {
+    padding: 2.4rpx 16.8rpx;
+}
+ .sc_i_top{
+    border-bottom: 1px solid #EC6769;
+ }
+.sc_i_top image {
+    width: 96rpx;
+    height: 96rpx;
+}
+.sc_item {
+  width: 33.33%;
+}
+.sc_item image {
+  width: 96rpx;
+  height: 96rpx;
+}
+.sc_list {
+  padding: 48rpx 0;
+}
+.sc_i_bottom > view {
+  width: 50%;
+  min-width: 50%;
+}

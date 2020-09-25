@@ -1,0 +1,100 @@
+<!--pages/shopProfitDetail/shopProfitDetail.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="spd_sum flex_col_center bg_default fontSize16 color_white">
+    <text class="marginB10 fontSize20" wx:if="{{type == 'point'}}">{{userInfo.score_new || 0}}</text>
+    <text class="marginB10 fontSize20" wx:if="{{type == 'money'}}">{{userInfo.total_money || 0}}</text>
+    <text class="marginB10 fontSize20" wx:if="{{type == 'baiWangJinDou'}}">{{userInfo.bwjd || 0}}</text>
+    <text class="marginB10 fontSize20" wx:if="{{type == 'EGouQianBao'}}">{{userInfo.money_e || 0}}</text>
+    <view class="flex_row_left posi_relative">
+        <text class="marginR10" wx:if="{{type == 'point'}}">当前积分</text>
+        <text class="marginR10" wx:if="{{type == 'money'}}">累计收益</text>
+        <text class="marginR10" wx:if="{{type == 'baiWangJinDou'}}">百旺金豆明细</text>
+        <text class="marginR10" wx:if="{{type == 'EGouQianBao'}}">当前E购钱包</text>
+    </view>
+    <view class="flex_row_center marginT1" bindtap="recharge" wx:if="{{type == 'baiWangJinDou'}}">
+        <view class="text_center fontSize12 saleOut">充值</view>
+    </view>
+</view>
+<view class="wr_list" wx:if="{{list.length != 0}}">
+    <view class="wr_item padding1 marginB10 bg_white flex_row_left" wx:for="{{list}}" wx:key="index">
+        <view class="flex_col_left  flex_grow1">
+            <text class="marginB10">备注：{{item.remark}}</text>
+            <text>时间：{{filter.formatDate(item.createtime)}}</text>
+        </view>
+        <view class=" flex_col_left">
+            <text class="color_red fontSize14"> {{item.num}}</text>
+        </view>
+    </view>
+</view>
+<block wx:if="{{isShowConfirm}}">
+    <view class='toast-box'>
+      <view class='toastbg'></view>
+      <view class='showToast'>
+          <view class='toast-title'>
+              <text>确认充值</text>
+          </view>
+          <view class='toast-main'>
+              <view class='toast-input'>
+                  <input type='number' placeholder='输入充值的百旺金豆数量' bindinput='setValue' value="{{bwjdNum}}"></input>
+              </view>
+          </view>
+          <view class='toast-button'>
+              <view class='button1'>
+                  <view catchtap='cancel'>取消</view>
+              </view>
+              <view class='button2'>
+                  <view catchtap='confirmAcceptance'>确定</view>
+              </view>
+          </view>
+      </view>
+    </view>
+</block>
+
+<block wx:if="{{isShowConfirm1}}">
+    <view class='toast-box'>
+      <view class='toastbg'></view>
+      <view class='showToast'>
+          <view class='toast-title'>
+              <text>确认支付</text>
+          </view>
+          <view class='toast-main'>
+              <view class='toast-input'>
+                  <input type='number' placeholder='输入支付密码' bindinput='setValue1' value="{{payInfo.password}}"></input>
+              </view>
+          </view>
+          <view class='toast-button'>
+              <view class='button1'>
+                  <view catchtap='cancel'>取消</view>
+              </view>
+              <view class='button2'>
+                  <view catchtap='confirmRecharge'>确定</view>
+              </view>
+          </view>
+      </view>
+    </view>
+</block>
+
+<view class="mask" catchtap="preventTouchMove" wx:if="{{showModel1}}"></view>
+<view wx:if="{{showModel1}}" class="dialogModel1">
+    <view class="order_pay bg_white width100">
+      <view class="op_title bg_gray padding_custom text_center posi_relative  fontSize16">
+          <image class='op_close' src="../../image/gi_close.png" bindtap="preventTouchMove" alt=""></image> 支付方式
+      </view>
+      <view class="op_price padding_custom  color_default BB1 text_center fontBold fontSize20">¥{{bwjdNum}}</view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="miniapp">
+          <image class='marginR10' src="../../image/wechat_logo.png" alt=""></image>
+          <text class="flex_grow1">微信</text>
+          <view class="common_radio {{payInfo.type == 'miniapp'?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_left BB1 fontSize14" bindtap="payTypeS" data-type="money">
+          <image class='marginR10' src="../../image/money_icon.png" alt=""></image>
+          <text class="flex_grow1">余额<text class="color_red">({{userInfo.money}})</text></text>
+          <view class="common_radio {{payInfo.type == 'money' ?'on' : ''}}"></view>
+      </view>
+      <view class="padding_custom flex_row_center">
+          <view class="common_submit_btn" bindtap="submit">确定</view>
+      </view>
+  </view>
+</view>

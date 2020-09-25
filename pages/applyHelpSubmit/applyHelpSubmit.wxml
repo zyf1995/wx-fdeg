@@ -1,0 +1,24 @@
+<!--pages/applyHelpSubmit/applyHelpSubmit.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+<view class="w_way padding_custom bg_white BB1">
+    <view class=" marginB15 fontSize14">提现方式</view>
+    <view class="w_w_item flex_row_left marginB15">
+        <text class="common_radio marginR10 {{info.type == 'alipay' ? 'on':''}}"></text>
+        <text class="flex_grow1 flex" bindtap="goBindAlipay">
+          <text>支付宝</text>
+          <text wx:if='{{!isAlipay}}' class="text_gray fontSize10">（还没有绑定支付宝账户，请点击添加）</text>
+        </text>
+        <text wx:if='{{!isAlipay}}' class="iconfont icon-arrow-right fontSize24"></text>
+    </view>
+</view>
+<view class="input2 padding_custom borderBox bg_white BB1  width100 flex_row_left ">
+    <text class="fontSize14">提现金额</text>
+    <input class='border_none ' type="number" placeholder="请输入提现金额" bindinput="updateValue" value="{{info.num}}"></input>
+</view>
+<view class=" padding_custom borderBox bg_white BB1  width100 flex_row_left text_gray">
+    <text class=" flex_grow1">可用余额：￥{{money}}</text>
+    <text>最低提现金额为{{withdraw_min}}元</text>
+</view>
+
+<view class="common_submit_btn marginCenter" bindtap="submit">提交申请</view>

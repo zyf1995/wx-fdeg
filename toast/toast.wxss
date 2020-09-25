@@ -1,0 +1,3 @@
+.wxToast_mask{
+  z-index: 10000;
+}
