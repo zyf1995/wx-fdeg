@@ -183,9 +183,7 @@
 <view class="adress padding1 bg_white" bindtap="shareApp">
   <text>我的分享海报</text>
 </view>
-<!-- <view class="adress padding1 bg_white" bindtap="goGroupShop">
-  <text>团购商品</text>
-</view> -->
+
 <view class="flex_row_center marginT2">
   <view class="fontSize14 color_bcb">已经到底啦</view>
 </view>
