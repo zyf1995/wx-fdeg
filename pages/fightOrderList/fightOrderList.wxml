@@ -117,7 +117,11 @@
     </view>
   </view>
   <image bindtap="goMyOrderList" class="user_order_list" src="../../image/doorShop/user_order_list.png"></image>
-  <view class="marginT15 paddingB15 flex_row_center text_gray">
+  <view class="marginT15 paddingB15 flex_row_center text_gray" wx:if='{{!toBottom}}'>
+    <image class="loadingGif" src="../../image/timg23.gif" alt=""></image>
+    <text class="fontSize14">加载中...</text>
+</view>
+  <view class="marginT15 paddingB15 flex_row_center text_gray" wx:if='{{toBottom}}'>
       <text class="iconfont icon-shangcheng marginR10 fontSize20"></text>
       <text class="fontSize14">我是有底线的</text>
   </view>

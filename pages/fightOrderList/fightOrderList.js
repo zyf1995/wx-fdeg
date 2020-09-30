@@ -23,6 +23,9 @@ Page({
       type: 'miniapp',
       password: ''
     },
+    page: 1,
+    hasMoreData: true,
+    toBottom: false,
   },
   onLoad: function (options) {
     let that = this
@@ -105,6 +108,11 @@ Page({
   },
   onPullDownRefresh() {
     let that = this
+    that.setData({
+      page: 1,
+      hasMoreData: true,
+      toBottom: false
+    })
     that.getList()
     that.isSwitch()
     that.fightListShow()
@@ -131,6 +139,15 @@ Page({
         that.setData({
           isShow: res.data
         })
+        if(res.data == 0){
+          that.setData({
+            toBottom: true
+          })
+        }else{
+          that.setData({
+            toBottom: false
+          })
+        }
       },
       fail: err => {
         console.log(err)
@@ -248,16 +265,48 @@ Page({
       }
     })
   },
-  getList(){
+  onReachBottom: function () {
+    var that = this
+    if (that.data.hasMoreData) {
+      var page = that.data.page + 1
+      that.setData({
+        page: page
+      })
+      that.getList('scrolltobottom')
+    } else {
+      toast: {
+        app.wxToast({
+          title: '没有更多数据'
+        })
+      };
+    }
+  }, 
+  getList(type){
     let that = this
     http.getgoodslist({
       data: {
-        key_word: that.data.keywords
+        key_word: that.data.keywords,
+        page:that.data.page
       },
       success: res => {
-        that.setData({
-          goodsList: res.data.data
-        })
+        if (type == 'scrolltobottom') {
+          var arr1 = that.data.goodsList
+          var arr2 = res.data.data
+          arr1 = arr1.concat(arr2)
+          that.setData({
+            goodsList: arr1
+          })
+          if (res.data.data.length == 0) {
+            that.setData({
+              hasMoreData: false,
+              toBottom: true
+            })
+          }
+        } else {
+          that.setData({
+            goodsList: res.data.data
+          })
+        }
       },
       fail: err => {
         console.log(err)
