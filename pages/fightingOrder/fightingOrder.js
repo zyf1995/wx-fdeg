@@ -1,6 +1,7 @@
 // pages/fightingOrder/fightingOrder.js
 import http from '../../utils/api';
 let loginCheck = require('../../utils/loginCheck');
+const util = require('../../utils/util.js');
 const app = getApp();
 Page({
   data: {
@@ -401,7 +402,7 @@ Page({
       isShowConfirm: false,
     })
   },
-  confirmAcceptance:function(){
+  confirmAcceptance: util.throttle(function(){
     var that = this
     if (!that.data.payInfo.password) {
       toast: {
@@ -412,7 +413,19 @@ Page({
       return false;
     }
     that.pay()
-  },
+  },3000),
+  // confirmAcceptance:function(){
+  //   var that = this
+  //   if (!that.data.payInfo.password) {
+  //     toast: {
+  //       app.wxToast({
+  //         title: '请输入支付密码'
+  //       })
+  //     };
+  //     return false;
+  //   }
+  //   that.pay()
+  // },
   go_update(){
     let that = this
     that.getTeamDetail()

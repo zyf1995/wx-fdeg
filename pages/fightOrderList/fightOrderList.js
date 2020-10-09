@@ -2,6 +2,7 @@
 import http from '../../utils/api';
 let loginCheck = require('../../utils/loginCheck');
 const event = require("../../utils/event.js");
+const util = require('../../utils/util.js');
 const app = getApp();
 Page({
   data: {
@@ -410,7 +411,7 @@ Page({
       that.pay()
     }
   },
-  confirmRecharge:function(){
+  confirmRecharge: util.throttle(function(){
     var that = this
     if (!that.data.payInfo.password) {
       toast: {
@@ -421,7 +422,19 @@ Page({
       return false;
     }
     that.pay()
-  },
+  },3000),
+  // confirmRecharge:function(){
+  //   var that = this
+  //   if (!that.data.payInfo.password) {
+  //     toast: {
+  //       app.wxToast({
+  //         title: '请输入支付密码'
+  //       })
+  //     };
+  //     return false;
+  //   }
+  //   that.pay()
+  // },
   pay(){
     var that = this
     let json = {

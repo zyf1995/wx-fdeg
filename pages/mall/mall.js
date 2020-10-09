@@ -1,6 +1,6 @@
 // pages/mall/mall.js
 import http from '../../utils/api';
-let loginCheck = require('../../utils/loginCheck');
+const loginCheck = require('../../utils/loginCheck');
 const app = getApp();
 Page({
   data: {

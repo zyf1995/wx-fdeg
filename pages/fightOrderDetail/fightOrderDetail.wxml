@@ -152,7 +152,7 @@
           </view>
           <view class='toast-button'>
               <view class='button1'>
-                  <view catchtap='cancel'>取消</view>
+                  <view catchtap='cancelPay'>取消</view>
               </view>
               <view class='button2'>
                   <view catchtap='confirmAcceptance'>确定</view>

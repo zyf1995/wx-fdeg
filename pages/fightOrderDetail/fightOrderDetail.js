@@ -1,6 +1,7 @@
 // pages/fightOrderDetail/fightOrderDetail.js
 import http from '../../utils/api';
 let loginCheck = require('../../utils/loginCheck');
+const util = require('../../utils/util.js');
 const app = getApp();
 Page({
   data: {
@@ -165,7 +166,7 @@ Page({
           tem.endtime = tem.endtime * 1000
           tem.desiduetime = ''
         })
-        that.countDown()
+        // that.countDown()
       },
       fail: err => {
         console.log(err)
@@ -283,13 +284,13 @@ Page({
     }
     
   },
-  cancel: function () {
+  cancelPay: function () {
     var that = this
     that.setData({
       isShowConfirm: false,
     })
   },
-  confirmAcceptance:function(){
+  confirmAcceptance: util.throttle(function () {
     var that = this
     if (!that.data.payInfo.password) {
       toast: {
@@ -300,7 +301,20 @@ Page({
       return false;
     }
     that.pay()
-  },
+  }, 3000),
+  // confirmAcceptance:function(){
+  //   var that = this
+  //   console.log(11)
+  //   if (!that.data.payInfo.password) {
+  //     toast: {
+  //       app.wxToast({
+  //         title: '请输入支付密码'
+  //       })
+  //     };
+  //     return false;
+  //   }
+  //   that.pay()
+  // },
   pay(){
     let that = this
     let json = {

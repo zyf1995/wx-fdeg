@@ -1,6 +1,7 @@
 // pages/shopProfitDetail/shopProfitDetail.js
 import http from '../../utils/api';
 const event = require("../../utils/event.js");
+const util = require('../../utils/util.js');
 const app = getApp();
 Page({
   data: {
@@ -184,7 +185,7 @@ Page({
       that.pay()
     }
   },
-  confirmRecharge:function(){
+  confirmRecharge: util.throttle(function(){
     var that = this
     if (!that.data.payInfo.password) {
       toast: {
@@ -195,7 +196,7 @@ Page({
       return false;
     }
     that.pay()
-  },
+  },3000),
   pay(){
     var that = this
     let json = {
